@@ -166,7 +166,7 @@ export function BlogPostView({ post, onBack }: BlogPostViewProps) {
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-20">
 
-          {/* Main column — capped at comfortable reading width */}
+          {/* Main column , capped at comfortable reading width */}
           <div className="min-w-0 max-w-[680px]">
 
             {/* ---- HEADER ---- */}
@@ -206,7 +206,7 @@ export function BlogPostView({ post, onBack }: BlogPostViewProps) {
             {/* ---- BODY ---- */}
             <div>
 
-              {/* Introduction — slightly larger, higher contrast */}
+              {/* Introduction , slightly larger, higher contrast */}
               <RichText
                 text={getText(post.content.introduction)}
                 className="mb-14 pb-14 border-b border-border/40"

@@ -1,7 +1,7 @@
 import type { BookingEnv } from './_lib/db-types';
 import { jsonResponse, optionsResponse } from './_lib/cors';
 
-export const onRequestOptions: PagesFunction = async () => optionsResponse();
+export const onRequestOptions: PagesFunction = async ({ request }) => optionsResponse(request);
 
 export const onRequestGet: PagesFunction<BookingEnv> = async ({ request, env }) => {
   try {
@@ -45,9 +45,9 @@ export const onRequestGet: PagesFunction<BookingEnv> = async ({ request, env }) 
       spotsRemaining: Math.max(0, row.spots_remaining),
     }));
 
-    return jsonResponse({ sessions });
+    return jsonResponse(request, { sessions });
   } catch (err) {
     console.error('Error fetching training sessions:', err);
-    return jsonResponse({ error: 'Internal Server Error' }, 500);
+    return jsonResponse(request, { error: 'Internal Server Error' }, 500);
   }
 };

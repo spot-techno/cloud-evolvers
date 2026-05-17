@@ -43,28 +43,28 @@ export const translations = {
     },
     servicesPage: {
       title: "Consulting alongside the training",
-      subtitle: "Hands-on Azure and Microsoft 365 work for teams that need help moving past the slides — landing zones, tenant migrations, security hardening, automation. Same trainer leads the engagement.",
+      subtitle: "Hands-on Azure and Microsoft 365 work for teams that need help moving past the slides , landing zones, tenant migrations, security hardening, automation. Same trainer leads the engagement.",
       moreFeatures: "+{count} more",
       contact: {
         title: "Want help on a specific project?",
-        description: "Tell us what you're working on. We'll come back with a scope, a timeline, and the right person to lead it — usually within a working day.",
+        description: "Tell us what you're working on. We'll come back with a scope, a timeline, and the right person to lead it , usually within a working day.",
         contactUs: "Contact us",
         viewTraining: "Browse training"
       }
     },
     about: {
       title: "About Cloud Evolvers",
-      subtitle: "Cloud Evolvers is the training arm of Spot Cloud — a Dutch consultancy built on 15+ years of hands-on Microsoft infrastructure work. We train the people who run Azure and Microsoft 365 in production.",
+      subtitle: "Cloud Evolvers is the training arm of Spot Cloud , a Dutch consultancy built on 15+ years of hands-on Microsoft infrastructure work. We train the people who run Azure and Microsoft 365 in production.",
       ourStory: {
         title: "How we work",
-        content1: "Cloud Evolvers is the training brand of Spot Cloud, the company Yaïr founded in 2023. Spot Cloud also does consulting work — Azure landing zones, Microsoft 365 tenant architecture, and automation with Bicep, PowerShell, and Terraform.",
-        content2: "Founder Yaïr Knijn has worked with Microsoft technologies for more than 15 years — most of that time hands-on inside Azure environments at Dutch organizations.",
+        content1: "Cloud Evolvers is the training brand of Spot Cloud, the company Yaïr founded in 2023. Spot Cloud also does consulting work , Azure landing zones, Microsoft 365 tenant architecture, and automation with Bicep, PowerShell, and Terraform.",
+        content2: "Founder Yaïr Knijn has worked with Microsoft technologies for more than 15 years , most of that time hands-on inside Azure environments at Dutch organizations.",
         whySpotCloud: "Why Spot Cloud?",
         spotCloudExplanation: "The name comes from our Dalmatian. Spots are unique, and so is every cloud environment we work with. No two tenants look the same, so no two training programs should either."
       },
       ourMission: {
         title: "Training that starts from operations",
-        content: "Every course we run is shaped by actual Azure and Microsoft 365 work — tenant migrations, landing zone builds, security hardening, cost reviews. We teach the decisions teams face when they inherit or scale environments, not just the exam objectives.",
+        content: "Every course we run is shaped by actual Azure and Microsoft 365 work , tenant migrations, landing zone builds, security hardening, cost reviews. We teach the decisions teams face when they inherit or scale environments, not just the exam objectives.",
         vision: "Small groups, real labs",
         visionContent: "We cap sessions at 10 participants so everyone gets hands-on time. Labs run in live Azure environments, not sandboxed simulators. Participants walk out with muscle memory, not just notes."
       },
@@ -94,7 +94,7 @@ export const translations = {
         founder: {
           name: "Yaïr Knijn",
           role: "Founder & lead trainer",
-          description: "Microsoft Certified Trainer with 15+ years working in and around Microsoft cloud — Azure, Microsoft 365, and the platform decisions that come with them."
+          description: "Microsoft Certified Trainer with 15+ years working in and around Microsoft cloud , Azure, Microsoft 365, and the platform decisions that come with them."
         }
       },
       contact: {
@@ -125,7 +125,7 @@ export const translations = {
     },
     contact: {
       title: "Get in touch",
-      description: "Booking a course, planning team training, or scoping a consulting engagement — drop us a note and we'll come back to you within a working day.",
+      description: "Booking a course, planning team training, or scoping a consulting engagement , drop us a note and we'll come back to you within a working day.",
       contactInformation: "Contact details",
       emailUs: "Email",
       emailDescription: "For training inquiries and course information",
@@ -137,7 +137,7 @@ export const translations = {
       availability: "Remote & on-site",
       whyChooseUs: "What you can expect",
       expertGuidance: "Direct access to the trainer",
-      expertDescription: "Yaïr replies personally — no SDR layer, no routing.",
+      expertDescription: "Yaïr replies personally , no SDR layer, no routing.",
       flexibleScheduling: "Remote or on-site",
       flexibleDescription: "Pick the format that works for your team and timezone.",
       tailoredSolutions: "Right-sized scope",
@@ -147,9 +147,9 @@ export const translations = {
       contactForm: "Contact form",
       formDescription: "Fill out the form and we'll get back to you within a working day",
       back: "Back",
-      defaultServiceTitle: "Azure services — get in touch",
+      defaultServiceTitle: "Azure services , get in touch",
       letsConnect: "Talk to us",
-      pageDescription: "Training, consulting, or just a quick question — drop a note and we'll come back to you within a working day.",
+      pageDescription: "Training, consulting, or just a quick question , drop a note and we'll come back to you within a working day.",
       sendUsMessage: "Send a message",
       officialPartner: "MCT & active Azure consultant"
     },
@@ -248,7 +248,7 @@ export const translations = {
       teamDesc: "Use the homepage as a route into custom team training: aligned on your roles, your architecture, and the pressure points your teams are dealing with now.",
       teamCta: "Plan a team workshop",
       mctTrainer: "Microsoft Certified Trainer",
-      trainerDesc: "More than 15 years delivering Azure and Microsoft 365 work — the workshops cover what teams actually run into around governance, security, and platform operations.",
+      trainerDesc: "More than 15 years delivering Azure and Microsoft 365 work , the workshops cover what teams actually run into around governance, security, and platform operations.",
       founderTitle: "Yaïr leads the training, not a generic content library.",
       founderCta: "Read Yaïr's background"
     },
@@ -286,7 +286,7 @@ export const translations = {
     },
     trainingSection: {
       title: "Microsoft certification tracks",
-      subtitle: "Delivered by an MCT with active Azure consulting practice — every session is shaped by real environment work, not a content library.",
+      subtitle: "Delivered by an MCT with active Azure consulting practice , every session is shaped by real environment work, not a content library.",
       exploreAll: "View all tracks"
     },
     popularCourses: {
@@ -403,28 +403,28 @@ export const translations = {
     },
     servicesPage: {
       title: "Consultancy naast de training",
-      subtitle: "Hands-on werk in Azure en Microsoft 365 voor teams die verder willen dan slides — landing zones, tenantmigraties, security hardening, automatisering. Dezelfde trainer leidt het traject.",
+      subtitle: "Hands-on werk in Azure en Microsoft 365 voor teams die verder willen dan slides , landing zones, tenantmigraties, security hardening, automatisering. Dezelfde trainer leidt het traject.",
       moreFeatures: "+{count} meer",
       contact: {
         title: "Hulp nodig bij een specifiek project?",
-        description: "Vertel ons waar je mee bezig bent. We komen terug met een scope, een planning en de juiste persoon om het te leiden — meestal binnen één werkdag.",
+        description: "Vertel ons waar je mee bezig bent. We komen terug met een scope, een planning en de juiste persoon om het te leiden , meestal binnen één werkdag.",
         contactUs: "Neem contact op",
         viewTraining: "Bekijk trainingen"
       }
     },
     about: {
       title: "Over Cloud Evolvers",
-      subtitle: "Cloud Evolvers is het trainingsmerk van Spot Cloud — een Nederlandse consultancy met 15+ jaar hands-on ervaring in Microsoft-infrastructuur. We trainen de mensen die Azure en Microsoft 365 in productie draaien.",
+      subtitle: "Cloud Evolvers is het trainingsmerk van Spot Cloud , een Nederlandse consultancy met 15+ jaar hands-on ervaring in Microsoft-infrastructuur. We trainen de mensen die Azure en Microsoft 365 in productie draaien.",
       ourStory: {
         title: "Hoe we werken",
-        content1: "Cloud Evolvers is het trainingsmerk van Spot Cloud, het bedrijf dat Yaïr in 2023 oprichtte. Spot Cloud doet ook consultancywerk — Azure landing zones, Microsoft 365-tenantarchitectuur en automatisering met Bicep, PowerShell en Terraform.",
-        content2: "Oprichter Yaïr Knijn werkt al meer dan 15 jaar met Microsoft-technologieën — het grootste deel van die tijd hands-on in Azure-omgevingen bij Nederlandse organisaties.",
+        content1: "Cloud Evolvers is het trainingsmerk van Spot Cloud, het bedrijf dat Yaïr in 2023 oprichtte. Spot Cloud doet ook consultancywerk , Azure landing zones, Microsoft 365-tenantarchitectuur en automatisering met Bicep, PowerShell en Terraform.",
+        content2: "Oprichter Yaïr Knijn werkt al meer dan 15 jaar met Microsoft-technologieën , het grootste deel van die tijd hands-on in Azure-omgevingen bij Nederlandse organisaties.",
         whySpotCloud: "Waarom Spot Cloud?",
         spotCloudExplanation: "De naam komt van onze Dalmatiër. Vlekken zijn uniek, en dat geldt ook voor elke cloudomgeving waarin we werken. Geen twee tenants zijn hetzelfde, dus geen twee trainingsprogramma's zouden dat ook moeten zijn."
       },
       ourMission: {
         title: "Training die uit de praktijk komt",
-        content: "Elke cursus wordt gevormd door echt Azure- en Microsoft 365-werk — tenantmigraties, landing zone-builds, security hardening, kostenanalyses. We behandelen de keuzes die teams in de praktijk maken bij het overnemen of opschalen van omgevingen, niet alleen de examenstof.",
+        content: "Elke cursus wordt gevormd door echt Azure- en Microsoft 365-werk , tenantmigraties, landing zone-builds, security hardening, kostenanalyses. We behandelen de keuzes die teams in de praktijk maken bij het overnemen of opschalen van omgevingen, niet alleen de examenstof.",
         vision: "Kleine groepen, echte labs",
         visionContent: "Sessies hebben maximaal 10 deelnemers, zodat iedereen hands-on aan de slag kan. Labs draaien in live Azure-omgevingen, geen sandbox-simulators. Deelnemers gaan weg met spierwerk in plaats van alleen aantekeningen."
       },
@@ -454,7 +454,7 @@ export const translations = {
         founder: {
           name: "Yaïr Knijn",
           role: "Oprichter & lead trainer",
-          description: "Microsoft Certified Trainer met 15+ jaar ervaring in en rondom Microsoft cloud — Azure, Microsoft 365 en de platformkeuzes die daarbij horen."
+          description: "Microsoft Certified Trainer met 15+ jaar ervaring in en rondom Microsoft cloud , Azure, Microsoft 365 en de platformkeuzes die daarbij horen."
         }
       },
       contact: {
@@ -485,7 +485,7 @@ export const translations = {
     },
     contact: {
       title: "Neem contact op",
-      description: "Een cursus boeken, teamtraining plannen of een consultancy-traject scopen — stuur een bericht en we komen binnen één werkdag bij je terug.",
+      description: "Een cursus boeken, teamtraining plannen of een consultancy-traject scopen , stuur een bericht en we komen binnen één werkdag bij je terug.",
       contactInformation: "Contactgegevens",
       emailUs: "E-mail",
       emailDescription: "Voor vragen over trainingen en cursusinformatie",
@@ -497,7 +497,7 @@ export const translations = {
       availability: "Remote & op locatie",
       whyChooseUs: "Wat je kunt verwachten",
       expertGuidance: "Direct contact met de trainer",
-      expertDescription: "Yaïr antwoordt zelf — geen SDR-laag, geen routing.",
+      expertDescription: "Yaïr antwoordt zelf , geen SDR-laag, geen routing.",
       flexibleScheduling: "Remote of op locatie",
       flexibleDescription: "Kies het format dat werkt voor je team en tijdzone.",
       tailoredSolutions: "Passende scope",
@@ -509,7 +509,7 @@ export const translations = {
       back: "Terug",
       defaultServiceTitle: "Azure-diensten – contact",
       letsConnect: "Even sparren",
-      pageDescription: "Training, consultancy of gewoon een vraag — stuur een bericht en we komen binnen één werkdag bij je terug.",
+      pageDescription: "Training, consultancy of gewoon een vraag , stuur een bericht en we komen binnen één werkdag bij je terug.",
       sendUsMessage: "Stuur een bericht",
       officialPartner: "MCT & actief Azure-consultant"
     },
@@ -608,7 +608,7 @@ export const translations = {
       teamDesc: "Gebruik de homepage als instap naar maatwerk voor teams: afgestemd op jullie rollen, architectuur en de drukpunten waar jullie nu mee zitten.",
       teamCta: "Plan een teamworkshop",
       mctTrainer: "Microsoft Certified Trainer",
-      trainerDesc: "Meer dan 15 jaar werk in Azure en Microsoft 365 — de workshops behandelen waar teams in de praktijk tegenaan lopen rond governance, security en platformbeheer.",
+      trainerDesc: "Meer dan 15 jaar werk in Azure en Microsoft 365 , de workshops behandelen waar teams in de praktijk tegenaan lopen rond governance, security en platformbeheer.",
       founderTitle: "Yaïr geeft de training zelf, niet een generieke contentbibliotheek.",
       founderCta: "Lees meer over Yaïr"
     },
@@ -646,7 +646,7 @@ export const translations = {
     },
     trainingSection: {
       title: "Microsoft-certificeringstrajecten",
-      subtitle: "Gegeven door een MCT met een actieve Azure-consultancypraktijk — elke sessie is gevormd door echt werk in productieomgevingen, geen contentbibliotheek.",
+      subtitle: "Gegeven door een MCT met een actieve Azure-consultancypraktijk , elke sessie is gevormd door echt werk in productieomgevingen, geen contentbibliotheek.",
       exploreAll: "Bekijk alle trajecten"
     },
     popularCourses: {

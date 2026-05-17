@@ -25,8 +25,8 @@ export const apiManagementHealthChecksPost: BlogPost = {
   readTime: 9,
   content: {
     introduction: {
-      en: 'Your API gateway says it is healthy. Your backend database has been down for ten minutes. Users are getting 500s. The built-in APIM status endpoint only checks if the gateway process is running — it tells you nothing about whether your actual APIs work. You need health checks that go deeper: probing backends, verifying database connections, and checking downstream dependencies. APIM has the pieces for this, but you have to wire them up yourself.',
-      nl: 'Je API-gateway zegt dat hij gezond is. Je backend-database is al tien minuten down. Gebruikers krijgen 500-errors. Het ingebouwde APIM-statusendpoint controleert alleen of het gatewayproces draait — het zegt niets over of je daadwerkelijke API\'s werken. Je hebt health checks nodig die dieper gaan: backends pollen, databaseverbindingen verifiëren, en downstream-afhankelijkheden controleren. APIM heeft de onderdelen hiervoor, maar je moet ze zelf aan elkaar knopen.'
+      en: 'Your API gateway says it is healthy. Your backend database has been down for ten minutes. Users are getting 500s. The built-in APIM status endpoint only checks if the gateway process is running , it tells you nothing about whether your actual APIs work. You need health checks that go deeper: probing backends, verifying database connections, and checking downstream dependencies. APIM has the pieces for this, but you have to wire them up yourself.',
+      nl: 'Je API-gateway zegt dat hij gezond is. Je backend-database is al tien minuten down. Gebruikers krijgen 500-errors. Het ingebouwde APIM-statusendpoint controleert alleen of het gatewayproces draait , het zegt niets over of je daadwerkelijke API\'s werken. Je hebt health checks nodig die dieper gaan: backends pollen, databaseverbindingen verifiëren, en downstream-afhankelijkheden controleren. APIM heeft de onderdelen hiervoor, maar je moet ze zelf aan elkaar knopen.'
     },
     sections: [
       {

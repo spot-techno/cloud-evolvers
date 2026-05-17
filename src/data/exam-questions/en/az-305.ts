@@ -1468,7 +1468,7 @@ export const az305: ExamSet = {
       ],
       correctId: 'b',
       explanation:
-        'Auto-failover groups automate failover and expose read/write listener endpoints so the application connection string does not change during a regional failure. Active geo-replication needs manual orchestration to fail over and update connection strings. Note that geo-replication is asynchronous, so RPO is not guaranteed to be a fixed number of seconds — it depends on replication lag at the moment of failure. The 5-minute data-loss tolerance in this scenario is a realistic bound for typical geo-replication lag.',
+        'Auto-failover groups automate failover and expose read/write listener endpoints so the application connection string does not change during a regional failure. Active geo-replication needs manual orchestration to fail over and update connection strings. Note that geo-replication is asynchronous, so RPO is not guaranteed to be a fixed number of seconds , it depends on replication lag at the moment of failure. The 5-minute data-loss tolerance in this scenario is a realistic bound for typical geo-replication lag.',
     },
     {
       id: 'az305-98',

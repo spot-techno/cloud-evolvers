@@ -2,11 +2,11 @@ import type { BookingEnv } from '../_lib/db-types';
 import { jsonResponse, optionsResponse } from '../_lib/cors';
 import { authenticateAdmin } from '../_lib/auth';
 
-export const onRequestOptions: PagesFunction = async () => optionsResponse();
+export const onRequestOptions: PagesFunction = async ({ request }) => optionsResponse(request);
 
 export const onRequestGet: PagesFunction<BookingEnv> = async ({ request, env }) => {
   const auth = authenticateAdmin(request, env);
-  if (!auth.ok) return jsonResponse({ error: 'Unauthorized', details: auth.error }, 401);
+  if (!auth.ok) return jsonResponse(request, { error: 'Unauthorized', details: auth.error }, 401);
 
   const result = await env.PRICING_DB.prepare(`
     SELECT s.*,
@@ -18,12 +18,12 @@ export const onRequestGet: PagesFunction<BookingEnv> = async ({ request, env }) 
     ORDER BY s.start_date DESC
   `).all();
 
-  return jsonResponse({ sessions: result.results });
+  return jsonResponse(request, { sessions: result.results });
 };
 
 export const onRequestPost: PagesFunction<BookingEnv> = async ({ request, env }) => {
   const auth = authenticateAdmin(request, env);
-  if (!auth.ok) return jsonResponse({ error: 'Unauthorized', details: auth.error }, 401);
+  if (!auth.ok) return jsonResponse(request, { error: 'Unauthorized', details: auth.error }, 401);
 
   const body = await request.json() as {
     courseSlug: string;
@@ -36,7 +36,7 @@ export const onRequestPost: PagesFunction<BookingEnv> = async ({ request, env })
   };
 
   if (!body.courseSlug || !body.courseName || !body.startDate || !body.endDate || !body.location) {
-    return jsonResponse({ error: 'Missing required fields' }, 400);
+    return jsonResponse(request, { error: 'Missing required fields' }, 400);
   }
 
   const id = crypto.randomUUID();
@@ -47,5 +47,5 @@ export const onRequestPost: PagesFunction<BookingEnv> = async ({ request, env })
     VALUES (?, ?, ?, ?, ?, ?, ?, 'open', ?, ?, ?)
   `).bind(id, body.courseSlug, body.courseName, body.startDate, body.endDate, body.maxParticipants || 15, body.location, body.price || null, now, now).run();
 
-  return jsonResponse({ session: { id } }, 201);
+  return jsonResponse(request, { session: { id } }, 201);
 };

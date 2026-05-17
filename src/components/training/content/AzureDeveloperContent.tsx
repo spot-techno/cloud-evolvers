@@ -50,7 +50,7 @@ export default function AzureDeveloperContent() {
         </div>
         <p className="text-foreground leading-relaxed mb-4">
           AZ-204 for developers building, testing, and shipping cloud apps on Azure. The course covers App Service, Functions,
-          containers, Cosmos DB, identity, and the operational pieces — monitoring, deployment, and security — that ship with every real app.
+          containers, Cosmos DB, identity, and the operational pieces , monitoring, deployment, and security , that ship with every real app.
         </p>
       </section>
 

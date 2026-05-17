@@ -44,15 +44,10 @@ const PORTFOLIO_EVENT_NAMES = new Set<PortfolioEventName>([
   'trial_requested',
 ]);
 
-// CORS headers
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, x-api-key',
-};
+import { corsHeaders, optionsResponse } from './_lib/cors';
 
-export const onRequestOptions: PagesFunction = async () => {
-  return new Response(null, { headers: corsHeaders });
+export const onRequestOptions: PagesFunction = async (context) => {
+  return optionsResponse(context.request);
 };
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
@@ -65,7 +60,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     if (!isAuthorizedSubmission(request, apiKey, env.FORM_API_KEY)) {
       return new Response(
         JSON.stringify({ error: 'Unauthorized', details: 'Invalid API key' }),
-        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 401, headers: { ...corsHeaders(request), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -76,7 +71,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     if (!body.name || !body.email) {
       return new Response(
         JSON.stringify({ error: 'Bad Request', details: 'Name and email are required' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 400, headers: { ...corsHeaders(request), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -85,7 +80,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     if (!emailRegex.test(body.email)) {
       return new Response(
         JSON.stringify({ error: 'Bad Request', details: 'Invalid email format' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 400, headers: { ...corsHeaders(request), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -110,7 +105,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             ? 'Bericht succesvol verzonden'
             : 'Message sent successfully',
         }),
-        { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 200, headers: { ...corsHeaders(request), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -145,7 +140,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             tenantId: env.EMAIL_TENANT_ID.substring(0, 8) + '...',
           }
         }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 500, headers: { ...corsHeaders(request), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -325,7 +320,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             graphError: errorText.substring(0, 200),
           }
         }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 500, headers: { ...corsHeaders(request), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -392,7 +387,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
           ? 'Bericht succesvol verzonden'
           : 'Message sent successfully',
       }),
-      { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      { status: 200, headers: { ...corsHeaders(request), 'Content-Type': 'application/json' } }
     );
 
   } catch (error) {
@@ -402,7 +397,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         error: 'Internal Server Error',
         details: error instanceof Error ? error.message : 'Unknown error',
       }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      { status: 500, headers: { ...corsHeaders(request), 'Content-Type': 'application/json' } }
     );
   }
 };

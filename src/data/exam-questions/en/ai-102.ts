@@ -562,7 +562,7 @@ export const ai102: ExamSet = {
       ],
       correctId: 'd',
       explanation:
-        'The prebuilt health insurance card model (prebuilt-healthInsuranceCard.us) extracts fields like member ID, group number, payer ID, and plan name from wallet-sized US insurance cards. It does not cover the CMS-1500 claim submission form — that structure requires a custom model. Tax form and receipt prebuilts target different document types entirely.',
+        'The prebuilt health insurance card model (prebuilt-healthInsuranceCard.us) extracts fields like member ID, group number, payer ID, and plan name from wallet-sized US insurance cards. It does not cover the CMS-1500 claim submission form , that structure requires a custom model. Tax form and receipt prebuilts target different document types entirely.',
     },
     {
       id: 'ai102-38',

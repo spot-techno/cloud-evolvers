@@ -60,7 +60,7 @@ export default function AzureAdministratorContent() {
           </h2>
           <p className="text-gray-100 leading-relaxed max-w-4xl">
             AZ-104 prep for admins running Azure environments. You'll work with Azure subscriptions, identity, infrastructure,
-            virtual networking, and continuity through hands-on labs in real Azure tenants — not sandboxed simulators.
+            virtual networking, and continuity through hands-on labs in real Azure tenants , not sandboxed simulators.
           </p>
         </div>
       </motion.section>

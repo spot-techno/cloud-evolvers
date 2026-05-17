@@ -2,6 +2,8 @@
  * Health check endpoint that verifies configuration
  */
 
+import { corsHeaders, optionsResponse } from './_lib/cors';
+
 interface Env {
   FORM_API_KEY: string;
   EMAIL_TENANT_ID: string;
@@ -11,18 +13,12 @@ interface Env {
   ADMIN_PASSWORD: string;
 }
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-};
-
-export const onRequestOptions: PagesFunction = async () => {
-  return new Response(null, { headers: corsHeaders });
+export const onRequestOptions: PagesFunction = async (context) => {
+  return optionsResponse(context.request);
 };
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
-  const { env } = context;
+  const { env, request } = context;
 
   // Check which environment variables are configured (don't expose values!)
   const config = {
@@ -45,6 +41,6 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 
   return new Response(JSON.stringify(config, null, 2), {
     status: 200,
-    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    headers: { ...corsHeaders(request), 'Content-Type': 'application/json' },
   });
 };

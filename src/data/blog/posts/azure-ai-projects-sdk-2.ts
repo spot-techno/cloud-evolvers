@@ -7,8 +7,8 @@ export const azureAiProjectsSdk2Post: BlogPost = {
     nl: 'azure-ai-projects 2.0 GA: één SDK, geen azure-ai-agents-afhankelijkheid meer'
   },
   description: {
-    en: 'The Foundry SDK reached 2.0 GA across Python, JS/TS, Java, and .NET. Everything lives under AIProjectClient — and the migration from 1.x is small but worth doing now.',
-    nl: 'De Foundry SDK bereikte 2.0 GA in Python, JS/TS, Java en .NET. Alles staat onder AIProjectClient — en de migratie vanaf 1.x is klein maar nu het moment om te doen.'
+    en: 'The Foundry SDK reached 2.0 GA across Python, JS/TS, Java, and .NET. Everything lives under AIProjectClient , and the migration from 1.x is small but worth doing now.',
+    nl: 'De Foundry SDK bereikte 2.0 GA in Python, JS/TS, Java en .NET. Alles staat onder AIProjectClient , en de migratie vanaf 1.x is klein maar nu het moment om te doen.'
   },
   date: '2026-04-04',
   author: 'Yair Knijn',
@@ -25,8 +25,8 @@ export const azureAiProjectsSdk2Post: BlogPost = {
   readTime: 7,
   content: {
     introduction: {
-      en: 'The azure-ai-projects SDK reached general availability at version 2.0 across Python, JS/TS, Java, and .NET (with .NET landing on April 1). The big structural change: the azure-ai-agents dependency is gone. Everything — agents, threads, runs, model inference, file management — lives under AIProjectClient now. For teams who built on the 1.x line, the migration is small. For teams starting fresh, the surface area is finally simple enough to teach in a single session.',
-      nl: 'De azure-ai-projects SDK bereikte algemene beschikbaarheid op versie 2.0 in Python, JS/TS, Java en .NET (met .NET op 1 april). De grote structurele verandering: de azure-ai-agents-afhankelijkheid is weg. Alles — agents, threads, runs, model-inference, bestandsbeheer — staat nu onder AIProjectClient. Voor teams die op de 1.x-lijn bouwden is de migratie klein. Voor teams die fresh starten is het oppervlak eindelijk simpel genoeg om in één sessie uit te leggen.'
+      en: 'The azure-ai-projects SDK reached general availability at version 2.0 across Python, JS/TS, Java, and .NET (with .NET landing on April 1). The big structural change: the azure-ai-agents dependency is gone. Everything , agents, threads, runs, model inference, file management , lives under AIProjectClient now. For teams who built on the 1.x line, the migration is small. For teams starting fresh, the surface area is finally simple enough to teach in a single session.',
+      nl: 'De azure-ai-projects SDK bereikte algemene beschikbaarheid op versie 2.0 in Python, JS/TS, Java en .NET (met .NET op 1 april). De grote structurele verandering: de azure-ai-agents-afhankelijkheid is weg. Alles , agents, threads, runs, model-inference, bestandsbeheer , staat nu onder AIProjectClient. Voor teams die op de 1.x-lijn bouwden is de migratie klein. Voor teams die fresh starten is het oppervlak eindelijk simpel genoeg om in één sessie uit te leggen.'
     },
     sections: [
       {
@@ -40,7 +40,7 @@ export const azureAiProjectsSdk2Post: BlogPost = {
         },
         code: {
           language: 'python',
-          code: `# 1.x — two packages, two clients
+          code: `# 1.x , two packages, two clients
 from azure.ai.projects import AIProjectClient
 from azure.ai.agents import AgentsClient
 
@@ -49,7 +49,7 @@ agents = AgentsClient(endpoint=ENDPOINT, credential=cred)
 
 agent = agents.create_agent(model="gpt-5", instructions="...")
 
-# 2.0 — one package, one client
+# 2.0 , one package, one client
 from azure.ai.projects import AIProjectClient
 
 project = AIProjectClient(endpoint=ENDPOINT, credential=cred)
@@ -62,8 +62,8 @@ agent = project.agents.create_agent(model="gpt-5", instructions="...")`
           nl: 'De migratie is grotendeels mechanisch'
         },
         content: {
-          en: 'For most codebases, the migration from 1.x to 2.0 is: drop the azure-ai-agents dependency, change AgentsClient calls to project.agents calls, and update import statements. Method signatures are largely the same. The places to look carefully are around evaluations and threads, which got minor signature changes — read the migration guide for those two areas before relying on the codemod tools. A small project takes an afternoon; a large one takes a week.',
-          nl: 'Voor de meeste codebases is de migratie van 1.x naar 2.0: drop de azure-ai-agents-afhankelijkheid, vervang AgentsClient-calls door project.agents-calls, en werk import statements bij. Methode-signatures zijn grotendeels hetzelfde. Waar je goed moet kijken is rondom evaluations en threads, die kleine signature-wijzigingen kregen — lees de migratiegids voor die twee gebieden voordat je op codemod-tools vertrouwt. Een klein project kost een middag; een groot project een week.'
+          en: 'For most codebases, the migration from 1.x to 2.0 is: drop the azure-ai-agents dependency, change AgentsClient calls to project.agents calls, and update import statements. Method signatures are largely the same. The places to look carefully are around evaluations and threads, which got minor signature changes , read the migration guide for those two areas before relying on the codemod tools. A small project takes an afternoon; a large one takes a week.',
+          nl: 'Voor de meeste codebases is de migratie van 1.x naar 2.0: drop de azure-ai-agents-afhankelijkheid, vervang AgentsClient-calls door project.agents-calls, en werk import statements bij. Methode-signatures zijn grotendeels hetzelfde. Waar je goed moet kijken is rondom evaluations en threads, die kleine signature-wijzigingen kregen , lees de migratiegids voor die twee gebieden voordat je op codemod-tools vertrouwt. Een klein project kost een middag; een groot project een week.'
         }
       },
       {
@@ -82,8 +82,8 @@ agent = project.agents.create_agent(model="gpt-5", instructions="...")`
           nl: 'Wat te testen voor de merge'
         },
         content: {
-          en: 'Smoke-test against the same agent definition you have today. Make sure your evaluations still produce comparable scores — the underlying scorers are the same, but slight serialization differences in 2.x have caused diffing surprises in early adopter reports. If you depend on streaming responses, test those explicitly: streaming got a small API cleanup that breaks the iteration pattern in 1.x for some clients. Beyond those two areas, expect a quiet upgrade.',
-          nl: 'Doe een smoke-test tegen dezelfde agent-definitie die je vandaag hebt. Verzeker je ervan dat je evaluations nog steeds vergelijkbare scores opleveren — de onderliggende scorers zijn hetzelfde, maar kleine serialisatieverschillen in 2.x hebben in early-adopter-rapporten voor diff-verrassingen gezorgd. Hang je af van streaming responses, test die expliciet: streaming kreeg een kleine API-opschoning die het iteratie-patroon in 1.x voor sommige clients breekt. Buiten die twee gebieden mag je een rustige upgrade verwachten.'
+          en: 'Smoke-test against the same agent definition you have today. Make sure your evaluations still produce comparable scores , the underlying scorers are the same, but slight serialization differences in 2.x have caused diffing surprises in early adopter reports. If you depend on streaming responses, test those explicitly: streaming got a small API cleanup that breaks the iteration pattern in 1.x for some clients. Beyond those two areas, expect a quiet upgrade.',
+          nl: 'Doe een smoke-test tegen dezelfde agent-definitie die je vandaag hebt. Verzeker je ervan dat je evaluations nog steeds vergelijkbare scores opleveren , de onderliggende scorers zijn hetzelfde, maar kleine serialisatieverschillen in 2.x hebben in early-adopter-rapporten voor diff-verrassingen gezorgd. Hang je af van streaming responses, test die expliciet: streaming kreeg een kleine API-opschoning die het iteratie-patroon in 1.x voor sommige clients breekt. Buiten die twee gebieden mag je een rustige upgrade verwachten.'
         }
       }
     ],

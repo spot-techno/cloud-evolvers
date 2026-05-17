@@ -6,7 +6,7 @@ export const trainingMetadata = {
   slug: 'azure-security-engineer',
   title: 'Azure Security Engineer Associate (AZ-500)',
   description: 'Implement and manage Azure security controls and threat protection',
-  content: 'AZ-500 prep covering identity, platform protection, data security, and security operations — built around what teams actually run into in production Azure.',
+  content: 'AZ-500 prep covering identity, platform protection, data security, and security operations , built around what teams actually run into in production Azure.',
   category: 'Security',
   subcategory: 'Azure Security',
   difficulty: 'Advanced' as const,

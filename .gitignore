@@ -56,10 +56,18 @@ GRAPH_API_CONFIG_COMPLETE.md
 .mcp.json
 .playwright-mcp/
 
-# Root-level screenshots (dev artifacts)
+# Root-level screenshots and stray binaries (dev artifacts)
 /*.png
 /*.jpg
 /*.jpeg
+/*.pdf
+/*.txt
+/*.html
+!/index.html
+
+# Never commit raw tokens
+docs/token*.txt
+**/token-*.txt
 
 # Astro build cache
 .astro/

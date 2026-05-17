@@ -5,13 +5,13 @@ import { BackgroundIcons } from "@/components/BackgroundIcons";
 
 const deliveryPointsI18n = {
     en: [
-        { title: "Built around your team", description: "Sessions are scoped to your stack, your roles, and your current Azure maturity — not a generic curriculum everyone gets." },
-        { title: "Labs with operational context", description: "Exercises cover identity, networking, security, and platform decisions using realistic environments — not sanitized toy demos." },
+        { title: "Built around your team", description: "Sessions are scoped to your stack, your roles, and your current Azure maturity , not a generic curriculum everyone gets." },
+        { title: "Labs with operational context", description: "Exercises cover identity, networking, security, and platform decisions using realistic environments , not sanitized toy demos." },
         { title: "Exam prep without the fluff", description: "Teams prepare for Microsoft certification while learning how to actually design and run the environments they are responsible for." },
     ],
     nl: [
-        { title: "Afgestemd op jouw team", description: "Sessies zijn afgestemd op jullie stack, rollen en huidige Azure-volwassenheid — geen standaard curriculum dat iedereen krijgt." },
-        { title: "Labs met operationele context", description: "Oefeningen behandelen identity, networking, security en platformkeuzes in realistische omgevingen — geen opgepoetste speelgoeddemo's." },
+        { title: "Afgestemd op jouw team", description: "Sessies zijn afgestemd op jullie stack, rollen en huidige Azure-volwassenheid , geen standaard curriculum dat iedereen krijgt." },
+        { title: "Labs met operationele context", description: "Oefeningen behandelen identity, networking, security en platformkeuzes in realistische omgevingen , geen opgepoetste speelgoeddemo's." },
         { title: "Examenvoorbereiding zonder omhaal", description: "Teams bereiden zich voor op Microsoft-certificering terwijl ze leren hoe ze de omgevingen die ze beheren echt ontwerpen en draaien." },
     ],
 };
@@ -50,7 +50,7 @@ export function HomeProofSection() {
                             {marketing?.proofHeading || "What your team gets from a session."}
                         </h2>
                         <p className="mt-5 max-w-2xl text-base leading-8 text-brand-600">
-                            {marketing?.proofDescription || "Your trainer still does Azure consulting work. That means sessions are shaped by what actually breaks in production, what auditors ask about, and what teams struggle with after go-live — not just what is on the exam."}
+                            {marketing?.proofDescription || "Your trainer still does Azure consulting work. That means sessions are shaped by what actually breaks in production, what auditors ask about, and what teams struggle with after go-live , not just what is on the exam."}
                         </p>
 
                         <div className="mt-8 grid gap-4">
@@ -76,7 +76,7 @@ export function HomeProofSection() {
                                     {marketing?.expectHeading || "Microsoft training led by a practitioner, not a content warehouse."}
                                 </h3>
                                 <p className="mt-4 max-w-xl text-sm leading-7 text-brand-300">
-                                    {marketing?.expectDescription || "All courses are delivered by Yair Knijn — MCT, Azure architect, and active consultant. Sessions combine certification prep with the platform, governance, and operations decisions your team actually faces."}
+                                    {marketing?.expectDescription || "All courses are delivered by Yair Knijn , MCT, Azure architect, and active consultant. Sessions combine certification prep with the platform, governance, and operations decisions your team actually faces."}
                                 </p>
                             </div>
 
@@ -117,7 +117,7 @@ export function HomeProofSection() {
                                         {marketing?.nextStepHeading || "Plan the right route for your team."}
                                     </h3>
                                     <p className="mt-3 max-w-xl text-sm leading-7 text-brand-600">
-                                        {marketing?.nextStepDescription || "Tell us the roles and skill gaps — we will match you to the right track and format."}
+                                        {marketing?.nextStepDescription || "Tell us the roles and skill gaps , we will match you to the right track and format."}
                                     </p>
                                 </div>
                                 <ArrowRight className="mt-1 h-5 w-5 shrink-0 text-brand-900 transition-transform group-hover:translate-x-1" />
