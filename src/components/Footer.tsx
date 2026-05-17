@@ -97,6 +97,9 @@ const Footer: React.FC = () => {
             <Eyebrow>{t.footer?.explore || 'Explore'}</Eyebrow>
             <ul className="mt-4 space-y-2 text-[14px] text-[color:var(--ed-ink-2)]">
               <li><Link to="/training" className="hover:text-[color:var(--ed-ink)]">{t.nav?.training || 'Training'}</Link></li>
+              <li><Link to="/tracks" className="hover:text-[color:var(--ed-ink)]">Certification tracks</Link></li>
+              <li><Link to="/in-company" className="hover:text-[color:var(--ed-ink)]">In-company</Link></li>
+              <li><Link to="/teams" className="hover:text-[color:var(--ed-ink)]">Team plans</Link></li>
               <li><Link to="/services" className="hover:text-[color:var(--ed-ink)]">{t.nav?.services || 'Services'}</Link></li>
               <li><Link to="/blog" className="hover:text-[color:var(--ed-ink)]">{t.nav?.blog || 'Blog'}</Link></li>
               <li><Link to="/about" className="hover:text-[color:var(--ed-ink)]">{t.nav?.about || 'About'}</Link></li>

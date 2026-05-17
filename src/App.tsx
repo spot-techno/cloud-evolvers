@@ -14,7 +14,11 @@ import { TermsOfServicePage } from "@/pages/TermsOfServicePage";
 import { CookiePolicyPage } from "@/pages/CookiePolicyPage";
 import TrainingDetailPage from "@/pages/training/TrainingDetailPage";
 import TrainingOverviewPage from "@/pages/training/TrainingOverviewPage";
+import TracksIndexPage from "@/pages/tracks/TracksIndexPage";
+import TrackHubPage from "@/pages/tracks/TrackHubPage";
 import ContactPage from "@/pages/ContactPage";
+import InCompanyPage from "@/pages/InCompanyPage";
+import TeamsPage from "@/pages/TeamsPage";
 
 import BookingDashboard from '@/components/admin/BookingDashboard';
 import ImageManagementPage from "@/pages/ImageManagementPage";
@@ -62,6 +66,12 @@ function App() {
 
               <Route path="/training" element={<TrainingOverviewPage />} />
               <Route path="/training/:slug" element={<TrainingDetailPage />} />
+
+              <Route path="/tracks" element={<TracksIndexPage />} />
+              <Route path="/tracks/:slug" element={<TrackHubPage />} />
+
+              <Route path="/in-company" element={<InCompanyPage />} />
+              <Route path="/teams" element={<TeamsPage />} />
 
               <Route path="/practice/:lang" element={<PracticeIndexPage />} />
               <Route path="/practice/:lang/:exam" element={<PracticeExamPage />} />

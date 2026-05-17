@@ -3,6 +3,8 @@ import { useParams, Navigate, Link } from 'react-router-dom';
 import { ArrowLeft, Warning, CheckCircle, Users } from '@phosphor-icons/react';
 import { loadTrainingBySlug } from '@/content/loader';
 import TrainingDetailContent from '@/components/training/TrainingDetailContent';
+import BespokeCourseSection from '@/components/training/BespokeCourseSection';
+import { getBespokeCourse } from '@/data/bespoke-courses';
 import TrainingBookingForm from '@/components/training/TrainingBookingForm';
 import { useTrainingSessions } from '@/hooks/use-training-sessions';
 import { useLanguageContext } from '@/contexts/LanguageContext';
@@ -306,6 +308,11 @@ export default function TrainingDetailPage() {
           </div>
         </Wrap>
       </section>
+
+      {(() => {
+        const bespoke = slug ? getBespokeCourse(slug) : null;
+        return bespoke ? <BespokeCourseSection course={bespoke} /> : null;
+      })()}
 
       <section id="booking-form" className="py-16 sm:py-20 bg-[color:var(--ed-bg-2)] border-y border-[color:var(--ed-rule)] scroll-mt-20">
         <Wrap>
