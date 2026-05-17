@@ -99,7 +99,7 @@ export function BlogPage() {
           </p>
         </motion.div>
 
-        {/* Featured post — first one gets a bigger treatment */}
+        {/* Featured post , first one gets a bigger treatment */}
         {shown.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 16 }}

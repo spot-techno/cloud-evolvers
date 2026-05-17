@@ -6,7 +6,7 @@ export const trainingMetadata = {
   slug: 'microsoft-365-fundamentals',
   title: 'Microsoft 365 Fundamentals (MS-900)',
   description: 'Understand Microsoft 365 cloud productivity and collaboration services',
-  content: 'MS-900 fundamentals: Microsoft 365 services, identity, security, compliance, and the pricing model — the baseline every M365 team needs before going deeper.',
+  content: 'MS-900 fundamentals: Microsoft 365 services, identity, security, compliance, and the pricing model , the baseline every M365 team needs before going deeper.',
   category: 'Microsoft365',
   subcategory: 'Fundamentals',
   difficulty: 'Beginner' as const,
@@ -46,7 +46,7 @@ export default function Microsoft365FundamentalsContent() {
           </h2>
         </div>
         <p className="text-foreground leading-relaxed mb-4">
-          MS-900 covers the Microsoft 365 baseline — services, identity, security, compliance, and the pricing model.
+          MS-900 covers the Microsoft 365 baseline , services, identity, security, compliance, and the pricing model.
           For people who need to be useful in M365 conversations and decisions on day one.
         </p>
       </section>

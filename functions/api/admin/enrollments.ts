@@ -2,11 +2,11 @@ import type { BookingEnv } from '../_lib/db-types';
 import { jsonResponse, optionsResponse } from '../_lib/cors';
 import { authenticateAdmin } from '../_lib/auth';
 
-export const onRequestOptions: PagesFunction = async () => optionsResponse();
+export const onRequestOptions: PagesFunction = async ({ request }) => optionsResponse(request);
 
 export const onRequestGet: PagesFunction<BookingEnv> = async ({ request, env }) => {
   const auth = authenticateAdmin(request, env);
-  if (!auth.ok) return jsonResponse({ error: 'Unauthorized', details: auth.error }, 401);
+  if (!auth.ok) return jsonResponse(request, { error: 'Unauthorized', details: auth.error }, 401);
 
   const url = new URL(request.url);
   const sessionFilter = url.searchParams.get('session');
@@ -27,5 +27,5 @@ export const onRequestGet: PagesFunction<BookingEnv> = async ({ request, env }) 
   query += ' ORDER BY e.created_at DESC';
 
   const result = await env.PRICING_DB.prepare(query).bind(...params).all();
-  return jsonResponse({ enrollments: result.results });
+  return jsonResponse(request, { enrollments: result.results });
 };

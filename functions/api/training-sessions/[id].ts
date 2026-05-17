@@ -1,9 +1,9 @@
 import type { BookingEnv } from '../_lib/db-types';
 import { jsonResponse, optionsResponse } from '../_lib/cors';
 
-export const onRequestOptions: PagesFunction = async () => optionsResponse();
+export const onRequestOptions: PagesFunction = async ({ request }) => optionsResponse(request);
 
-export const onRequestGet: PagesFunction<BookingEnv> = async ({ params, env }) => {
+export const onRequestGet: PagesFunction<BookingEnv> = async ({ params, env, request }) => {
   try {
     const sessionId = params.id as string;
 
@@ -21,10 +21,10 @@ export const onRequestGet: PagesFunction<BookingEnv> = async ({ params, env }) =
     `).bind(sessionId).first();
 
     if (!row) {
-      return jsonResponse({ error: 'Session not found' }, 404);
+      return jsonResponse(request, { error: 'Session not found' }, 404);
     }
 
-    return jsonResponse({
+    return jsonResponse(request, {
       session: {
         id: row.id,
         courseSlug: row.course_slug,
@@ -40,6 +40,6 @@ export const onRequestGet: PagesFunction<BookingEnv> = async ({ params, env }) =
     });
   } catch (err) {
     console.error('Error fetching session:', err);
-    return jsonResponse({ error: 'Internal Server Error' }, 500);
+    return jsonResponse(request, { error: 'Internal Server Error' }, 500);
   }
 };

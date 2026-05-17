@@ -49,7 +49,7 @@ export default function AzureSolutionsArchitectContent() {
         </div>
         <p className="text-foreground leading-relaxed mb-4">
           AZ-305 for experienced engineers stepping into architecture work. The course covers landing zones, identity, networking,
-          data, and resilience tradeoffs — the design decisions you end up defending in review meetings — using
+          data, and resilience tradeoffs , the design decisions you end up defending in review meetings , using
           patterns from real Dutch organizations.
         </p>
       </section>

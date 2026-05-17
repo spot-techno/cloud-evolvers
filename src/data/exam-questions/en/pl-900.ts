@@ -340,7 +340,7 @@ export const pl900: ExamSet = {
       ],
       correctId: 'a',
       explanation:
-        'Dataverse business rules are server-side logic that apply whenever data is created or modified, regardless of the app used. They enforce consistent logic across all apps connected to Dataverse. They do not send email notifications—that is the role of Power Automate flows.',
+        'Dataverse business rules are server-side logic that apply whenever data is created or modified, regardless of the app used. They enforce consistent logic across all apps connected to Dataverse. They do not send email notifications,that is the role of Power Automate flows.',
     },
     {
       id: 'pl900-23',

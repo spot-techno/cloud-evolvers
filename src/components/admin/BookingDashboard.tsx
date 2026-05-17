@@ -92,7 +92,7 @@ function SessionsTab({ creds, sessions, onRefresh }: { creds: Creds; sessions: S
       });
       onRefresh();
     } catch {
-      // silently fail — UI reflects unchanged state
+      // silently fail , UI reflects unchanged state
     }
   };
 
@@ -139,7 +139,7 @@ function SessionsTab({ creds, sessions, onRefresh }: { creds: Creds; sessions: S
               {sessions.map(s => (
                 <tr key={s.id} className="border-b hover:bg-muted/30">
                   <td className="py-2 pr-4 font-medium">{s.courseName}</td>
-                  <td className="py-2 pr-4 whitespace-nowrap">{s.startDate} — {s.endDate}</td>
+                  <td className="py-2 pr-4 whitespace-nowrap">{s.startDate} , {s.endDate}</td>
                   <td className="py-2 pr-4">{s.location}</td>
                   <td className="py-2 pr-4">{s.confirmed_count}/{s.maxParticipants}{s.waitlisted_count > 0 && <span className="text-amber-600 ml-1">+{s.waitlisted_count}wl</span>}</td>
                   <td className="py-2 pr-4">{statusBadge(s)}</td>
@@ -213,11 +213,11 @@ function EnrollmentsTab({ creds, sessions }: { creds: Creds; sessions: Session[]
             <tbody>
               {enrollments.map(e => (
                 <tr key={e.id} className="border-b hover:bg-muted/30">
-                  <td className="py-2 pr-4">{e.contact?.name ?? '—'}</td>
-                  <td className="py-2 pr-4">{e.contact?.email ?? '—'}</td>
-                  <td className="py-2 pr-4">{e.contact?.company ?? '—'}</td>
-                  <td className="py-2 pr-4">{e.session?.courseName ?? '—'}</td>
-                  <td className="py-2 pr-4 whitespace-nowrap">{e.session ? `${e.session.startDate} — ${e.session.endDate}` : '—'}</td>
+                  <td className="py-2 pr-4">{e.contact?.name ?? ','}</td>
+                  <td className="py-2 pr-4">{e.contact?.email ?? ','}</td>
+                  <td className="py-2 pr-4">{e.contact?.company ?? ','}</td>
+                  <td className="py-2 pr-4">{e.session?.courseName ?? ','}</td>
+                  <td className="py-2 pr-4 whitespace-nowrap">{e.session ? `${e.session.startDate} , ${e.session.endDate}` : ','}</td>
                   <td className="py-2 pr-4">{statusBadge(e.status)}</td>
                   <td className="py-2">
                     <Select onValueChange={v => handleStatus(e.id, v)} value={e.status}>
@@ -275,8 +275,8 @@ function ContactsTab({ creds }: { creds: Creds }) {
                 <tr key={c.id} className="border-b hover:bg-muted/30">
                   <td className="py-2 pr-4 font-medium">{c.name}</td>
                   <td className="py-2 pr-4">{c.email}</td>
-                  <td className="py-2 pr-4">{c.company ?? '—'}</td>
-                  <td className="py-2 pr-4">{c.source ?? '—'}</td>
+                  <td className="py-2 pr-4">{c.company ?? ','}</td>
+                  <td className="py-2 pr-4">{c.source ?? ','}</td>
                   <td className="py-2 pr-4">{c.enrollment_count}</td>
                   <td className="py-2">{new Date(c.created_at).toLocaleDateString()}</td>
                 </tr>

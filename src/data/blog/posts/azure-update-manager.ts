@@ -25,8 +25,8 @@ export const azureUpdateManagerPost: BlogPost = {
   readTime: 10,
   content: {
     introduction: {
-      en: 'Nobody enjoys patching VMs. But unpatched VMs are how breaches happen, so you do it anyway. The old Azure Automation Update Management worked, sort of — it required a Log Analytics workspace, had quirky scheduling, and didn\'t handle Arc-enabled servers well. Azure Update Manager replaces all of that. It\'s native to ARM, works with both Azure VMs and Arc-enabled servers, handles Windows and Linux, and gives you one dashboard for patch compliance across everything.',
-      nl: 'Niemand vindt het leuk om VM\'s te patchen. Maar niet-gepatchte VM\'s zijn hoe inbreuken gebeuren, dus je doet het toch. Het oude Azure Automation Update Management werkte, min of meer — het vereiste een Log Analytics workspace, had eigenaardige scheduling en ging niet goed om met Arc-enabled servers. Azure Update Manager vervangt dat allemaal. Het is native in ARM, werkt met zowel Azure VM\'s als Arc-enabled servers, ondersteunt Windows en Linux, en geeft je één dashboard voor patch compliance over alles.'
+      en: 'Nobody enjoys patching VMs. But unpatched VMs are how breaches happen, so you do it anyway. The old Azure Automation Update Management worked, sort of , it required a Log Analytics workspace, had quirky scheduling, and didn\'t handle Arc-enabled servers well. Azure Update Manager replaces all of that. It\'s native to ARM, works with both Azure VMs and Arc-enabled servers, handles Windows and Linux, and gives you one dashboard for patch compliance across everything.',
+      nl: 'Niemand vindt het leuk om VM\'s te patchen. Maar niet-gepatchte VM\'s zijn hoe inbreuken gebeuren, dus je doet het toch. Het oude Azure Automation Update Management werkte, min of meer , het vereiste een Log Analytics workspace, had eigenaardige scheduling en ging niet goed om met Arc-enabled servers. Azure Update Manager vervangt dat allemaal. Het is native in ARM, werkt met zowel Azure VM\'s als Arc-enabled servers, ondersteunt Windows en Linux, en geeft je één dashboard voor patch compliance over alles.'
     },
     sections: [
       {

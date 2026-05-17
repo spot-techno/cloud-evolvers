@@ -142,7 +142,7 @@ export const az500: ExamSet = {
       ],
       correctId: 'b',
       explanation:
-        "Microsoft Entra External ID for customers is the next-generation CIAM solution with social sign-in and a separate directory from your employees. It is not a rename of Azure AD B2C — Azure AD B2C is a distinct legacy product that remains available to existing customers. B2B collaboration is for partner/guest scenarios with other businesses, not retail consumer identity.",
+        "Microsoft Entra External ID for customers is the next-generation CIAM solution with social sign-in and a separate directory from your employees. It is not a rename of Azure AD B2C , Azure AD B2C is a distinct legacy product that remains available to existing customers. B2B collaboration is for partner/guest scenarios with other businesses, not retail consumer identity.",
     },
     {
       id: 'az500-10',

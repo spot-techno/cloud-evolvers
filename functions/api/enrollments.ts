@@ -6,14 +6,14 @@ import {
   enrollmentConfirmationEmailHtml,
 } from './_lib/email';
 
-export const onRequestOptions: PagesFunction = async () => optionsResponse();
+export const onRequestOptions: PagesFunction = async ({ request }) => optionsResponse(request);
 
 export const onRequestPost: PagesFunction<BookingEnv> = async ({ request, env }) => {
   try {
     // Validate API key (same pattern as submit-consultation.ts)
     const apiKey = request.headers.get('x-api-key');
     if (!apiKey || apiKey !== env.FORM_API_KEY) {
-      return jsonResponse({ error: 'Unauthorized', details: 'Invalid API key' }, 401);
+      return jsonResponse(request, { error: 'Unauthorized', details: 'Invalid API key' }, 401);
     }
 
     const body = await request.json() as {
@@ -28,12 +28,12 @@ export const onRequestPost: PagesFunction<BookingEnv> = async ({ request, env })
     };
 
     if (!body.sessionId || !body.firstName || !body.lastName || !body.email) {
-      return jsonResponse({ error: 'Missing required fields: sessionId, firstName, lastName, email' }, 400);
+      return jsonResponse(request, { error: 'Missing required fields: sessionId, firstName, lastName, email' }, 400);
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(body.email)) {
-      return jsonResponse({ error: 'Invalid email format' }, 400);
+      return jsonResponse(request, { error: 'Invalid email format' }, 400);
     }
 
     const session: any = await env.PRICING_DB.prepare(
@@ -41,7 +41,7 @@ export const onRequestPost: PagesFunction<BookingEnv> = async ({ request, env })
     ).bind(body.sessionId).first();
 
     if (!session) {
-      return jsonResponse({ error: 'Session not found or not available' }, 404);
+      return jsonResponse(request, { error: 'Session not found or not available' }, 404);
     }
 
     const now = new Date().toISOString();
@@ -64,7 +64,7 @@ export const onRequestPost: PagesFunction<BookingEnv> = async ({ request, env })
     ).bind(email).first();
 
     if (!contact) {
-      return jsonResponse({ error: 'Failed to create contact' }, 500);
+      return jsonResponse(request, { error: 'Failed to create contact' }, 500);
     }
 
     const enrollmentId = crypto.randomUUID();
@@ -82,7 +82,7 @@ export const onRequestPost: PagesFunction<BookingEnv> = async ({ request, env })
       ).run();
     } catch (err: any) {
       if (err.message?.includes('UNIQUE constraint failed')) {
-        return jsonResponse({ error: 'Already enrolled in this session' }, 409);
+        return jsonResponse(request, { error: 'Already enrolled in this session' }, 409);
       }
       throw err;
     }
@@ -101,14 +101,14 @@ export const onRequestPost: PagesFunction<BookingEnv> = async ({ request, env })
       ).bind(now, body.sessionId).run();
     }
 
-    const dateStr = `${session.start_date} — ${session.end_date}`;
+    const dateStr = `${session.start_date} to ${session.end_date}`;
     let emailSent = false;
 
     try {
       const [adminSent, confirmSent] = await Promise.all([
         sendEmail(env, {
           to: ['yair@cloudevolvers.com', 'training@cloudevolvers.com'],
-          subject: `New enrollment: ${body.firstName} ${body.lastName} — ${session.course_name} (${dateStr})`,
+          subject: `New enrollment: ${body.firstName} ${body.lastName}, ${session.course_name} (${dateStr})`,
           htmlBody: enrollmentAdminEmailHtml({
             name: `${body.firstName} ${body.lastName}`,
             email,
@@ -141,13 +141,13 @@ export const onRequestPost: PagesFunction<BookingEnv> = async ({ request, env })
       console.error('Email sending failed:', emailErr);
     }
 
-    return jsonResponse({
+    return jsonResponse(request, {
       enrollment: { id: enrollment.id, status: enrollment.status },
       contact: { id: contact.id },
       emailSent,
     }, 201);
   } catch (err) {
     console.error('Enrollment error:', err);
-    return jsonResponse({ error: 'Internal Server Error' }, 500);
+    return jsonResponse(request, { error: 'Internal Server Error' }, 500);
   }
 };

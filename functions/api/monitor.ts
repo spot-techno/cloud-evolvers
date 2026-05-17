@@ -3,9 +3,11 @@
  * Tests Azure AD authentication and sends alert email if it fails.
  * Called weekly via GitHub Actions cron.
  *
- * GET /api/monitor?alert=true  — test auth + send alert on failure
- * GET /api/monitor             — test auth only (dry run)
+ * GET /api/monitor?alert=true  , test auth + send alert on failure
+ * GET /api/monitor             , test auth only (dry run)
  */
+
+import { corsHeaders, optionsResponse } from './_lib/cors';
 
 interface Env {
   FORM_API_KEY: string;
@@ -17,14 +19,8 @@ interface Env {
 
 const ALERT_EMAIL = 'yair@cloudevolvers.com';
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, x-api-key',
-};
-
-export const onRequestOptions: PagesFunction = async () => {
-  return new Response(null, { headers: corsHeaders });
+export const onRequestOptions: PagesFunction = async (context) => {
+  return optionsResponse(context.request);
 };
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
@@ -35,7 +31,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   if (!apiKey || apiKey !== env.FORM_API_KEY) {
     return new Response(
       JSON.stringify({ error: 'Unauthorized' }),
-      { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      { status: 401, headers: { ...corsHeaders(request), 'Content-Type': 'application/json' } }
     );
   }
 
@@ -61,7 +57,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   if (!allEnvPresent) {
     result.status = 'error';
     result.message = 'Missing environment variables';
-    return respond(result);
+    return respond(request, result);
   }
 
   // Check 2: Can we get an Azure AD token?
@@ -111,13 +107,13 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     result.alertReason = tokenError;
   }
 
-  return respond(result);
+  return respond(request, result);
 };
 
-function respond(data: Record<string, unknown>) {
+function respond(request: Request, data: Record<string, unknown>) {
   const status = data.status === 'healthy' ? 200 : 503;
   return new Response(JSON.stringify(data, null, 2), {
     status,
-    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    headers: { ...corsHeaders(request), 'Content-Type': 'application/json' },
   });
 }

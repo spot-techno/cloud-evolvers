@@ -1465,7 +1465,7 @@ export const az900: ExamSet = {
       ],
       correctId: 'a',
       explanation:
-        'With a PaaS service such as Azure SQL Database, Microsoft handles engine patching, automated backups, and high availability — the headline reason to choose PaaS over IaaS. Wanting kernel-level control or custom OS agents points to IaaS (SQL Server on a VM) instead.',
+        'With a PaaS service such as Azure SQL Database, Microsoft handles engine patching, automated backups, and high availability , the headline reason to choose PaaS over IaaS. Wanting kernel-level control or custom OS agents points to IaaS (SQL Server on a VM) instead.',
     },
     {
       id: 'az900-98',

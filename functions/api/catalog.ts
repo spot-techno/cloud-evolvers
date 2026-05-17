@@ -2,10 +2,10 @@ import type { BookingEnv } from './_lib/db-types';
 import { jsonResponse, optionsResponse } from './_lib/cors';
 import { getAllTrainings } from '../../src/data/training-json';
 
-export const onRequestOptions: PagesFunction = async () => optionsResponse();
+export const onRequestOptions: PagesFunction = async ({ request }) => optionsResponse(request);
 
 /**
- * Public catalog endpoint — single source of truth for course metadata
+ * Public catalog endpoint , single source of truth for course metadata
  * consumed by ict-trainingen.com and other platforms.
  *
  * Course metadata lives in the JSON files; real prices come from the
@@ -17,7 +17,7 @@ export const onRequestOptions: PagesFunction = async () => optionsResponse();
  * Retired courses are still returned as long as the retirement date is in
  * the future; the `retired` field tells consumers to badge them "Legacy".
  */
-export const onRequestGet: PagesFunction<BookingEnv> = async ({ env }) => {
+export const onRequestGet: PagesFunction<BookingEnv> = async ({ env, request }) => {
   try {
     const trainings = getAllTrainings();
 
@@ -39,7 +39,7 @@ export const onRequestGet: PagesFunction<BookingEnv> = async ({ env }) => {
     const today = new Date().toISOString().slice(0, 10);
 
     const catalog = trainings
-      // Include retired courses until their retirement date passes —
+      // Include retired courses until their retirement date passes ,
       // last-cohort visibility + SEO longevity on legacy certs like AI-900.
       .filter((t) => !t.retired || t.retired.date >= today)
       .map((t) => {
@@ -73,7 +73,7 @@ export const onRequestGet: PagesFunction<BookingEnv> = async ({ env }) => {
         };
       });
 
-    return jsonResponse({
+    return jsonResponse(request, {
       provider: {
         slug: 'cloud-evolvers',
         name: 'Cloud Evolvers',
@@ -87,6 +87,6 @@ export const onRequestGet: PagesFunction<BookingEnv> = async ({ env }) => {
     });
   } catch (err) {
     console.error('Error fetching catalog:', err);
-    return jsonResponse({ error: 'Internal Server Error' }, 500);
+    return jsonResponse(request, { error: 'Internal Server Error' }, 500);
   }
 };

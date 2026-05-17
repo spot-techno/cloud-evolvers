@@ -9,7 +9,7 @@ interface SEOProps {
   noindex?: boolean;
 }
 
-const DEFAULT_TITLE = 'Azure Training Netherlands — MCT-Led Courses | Cloud Evolvers';
+const DEFAULT_TITLE = 'Azure Training Netherlands , MCT-Led Courses | Cloud Evolvers';
 const DEFAULT_DESCRIPTION = 'Hands-on Azure certification training led by Microsoft Certified Trainer Yaïr Knijn. AZ-900, AZ-104, AZ-305, AZ-500 courses in Dutch and English.';
 const DEFAULT_IMAGE = 'https://cloudevolvers.com/cloudevolvers-social-card.png';
 const SITE_URL = 'https://cloudevolvers.com';

@@ -2,11 +2,11 @@ import type { BookingEnv } from '../../_lib/db-types';
 import { jsonResponse, optionsResponse } from '../../_lib/cors';
 import { authenticateAdmin } from '../../_lib/auth';
 
-export const onRequestOptions: PagesFunction = async () => optionsResponse();
+export const onRequestOptions: PagesFunction = async ({ request }) => optionsResponse(request);
 
 export const onRequestPut: PagesFunction<BookingEnv> = async ({ request, params, env }) => {
   const auth = authenticateAdmin(request, env);
-  if (!auth.ok) return jsonResponse({ error: 'Unauthorized', details: auth.error }, 401);
+  if (!auth.ok) return jsonResponse(request, { error: 'Unauthorized', details: auth.error }, 401);
 
   const sessionId = params.id as string;
   const body = await request.json() as {
@@ -22,10 +22,10 @@ export const onRequestPut: PagesFunction<BookingEnv> = async ({ request, params,
     'SELECT * FROM training_sessions WHERE id = ?'
   ).bind(sessionId).first();
 
-  if (!existing) return jsonResponse({ error: 'Session not found' }, 404);
+  if (!existing) return jsonResponse(request, { error: 'Session not found' }, 404);
 
   if (body.status && !['open', 'full', 'cancelled'].includes(body.status)) {
-    return jsonResponse({ error: 'Invalid status. Must be: open, full, or cancelled' }, 400);
+    return jsonResponse(request, { error: 'Invalid status. Must be: open, full, or cancelled' }, 400);
   }
 
   const now = new Date().toISOString();
@@ -52,5 +52,5 @@ export const onRequestPut: PagesFunction<BookingEnv> = async ({ request, params,
     `).bind(now, sessionId).run();
   }
 
-  return jsonResponse({ success: true });
+  return jsonResponse(request, { success: true });
 };

@@ -71,8 +71,8 @@ export const appRegistrationsVsEnterpriseAppsPost: BlogPost = {
       }
     ],
     conclusion: {
-      en: 'The rule of thumb: App Registration is your app\'s blueprint — credentials, API permissions, redirect URIs go here. Enterprise Application (Service Principal) is the local instance in a specific tenant — user assignments, conditional access, SSO config go here. Delete the App Registration and you kill it everywhere. Delete the Enterprise Application and you only remove it from that one tenant. Stick that on a post-it note and save yourself some future headaches.',
-      nl: 'De vuistregel: App Registration is de blauwdruk van je app — credentials, API-permissies en redirect URI\'s stel je hier in. Enterprise Application (Service Principal) is de lokale instantie in een specifieke tenant — gebruikerstoewijzingen, conditional access en SSO-config stel je hier in. Verwijder de App Registration en je schakelt het overal uit. Verwijder de Enterprise Application en je haalt het alleen uit die ene tenant. Plak dat op een post-it en bespaar jezelf wat toekomstige hoofdpijn.'
+      en: 'The rule of thumb: App Registration is your app\'s blueprint , credentials, API permissions, redirect URIs go here. Enterprise Application (Service Principal) is the local instance in a specific tenant , user assignments, conditional access, SSO config go here. Delete the App Registration and you kill it everywhere. Delete the Enterprise Application and you only remove it from that one tenant. Stick that on a post-it note and save yourself some future headaches.',
+      nl: 'De vuistregel: App Registration is de blauwdruk van je app , credentials, API-permissies en redirect URI\'s stel je hier in. Enterprise Application (Service Principal) is de lokale instantie in een specifieke tenant , gebruikerstoewijzingen, conditional access en SSO-config stel je hier in. Verwijder de App Registration en je schakelt het overal uit. Verwijder de Enterprise Application en je haalt het alleen uit die ene tenant. Plak dat op een post-it en bespaar jezelf wat toekomstige hoofdpijn.'
     }
   }
 };
