@@ -8,7 +8,6 @@ import { RelatedTools } from '@/components/tools/RelatedTools';
 import {
   PLANNER_CERTS,
   PLANNER_ROLES,
-  ROLE_MATRIX,
   trimPath,
   pacingWeeks,
   rationaleFor,
@@ -19,6 +18,13 @@ import {
   type WeeklyHours,
   type FocusDepth,
 } from '@/data/tools/microsoft-cert-paths';
+import {
+  LEVEL_OPTIONS,
+  STANCE_OPTIONS,
+  HOURS_OPTIONS,
+  FOCUS_OPTIONS,
+} from './MicrosoftCertPathPlannerOptions';
+import { stopReason, RoleMatrix, FaqSection } from './MicrosoftCertPathPlannerSections';
 
 /* ----------------------------------------------------------------------------
  * Microsoft cert path planner
@@ -46,49 +52,6 @@ interface Answers {
   hours?: WeeklyHours;
   focus?: FocusDepth;
 }
-
-const LEVEL_OPTIONS: { id: CurrentLevel; label: string; sub: string }[] = [
-  { id: 'none', label: 'None', sub: 'Starting from scratch.' },
-  { id: 'fundamentals-only', label: 'Fundamentals only', sub: 'AZ-900, MS-900, AI-900, or DP-900.' },
-  { id: 'one-associate', label: 'One associate-level cert', sub: 'AZ-104, AZ-204, AZ-500, MS-102, etc.' },
-  { id: 'multi-associate', label: 'Multiple associate certs', sub: 'Two or more at the AZ-1xx, AZ-5xx tier.' },
-  { id: 'expert', label: 'Already at expert level', sub: 'AZ-305, AZ-400, or SC-100 done.' },
-];
-
-const STANCE_OPTIONS: { id: FundamentalsStance; label: string; sub: string }[] = [
-  { id: 'take-first', label: 'Take AZ-900 first', sub: 'Recommended for newcomers, ~30 hours of prep.' },
-  { id: 'skip', label: 'Skip fundamentals', sub: 'You already have IT background to lean on.' },
-];
-
-const HOURS_OPTIONS: { id: WeeklyHours; label: string; sub: string }[] = [
-  { id: 5, label: '5 hours / week', sub: 'Slow lane. Evenings and weekends only.' },
-  { id: 10, label: '10 hours / week', sub: 'Steady. The realistic full-time-employed pace.' },
-  { id: 20, label: '20+ hours / week', sub: 'Fast lane. Bootcamp or sabbatical pace.' },
-];
-
-const FOCUS_OPTIONS: { id: FocusDepth; label: string; sub: string }[] = [
-  { id: 'breadth', label: 'Breadth', sub: 'Spread across several certs and domains.' },
-  { id: 'depth', label: 'Depth', sub: 'Master one role ladder all the way through.' },
-];
-
-const FAQ: { q: string; a: string }[] = [
-  {
-    q: 'Should I always take AZ-900 first?',
-    a: 'No. AZ-900 is the recommended starting point if you have little or no Azure background. If you already work with Azure daily or you come from another cloud, the fundamentals exam is mostly review. Skip it and head straight to the associate exam for your role. The fundamentals certs never expire, but they also do not count toward most job requirements.',
-  },
-  {
-    q: 'Is the cert path the same as the role I need?',
-    a: 'A cert path is a study plan, the role is the job. Recruiters care about real work experience first, certs second. Use the path to structure learning and to signal effort. Pair every cert with hands-on lab work in your own subscription so you can answer scenario questions in interviews.',
-  },
-  {
-    q: 'Why do you not show MTA or older certs?',
-    a: 'Microsoft retired the MTA program in 2022 and the older MCSA / MCSE tracks before that. The current role-based ladder (Fundamentals, Associate, Expert) is the only one Microsoft is investing in. We only list exams that are live and renewable today.',
-  },
-  {
-    q: 'How do you estimate prep hours?',
-    a: 'Hours come from Microsoft Learn time estimates and from observed candidate behavior across courses we run. Fundamentals land around 30 hours. Associate exams sit in the 90 to 130 hour range. Expert exams typically need 130 to 160 hours of focused prep, more if you skip the associate underneath. Your real number depends on prior experience and study quality.',
-  },
-];
 
 function Progress({ step }: { step: number }) {
   return (
@@ -485,87 +448,6 @@ export function MicrosoftCertPathPlannerPage() {
         </section>
       </Wrap>
     </div>
-  );
-}
-
-function stopReason(code: string, index: number, total: number, roleId: RoleId): string {
-  const cert = PLANNER_CERTS[code];
-  if (cert.tier === 'fundamental') {
-    return 'Sets the vocabulary. Not required for the next exam, but it makes the associate material land faster.';
-  }
-  if (cert.tier === 'expert') {
-    return 'Expert-tier seat. Assumes you already operate the platform at associate level.';
-  }
-  // associate
-  const isFirstAssoc = index === 0 || (index === 1 && total > 1);
-  if (roleId === 'azure-architect' && code === 'AZ-104') {
-    return 'AZ-305 is design heavy. Without AZ-104 muscle memory the architecture scenarios feel abstract.';
-  }
-  if (roleId === 'azure-security' && code === 'AZ-104') {
-    return 'Security work assumes you can already operate the platform. AZ-104 first, AZ-500 after.';
-  }
-  if (roleId === 'azure-network' && code === 'AZ-104') {
-    return 'Networking sits on top of identity, compute, and storage. AZ-104 covers that base.';
-  }
-  if (code === 'AZ-104') return 'The Azure operations baseline. Everything else builds on this.';
-  if (code === 'AZ-204') return 'Cloud-native development on Azure. Required base for AZ-400.';
-  if (code === 'AZ-500') return 'Azure security operations: identity, platform, data, threat protection.';
-  if (code === 'AZ-700') return 'Hybrid networking, ExpressRoute, VPN, and Azure Firewall design.';
-  if (code === 'MS-102') return 'Microsoft 365 tenant administration end to end.';
-  if (code === 'AI-102') return 'Building AI solutions with Azure OpenAI, Cognitive Services, AI Foundry.';
-  if (code === 'DP-203') return 'Data engineering on Azure. Verify Fabric replacement on Microsoft Learn.';
-  if (isFirstAssoc) return 'First associate-tier stop. Plan on lab time, not just reading.';
-  return 'Builds on the previous stop and rounds out the role profile.';
-}
-
-function RoleMatrix() {
-  return (
-    <section className="mb-10">
-      <h2 className="text-lg font-semibold mb-2">Role to cert matrix</h2>
-      <p className="text-sm text-black/60 mb-4">
-        Quick lookup across all eight role tracks. Useful when comparing paths or planning a team-wide cert push.
-      </p>
-      <div className="overflow-x-auto rounded-2xl border border-black/[0.08] bg-white">
-        <table className="w-full text-sm">
-          <thead className="bg-black/[0.03] text-xs uppercase tracking-wide text-black/60">
-            <tr>
-              <th className="text-left px-4 py-3 font-medium">Target role</th>
-              <th className="text-left px-4 py-3 font-medium">Recommended start</th>
-              <th className="text-left px-4 py-3 font-medium">Core associate</th>
-              <th className="text-left px-4 py-3 font-medium">Expert / specialty</th>
-              <th className="text-left px-4 py-3 font-medium">Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            {ROLE_MATRIX.map((row) => (
-              <tr key={row.role} className="border-t border-black/[0.06] align-top">
-                <td className="px-4 py-3 font-medium text-black/85">{row.role}</td>
-                <td className="px-4 py-3 font-mono text-xs text-black/75">{row.start}</td>
-                <td className="px-4 py-3 font-mono text-xs text-black/75">{row.associate}</td>
-                <td className="px-4 py-3 font-mono text-xs text-black/75">{row.expert}</td>
-                <td className="px-4 py-3 text-black/70">{row.notes}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
-  );
-}
-
-function FaqSection() {
-  return (
-    <section className="mb-10">
-      <h2 className="text-lg font-semibold mb-4">FAQ</h2>
-      <ul className="space-y-3">
-        {FAQ.map((item) => (
-          <li key={item.q} className="rounded-xl border border-black/[0.08] bg-white p-5">
-            <h3 className="text-base font-semibold mb-2">{item.q}</h3>
-            <p className="text-sm text-black/75 leading-relaxed">{item.a}</p>
-          </li>
-        ))}
-      </ul>
-    </section>
   );
 }
 
