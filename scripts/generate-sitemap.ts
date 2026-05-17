@@ -11,6 +11,7 @@ import { readdirSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 import { blogPosts } from "../src/data/blog/index";
 import { seoClusters } from "../src/seo/clusters";
+import { CERT_TRACKS } from "../src/data/cert-tracks";
 
 const SITE = "https://cloudevolvers.com";
 const today = new Date().toISOString().slice(0, 10);
@@ -40,6 +41,9 @@ const marketing: UrlEntry[] = [
   { loc: `${SITE}/services/ai-engineering`, lastmod: today, changefreq: "monthly", priority: 0.7 },
   { loc: `${SITE}/services/network-engineering`, lastmod: today, changefreq: "monthly", priority: 0.7 },
   { loc: `${SITE}/training`, lastmod: today, changefreq: "weekly", priority: 0.9 },
+  { loc: `${SITE}/tracks`, lastmod: today, changefreq: "weekly", priority: 0.9 },
+  { loc: `${SITE}/in-company`, lastmod: today, changefreq: "monthly", priority: 0.8 },
+  { loc: `${SITE}/teams`, lastmod: today, changefreq: "monthly", priority: 0.8 },
   { loc: `${SITE}/blog`, lastmod: today, changefreq: "weekly", priority: 0.9 },
   { loc: `${SITE}/tools`, lastmod: today, changefreq: "weekly", priority: 0.9 },
   { loc: `${SITE}/tools/az-104-readiness-quiz`, lastmod: today, changefreq: "monthly", priority: 0.8 },
@@ -106,6 +110,17 @@ for (const post of blogPosts) {
     ],
   });
   blogCount++;
+}
+
+let trackCount = 0;
+for (const track of CERT_TRACKS) {
+  urls.push({
+    loc: `${SITE}/tracks/${track.slug}`,
+    lastmod: today,
+    changefreq: "monthly",
+    priority: 0.8,
+  });
+  trackCount++;
 }
 
 let clusterCount = 0;
