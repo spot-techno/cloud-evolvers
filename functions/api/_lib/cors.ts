@@ -2,6 +2,9 @@ const ALLOWED_ORIGINS = new Set([
   'https://cloudevolvers.com',
   'https://www.cloudevolvers.com',
   'https://test.cloudevolvers.com',
+  // ict-trainingen.com hosts the Cloud Evolvers mailback lead form
+  'https://ict-trainingen.com',
+  'https://www.ict-trainingen.com',
   'http://localhost:5173',
   'http://localhost:4321',
 ]);

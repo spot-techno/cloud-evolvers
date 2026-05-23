@@ -418,7 +418,10 @@ function isAllowedSiteUrl(value: string | null): boolean {
       hostname === 'www.cloudevolvers.com' ||
       hostname === 'test.cloudevolvers.com' ||
       hostname === 'cloud-evolvers-train.pages.dev' ||
-      hostname.endsWith('.cloud-evolvers-train.pages.dev')
+      hostname.endsWith('.cloud-evolvers-train.pages.dev') ||
+      // ict-trainingen.com hosts the Cloud Evolvers mailback lead form
+      hostname === 'ict-trainingen.com' ||
+      hostname === 'www.ict-trainingen.com'
     );
   } catch {
     return false;
