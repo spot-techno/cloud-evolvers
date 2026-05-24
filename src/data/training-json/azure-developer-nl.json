@@ -194,6 +194,9 @@
       ]
     }
   ],
+  "retired": {
+    "date": "2026-07-31"
+  },
   "personalStory": {
     "instructor": "Yaïr Knijn",
     "story": "Als ontwikkelaar die tientallen cloud-native applicaties op Azure heeft gebouwd, heb ik elke fout gemaakt die mogelijk is—en ervan geleerd. Van serverless architecturen tot gecontaineriseerde workloads, ik laat je de ontwikkelpatronen zien die leiden tot onderhoudbare, schaalbare applicaties. Dit is geen theorie; dit is wat werkt in productie."

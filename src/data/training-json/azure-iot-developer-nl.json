@@ -180,6 +180,9 @@
     "available": true,
     "nextSession": "Beschikbaar op aanvraag"
   },
+  "retired": {
+    "date": "2023-07-31"
+  },
   "featured": true,
   "icon": "Lightning",
   "createdAt": "2024-01-15T00:00:00Z",

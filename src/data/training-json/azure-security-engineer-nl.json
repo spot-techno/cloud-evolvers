@@ -175,6 +175,10 @@
     "available": true,
     "nextSession": "Beschikbaar op aanvraag"
   },
+  "retired": {
+    "date": "2026-08-31",
+    "successor": "cloud-ai-security-engineer"
+  },
   "featured": true,
   "icon": "Shield",
   "createdAt": "2024-01-15T00:00:00Z",

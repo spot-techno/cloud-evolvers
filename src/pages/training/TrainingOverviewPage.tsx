@@ -118,7 +118,7 @@ const TrainingOverviewPage: React.FC = () => {
     <div className="bg-[color:var(--ed-bg)] min-h-screen text-[color:var(--ed-ink)]">
       <SEO {...PAGE_SEO.training} />
 
-      <section className="relative pt-20 sm:pt-28 pb-12 overflow-hidden">
+      <section className="relative pt-12 sm:pt-16 pb-8 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <BackgroundIcons variant="training" />
         </div>
