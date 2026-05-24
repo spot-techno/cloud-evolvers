@@ -83,6 +83,9 @@
     "available": true,
     "nextSession": "2024-03-01T09:00:00Z"
   },
+  "retired": {
+    "date": "2023-07-31"
+  },
   "instructor": {
     "id": "yair-knijn",
     "name": "Yaïr Knijn",

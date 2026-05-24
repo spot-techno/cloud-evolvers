@@ -224,6 +224,10 @@
   "schedule": {
     "available": true
   },
+  "retired": {
+    "date": "2026-06-30",
+    "successor": "azure-ai-app-agent-developer"
+  },
   "featured": true,
   "icon": "Brain",
   "createdAt": "2024-01-01T00:00:00Z",

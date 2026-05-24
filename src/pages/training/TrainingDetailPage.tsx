@@ -93,14 +93,14 @@ export default function TrainingDetailPage() {
 
   return (
     <div className="bg-[color:var(--ed-bg)] min-h-screen text-[color:var(--ed-ink)]">
-      <section className="relative pt-20 sm:pt-28 pb-10 overflow-hidden">
+      <section className="relative pt-12 sm:pt-16 pb-8 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <BackgroundIcons variant="training" />
         </div>
         <Wrap>
           <Link
             to="/training"
-            className="inline-flex items-center gap-1.5 text-[13px] text-[color:var(--ed-ink-3)] hover:text-[color:var(--ed-ink)] mb-8"
+            className="inline-flex items-center gap-1.5 text-[13px] text-[color:var(--ed-ink-3)] hover:text-[color:var(--ed-ink)] mb-6"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             {isDutch ? 'Terug naar trainingen' : 'Back to training'}
