@@ -49,11 +49,13 @@ jobs:
         run: bun install
 
       - name: Lint (non-blocking during cleanup)
-        run: bun run lint || echo "::warning::Lint has issues (88+ errors remain, mostly unused imports/anys in legacy graph code). Run 'bun run lint' locally and clean per CLAUDE.md."
+        run: |
+          bun run lint || echo "::warning::Lint has issues (88+ errors remain, mostly unused imports/anys in legacy graph code). Run 'bun run lint' locally and clean per CLAUDE.md."
         continue-on-error: true
 
       - name: Type check (non-blocking)
-        run: bunx tsc -b --noEmit || echo "::warning::TypeScript issues detected (note: production build uses tsc --noCheck)"
+        run: |
+          bunx tsc -b --noEmit || echo "::warning::TypeScript issues detected (note: production build uses tsc --noCheck)"
         continue-on-error: true
 
       - name: Set build date
