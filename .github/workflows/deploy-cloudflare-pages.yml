@@ -20,11 +20,11 @@ permissions:
 jobs:
   deploy:
     name: Build and Deploy
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64, podman, logan-laptop, beefy]
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -33,9 +33,28 @@ jobs:
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Cache bun install
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies
         run: bun install
+
+      - name: Lint (non-blocking during cleanup)
+        run: bun run lint || echo "::warning::Lint has issues (88+ errors remain, mostly unused imports/anys in legacy graph code). Run 'bun run lint' locally and clean per CLAUDE.md."
+        continue-on-error: true
+
+      - name: Type check (non-blocking)
+        run: bunx tsc -b --noEmit || echo "::warning::TypeScript issues detected (note: production build uses tsc --noCheck)"
+        continue-on-error: true
 
       - name: Set build date
         id: build-date
