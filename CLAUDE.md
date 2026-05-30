@@ -3,6 +3,12 @@
 ## Project Overview
 Cloud Evolvers Training is a professional training platform built with React, TypeScript, and Vite, deployed on Cloudflare Pages.
 
+## Brand assets (2026-05-30)
+
+The active Cloud Evolvers wordmark set lives in `public/brand/2026-05-30/`. The header and footer use `cloud-evolvers-wordmark-1024.png` so the company name stays readable. `public/logo.svg` wraps the square profile logo for compact placements.
+
+Use `public/brand/2026-05-30/cloud-evolvers-linkedin-logo-512.png` for profile uploads, `public/brand/2026-05-30/cloud-evolvers-brand-banner-1920x640.png` for wide banners, and `public/cloudevolvers-social-card.png` for Open Graph previews.
+
 ## ☁️ Cloudflare MCP Tools Available
 
 This project has **Cloudflare MCP (Model Context Protocol)** tools configured and ready to use for:
