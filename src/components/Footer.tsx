@@ -58,11 +58,11 @@ const Footer: React.FC = () => {
           <div className="md:col-span-4 space-y-5">
             <Link to="/" className="inline-block" aria-label="Cloud Evolvers , MCT Powered Training and Services">
               <img
-                src="/cloudevolvers-logo-with-slogan.png"
-                alt="Cloud Evolvers , MCT Powered Training and Services"
-                width={220}
-                height={220}
-                className="block w-[220px] h-auto -ml-3"
+                src="/brand/2026-05-30/cloud-evolvers-wordmark-1024.png"
+                alt="Cloud Evolvers"
+                width={1024}
+                height={232}
+                className="block w-[240px] max-w-full h-auto"
               />
             </Link>
 
