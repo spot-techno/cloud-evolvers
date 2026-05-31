@@ -60,7 +60,7 @@ jobs:
 
       - name: Create Issue on Failure
         if: steps.health.outputs.health_ok == 'false' || steps.consultation.outputs.consultation_ok == 'false'
-        uses: actions/github-script@v7
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
         with:
           script: |
             const healthStatus = '${{ steps.health.outputs.health_status }}';
