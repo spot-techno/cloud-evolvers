@@ -29,7 +29,7 @@ interface ContactFormData {
   portfolioMetadata?: Record<string, unknown>;
 }
 
-const PORTFOLIO_EVENTS_URL = 'https://dashboard-api-prod.reactor-servers.workers.dev/api/events/collect';
+const PORTFOLIO_EVENTS_URL = 'https://api.spot-suite.com/api/events/collect';
 
 type PortfolioEventName =
   | 'contact_requested'

@@ -1,6 +1,6 @@
 const DASHBOARD_API_URL =
   import.meta.env.VITE_DASHBOARD_API_URL ||
-  'https://dashboard-api-prod.reactor-servers.workers.dev';
+  'https://api.spot-suite.com';
 
 const PRODUCT_SLUG = 'cloud-evolvers';
 
