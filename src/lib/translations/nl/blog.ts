@@ -1,5 +1,5 @@
 export default {
-  comingSoon: "Binnenkort beschikbaar – Q1 2025",
+  comingSoon: "Binnenkort beschikbaar: Q1 2025",
   title: "Azure Expertise Blog",
   description: "We werken aan waardevolle content over Azure-trainingen en cloudtechnologieën.",
   comingSoonBadge: "Binnenkort",

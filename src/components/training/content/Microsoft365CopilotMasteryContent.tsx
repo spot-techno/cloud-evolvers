@@ -79,7 +79,7 @@ export default function Microsoft365CopilotMasteryContent() {
           </h1>
           
           <p className="text-gray-100 mb-8 max-w-3xl leading-relaxed">
-            One day on Microsoft 365 Copilot for power users. We cover what actually works in Word, Excel, PowerPoint, Outlook, and Teams , and the prompts your team will use the next morning.
+            One day on Microsoft 365 Copilot for power users. We cover what actually works in Word, Excel, PowerPoint, Outlook, and Teams, and the prompts your team will use the next morning.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

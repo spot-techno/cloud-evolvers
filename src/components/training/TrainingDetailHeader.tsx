@@ -139,7 +139,7 @@ export default function TrainingDetailHeader({ training, priceDisplay }: Trainin
               </div>
               <div className="min-w-0">
                 <p className="text-xs text-muted-foreground font-medium">{t.training?.detail?.groupSize || 'Group Size'}</p>
-                <p className="font-bold text-foreground text-sm">Min 6 – Max {training.maxParticipants || 12}</p>
+                <p className="font-bold text-foreground text-sm">Min 6 to Max {training.maxParticipants || 12}</p>
               </div>
             </motion.div>
 

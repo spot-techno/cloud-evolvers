@@ -56,10 +56,10 @@ const Footer: React.FC = () => {
       <Wrap>
         <div className="py-16 grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-4 space-y-5">
-            <Link to="/" className="inline-block" aria-label="Cloud Evolvers , MCT Powered Training and Services">
+            <Link to="/" className="inline-block" aria-label="Cloud Evolvers, MCT Powered Training and Services">
               <img
                 src="/cloudevolvers-logo-with-slogan.png"
-                alt="Cloud Evolvers , MCT Powered Training and Services"
+                alt="Cloud Evolvers, MCT Powered Training and Services"
                 width={220}
                 height={220}
                 className="block w-[220px] h-auto -ml-3"

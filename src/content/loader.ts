@@ -159,7 +159,7 @@ export async function loadTrainingBySlug(slug: string, language: 'en' | 'nl' = '
       const nlModule = await import(`@/data/training-json/${slug}-nl.json`);
       if (nlModule.default) return nlModule.default;
     } catch {
-      // No Dutch version , fall through to English
+      // No Dutch version, fall through to English
     }
   }
 

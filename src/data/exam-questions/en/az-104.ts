@@ -883,7 +883,7 @@ export const az104: ExamSet = {
       ],
       correctId: 'c',
       explanation:
-        'User delegation SAS is signed by the creator\'s Entra ID credential (a user delegation key), not the storage account key. This means the token can be revoked by revoking the creator\'s Entra access, and the creator\'s identity is tracked in audit logs. The recipient still uses the SAS token directly , no Entra sign-in is required on the recipient side. Account and service SAS are both signed by the storage account key.',
+        'User delegation SAS is signed by the creator\'s Entra ID credential (a user delegation key), not the storage account key. This means the token can be revoked by revoking the creator\'s Entra access, and the creator\'s identity is tracked in audit logs. The recipient still uses the SAS token directly, no Entra sign-in is required on the recipient side. Account and service SAS are both signed by the storage account key.',
     },
     {
       id: 'az104-58',

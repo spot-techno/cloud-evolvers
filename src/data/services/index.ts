@@ -656,7 +656,7 @@ export const allServices: AllServicesTranslations = {
           items: [
             { title: 'OpenTofu Migration', description: 'Seamlessly transition existing Terraform configurations to OpenTofu with zero downtime' },
             { title: 'Multi-Cloud Provisioning', description: 'Manage Azure, AWS, and GCP resources from a single OpenTofu configuration' },
-            { title: 'State Encryption', description: 'Leverage OpenTofu\'s native state encryption for enhanced security of sensitive infrastructure data' },
+            { title: 'State Encryption', description: 'Use OpenTofu\'s native state encryption for enhanced security of sensitive infrastructure data' },
             { title: 'Provider Development', description: 'Build and customize OpenTofu providers for internal platforms and third-party services' },
           ],
         },

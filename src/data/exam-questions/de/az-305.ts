@@ -126,7 +126,7 @@ export const az305: ExamSet = {
         },
         { id: 'b', text: 'Connection Strings in den Application Settings, manuell rotiert.' },
         { id: 'c', text: 'Ein Service Principal mit Client Secret in einer Environment Variable.' },
-        { id: 'd', text: 'Eine lokale .env-Datei, die mit der Anwendung deployed wird.' },
+        { id: 'd', text: 'Eine lokale.env-Datei, die mit der Anwendung deployed wird.' },
       ],
       correctId: 'a',
       explanation:

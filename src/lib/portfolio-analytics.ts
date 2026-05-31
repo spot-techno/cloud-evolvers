@@ -26,12 +26,20 @@ export function trackPortfolioEvent(eventName: string, metadata: Metadata = {}) 
     },
   };
 
-  void fetch(`${DASHBOARD_API_URL}/api/events/collect`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-    keepalive: true,
-  }).catch(() => {});
+  const url = `${DASHBOARD_API_URL}/api/events/collect`;
+  const body = JSON.stringify(payload);
+  // Fire-and-forget. sendBeacon with a text/plain blob avoids the CORS preflight
+  // that the analytics worker rejects, so it neither logs a console error nor
+  // needs the worker to return CORS headers for this one-way POST.
+  try {
+    if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
+      navigator.sendBeacon(url, new Blob([body], { type: 'text/plain' }));
+    } else {
+      void fetch(url, { method: 'POST', body, mode: 'no-cors', keepalive: true }).catch(() => {});
+    }
+  } catch {
+    /* analytics must never break the page */
+  }
 }
 
 export function getPortfolioAttribution() {

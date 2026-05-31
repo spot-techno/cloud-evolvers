@@ -1318,7 +1318,7 @@ export const pl300: ExamSet = {
       id: 'pl300-88',
       topic: 'Deploy and maintain assets',
       question:
-        "An admin must enforce that personal data labelled Highly Confidential cannot be exported to .csv from Power BI. Which combination achieves this?",
+        "An admin must enforce that personal data labelled Highly Confidential cannot be exported to.csv from Power BI. Which combination achieves this?",
       options: [
         { id: 'a', text: 'Personal gateway only.' },
         { id: 'b', text: 'Workspace roles only.' },
@@ -1501,13 +1501,13 @@ export const pl300: ExamSet = {
         "A Power BI Pro user needs to share a published report with a guest from a partner company. Which setup respects governance and external sharing rules?",
       options: [
         { id: 'a', text: 'Add the guest as a B2B user in Microsoft Entra ID and grant access through the workspace or app audience, with sharing settings allowed by tenant policy.' },
-        { id: 'b', text: 'Email the .pbix file as an attachment.' },
+        { id: 'b', text: 'Email the.pbix file as an attachment.' },
         { id: 'c', text: 'Make the workspace public on the internet.' },
         { id: 'd', text: 'Send a screenshot.' },
       ],
       correctId: 'a',
       explanation:
-        "Microsoft Entra ID B2B is the governed path for external access to Power BI content. Emailing the .pbix file or making a workspace public bypasses tenant controls.",
+        "Microsoft Entra ID B2B is the governed path for external access to Power BI content. Emailing the.pbix file or making a workspace public bypasses tenant controls.",
     },
   ],
 }

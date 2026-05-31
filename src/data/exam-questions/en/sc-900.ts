@@ -442,7 +442,7 @@ export const sc900: ExamSet = {
       ],
       correctId: 'b',
       explanation:
-        "Microsoft Entra External ID for customers is the next-generation CIAM platform from Microsoft, built for customer-facing identity with branded sign-in and social identity providers. It is not a rename of Azure AD B2C , Azure AD B2C is a distinct predecessor product (no longer available to new customers as of May 2025) that remains supported until at least May 2030. B2B collaboration is for partner and guest scenarios, not consumer identity.",
+        "Microsoft Entra External ID for customers is the next-generation CIAM platform from Microsoft, built for customer-facing identity with branded sign-in and social identity providers. It is not a rename of Azure AD B2C, Azure AD B2C is a distinct predecessor product (no longer available to new customers as of May 2025) that remains supported until at least May 2030. B2B collaboration is for partner and guest scenarios, not consumer identity.",
     },
     {
       id: 'sc900-30',
@@ -1342,7 +1342,7 @@ export const sc900: ExamSet = {
       ],
       correctId: 'b',
       explanation:
-        "Compliance Manager weights actions by how they reduce risk: preventative mandatory actions score highest (27 points), detective and corrective mandatory actions score lower (3 points each), and breadth of impact matters too. Microsoft-owned actions are implemented by Microsoft and their points automatically count toward the overall compliance score , customers cannot change the implementation status, but those points are included in the total. Customers improve their score by completing the customer-managed improvement actions.",
+        "Compliance Manager weights actions by how they reduce risk: preventative mandatory actions score highest (27 points), detective and corrective mandatory actions score lower (3 points each), and breadth of impact matters too. Microsoft-owned actions are implemented by Microsoft and their points automatically count toward the overall compliance score, customers cannot change the implementation status, but those points are included in the total. Customers improve their score by completing the customer-managed improvement actions.",
     },
     {
       id: 'sc900-90',

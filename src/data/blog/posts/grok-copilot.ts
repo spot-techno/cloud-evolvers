@@ -25,8 +25,8 @@ export const grokCopilotPost: BlogPost = {
   readTime: 5,
   content: {
     introduction: {
-      en: "GitHub just shipped Grok Code Fast 1 in public preview for all Copilot users. It is a code search and navigation tool that actually understands your codebase , not just string matching, but semantic search that knows what functions do, how types connect, and where definitions live. If you have ever wasted twenty minutes grep-ing through a massive repo trying to find where something is called, this is built for you.",
-      nl: "GitHub heeft net Grok Code Fast 1 uitgebracht in public preview voor alle Copilot-gebruikers. Het is een code-zoek- en navigatietool die je codebase daadwerkelijk begrijpt , niet alleen string matching, maar semantisch zoeken dat weet wat functies doen, hoe types samenhangen en waar definities staan. Als je ooit twintig minuten hebt verspild aan grep-en door een enorme repo om te vinden waar iets wordt aangeroepen, dan is dit voor jou gemaakt."
+      en: "GitHub just shipped Grok Code Fast 1 in public preview for all Copilot users. It is a code search and navigation tool that actually understands your codebase, not just string matching, but semantic search that knows what functions do, how types connect, and where definitions live. If you have ever wasted twenty minutes grep-ing through a massive repo trying to find where something is called, this is built for you.",
+      nl: "GitHub heeft net Grok Code Fast 1 uitgebracht in public preview voor alle Copilot-gebruikers. Het is een code-zoek- en navigatietool die je codebase daadwerkelijk begrijpt, niet alleen string matching, maar semantisch zoeken dat weet wat functies doen, hoe types samenhangen en waar definities staan. Als je ooit twintig minuten hebt verspild aan grep-en door een enorme repo om te vinden waar iets wordt aangeroepen, dan is dit voor jou gemaakt."
     },
     sections: [
       {
@@ -35,7 +35,7 @@ export const grokCopilotPost: BlogPost = {
           nl: 'Wat is Grok?'
         },
         content: {
-          en: 'Grok leverages AI to provide lightning-fast, semantic code search, deep code navigation, AI-powered explanations, and seamless integration with GitHub Copilot.',
+          en: 'Grok uses AI to provide lightning-fast, semantic code search, deep code navigation, AI-powered explanations, and direct integration with GitHub Copilot.',
           nl: 'Grok maakt gebruik van AI om bliksemsnelle, semantische code zoeken, diepe code navigatie, AI-aangedreven uitleg en naadloze integratie met GitHub Copilot te bieden.'
         }
       },
@@ -71,8 +71,8 @@ export const grokCopilotPost: BlogPost = {
       }
     ],
     conclusion: {
-      en: 'Grok is still in preview, so expect rough edges. But if code search has been a pain point for your team , especially on large repos , it is worth spending ten minutes with it. Open a repo on GitHub.com, hit "/" and see how it handles your codebase. The AI-powered explanations alone save time during code reviews and onboarding.',
-      nl: 'Grok zit nog in preview, dus verwacht hier en daar een ruwe rand. Maar als code zoeken een pijnpunt is voor je team , vooral bij grote repos , is het de moeite waard om er tien minuten mee te spelen. Open een repo op GitHub.com, druk op "/" en kijk hoe het je codebase aanpakt. De AI-uitleg alleen al scheelt tijd bij code reviews en onboarding.'
+      en: 'Grok is still in preview, so expect rough edges. But if code search has been a pain point for your team, especially on large repos, it is worth spending ten minutes with it. Open a repo on GitHub.com, hit "/" and see how it handles your codebase. The AI-powered explanations alone save time during code reviews and onboarding.',
+      nl: 'Grok zit nog in preview, dus verwacht hier en daar een ruwe rand. Maar als code zoeken een pijnpunt is voor je team, vooral bij grote repos, is het de moeite waard om er tien minuten mee te spelen. Open een repo op GitHub.com, druk op "/" en kijk hoe het je codebase aanpakt. De AI-uitleg alleen al scheelt tijd bij code reviews en onboarding.'
     }
   }
 };

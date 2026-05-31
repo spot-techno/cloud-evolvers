@@ -80,8 +80,8 @@ export default function TrainingDetailContent({ training }: { training: Training
           <blockquote className="ed-display text-[20px] sm:text-[22px] leading-[1.4] text-[color:var(--ed-ink)] italic">
             &ldquo;{training.personalStory.story}&rdquo;
           </blockquote>
-          <p className="mt-4 text-[14px] text-[color:var(--ed-ink-3)]">
-            &mdash; {training.personalStory.instructor}
+          <p className="mt-4 text-[14px] font-600 text-[color:var(--ed-ink-3)]">
+            {training.personalStory.instructor}
           </p>
         </motion.section>
       )}
