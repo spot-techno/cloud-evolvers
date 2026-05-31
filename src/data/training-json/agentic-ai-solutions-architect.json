@@ -38,7 +38,7 @@
     {
       "id": "platform-integration",
       "title": "Platform Integration",
-      "description": "Integrate Microsoft Copilot, Azure AI Foundry, and Dynamics 365 into cohesive AI solutions",
+      "description": "Integrate Microsoft Copilot, Azure AI Foundry, and Dynamics 365 into one connected solution",
       "icon": "Plugs"
     },
     {
@@ -58,7 +58,7 @@
       "topics": [
         "AI-first vs. AI-augmented architecture trade-offs",
         "Reference architectures for agentic AI systems",
-        "Data architecture for AI agents — retrieval, grounding, memory",
+        "Data architecture for AI agents: retrieval, grounding, memory",
         "Security architecture for autonomous agents",
         "Cost modelling and capacity planning for AI workloads"
       ]

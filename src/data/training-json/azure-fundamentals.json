@@ -97,28 +97,56 @@
       "title": "Module 1: Cloud Concepts",
       "description": "Understanding cloud computing principles, deployment models, and service types",
       "icon": "Cloud",
-      "duration": "4 hours"
+      "duration": "4 hours",
+      "topics": [
+        "Cloud computing, the shared responsibility model, and consumption-based pricing",
+        "Public, private, and hybrid cloud models, with use cases for each",
+        "Benefits of high availability, scalability, and reliability in the cloud",
+        "IaaS, PaaS, and SaaS service types and when to choose each",
+        "Serverless computing"
+      ]
     },
     {
       "id": "core-services",
       "title": "Module 2: Core Azure Services",
       "description": "Compute, networking, storage, and database services overview",
       "icon": "Server",
-      "duration": "4 hours"
+      "duration": "4 hours",
+      "topics": [
+        "Azure regions, region pairs, availability zones, and datacenters",
+        "Resource groups, subscriptions, and management groups",
+        "Compute options: virtual machines, containers, and Azure Functions",
+        "Virtual networking, VPN Gateway, and ExpressRoute",
+        "Azure storage services, access tiers, and redundancy options"
+      ]
     },
     {
       "id": "security-compliance",
       "title": "Module 3: Security & Compliance",
       "description": "Azure security features, identity management, and compliance frameworks",
       "icon": "Shield",
-      "duration": "4 hours"
+      "duration": "4 hours",
+      "topics": [
+        "Microsoft Entra ID, authentication, and multifactor authentication (MFA)",
+        "Conditional Access and role-based access control (RBAC)",
+        "Zero Trust and the defense-in-depth model",
+        "Microsoft Defender for Cloud",
+        "Azure Policy, resource locks, and Microsoft Purview"
+      ]
     },
     {
       "id": "pricing-support",
       "title": "Module 4: Pricing & Support",
       "description": "Cost management, pricing models, and Azure support options",
       "icon": "DollarSign",
-      "duration": "4 hours"
+      "duration": "4 hours",
+      "topics": [
+        "Factors that affect cost and the Azure pricing calculator",
+        "Cost management capabilities and resource tags",
+        "Managing resources with the Azure portal, Cloud Shell, CLI, and PowerShell",
+        "Azure Resource Manager templates and infrastructure as code",
+        "Monitoring with Azure Advisor, Azure Service Health, and Azure Monitor"
+      ]
     }
   ],
   "handsOnLabs": [

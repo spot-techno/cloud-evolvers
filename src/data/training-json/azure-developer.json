@@ -204,6 +204,6 @@
   "updatedAt": "2024-12-01T00:00:00Z",
   "personalStory": {
     "instructor": "Yaïr Knijn",
-    "story": "As a developer who has built dozens of cloud-native applications on Azure, I've made every mistake in the book—and learned from them. From serverless architectures to containerized workloads, I'll show you the development patterns that lead to maintainable, scalable applications. This isn't theory; it's what works in production."
+    "story": "As a developer who has built dozens of cloud-native applications on Azure, I've made every mistake in the book, and learned from them. From serverless architectures to containerized workloads, I'll show you the development patterns that lead to maintainable, scalable applications. This isn't theory; it's what works in production."
   }
 }

@@ -135,5 +135,6 @@
   "personalStory": {
     "instructor": "Yaïr Knijn",
     "story": "Als iemand die met honderden professionals heeft samengewerkt in Azure, heb ik uit eerste hand gezien hoe de juiste basis het verschil maakt. Ik herinner me dat ik werkte met een team van traditionele infrastructuurengineers die sceptisch waren over de cloud. Na deze training migreerden ze met succes hun eerste workloads naar Azure en werden ze cloud-voorstanders. Deze cursus bevat alles wat ik zou willen weten toen ik met Azure begon."
-  }
+  },
+  "overview": "Deze AZ-900 training legt een stevige basis in Microsoft Azure. Je leert de kernbegrippen van cloud computing, de belangrijkste Azure-diensten voor compute, netwerken en opslag, en hoe je Azure beveiligt en beheert. Voorkennis van de cloud is niet nodig. Aan het einde ben je klaar voor het AZ-900 examen en ga je met vertrouwen met Azure aan de slag."
 }

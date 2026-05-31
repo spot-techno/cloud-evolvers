@@ -199,6 +199,36 @@
   },
   "personalStory": {
     "instructor": "Yaïr Knijn",
-    "story": "Als ontwikkelaar die tientallen cloud-native applicaties op Azure heeft gebouwd, heb ik elke fout gemaakt die mogelijk is—en ervan geleerd. Van serverless architecturen tot gecontaineriseerde workloads, ik laat je de ontwikkelpatronen zien die leiden tot onderhoudbare, schaalbare applicaties. Dit is geen theorie; dit is wat werkt in productie."
-  }
+    "story": "Als ontwikkelaar die tientallen cloud-native applicaties op Azure heeft gebouwd, heb ik elke fout gemaakt die mogelijk is, en ervan geleerd. Van serverless architecturen tot gecontaineriseerde workloads, ik laat je de ontwikkelpatronen zien die leiden tot onderhoudbare, schaalbare applicaties. Dit is geen theorie; dit is wat werkt in productie."
+  },
+  "handsOnLabs": [
+    {
+      "id": "functions-lab",
+      "title": "Ontwikkelen met Azure Functions",
+      "description": "Bouw en deploy serverless functies met Azure Functions",
+      "duration": "2 uur",
+      "icon": "Code"
+    },
+    {
+      "id": "cosmosdb-lab",
+      "title": "Ontwikkelen met Cosmos DB",
+      "description": "Ontwikkel applicaties met Azure Cosmos DB",
+      "duration": "2 uur",
+      "icon": "Database"
+    },
+    {
+      "id": "security-lab",
+      "title": "Beveiliging implementeren in Azure",
+      "description": "Implementeer authenticatie en autorisatie in Azure-apps",
+      "duration": "2 uur",
+      "icon": "Shield"
+    },
+    {
+      "id": "monitoring-lab",
+      "title": "Applicaties monitoren",
+      "description": "Stel monitoring en logging in voor Azure-applicaties",
+      "duration": "2 uur",
+      "icon": "Activity"
+    }
+  ]
 }
