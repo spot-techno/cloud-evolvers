@@ -188,6 +188,6 @@
   "updatedAt": "2024-12-01T00:00:00Z",
   "personalStory": {
     "instructor": "Yaïr Knijn",
-    "story": "Security isn't just a checkbox—it's a mindset. I've responded to security incidents, implemented zero-trust architectures, and helped organizations meet compliance requirements. Every security principle in this training comes from real incidents and their solutions. I'll teach you to think like both an attacker and a defender."
+    "story": "Security isn't just a checkbox. It's a mindset. I've responded to security incidents, implemented zero-trust architectures, and helped organizations meet compliance requirements. Every security principle in this training comes from real incidents and their solutions. I'll teach you to think like both an attacker and a defender."
   }
 }
