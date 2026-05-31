@@ -480,7 +480,7 @@ export const modernWorkplaceCourses: TrainingTranslations = {
       level: 'Intermediate',
       duration: { days: 2, format: 'days' },
       
-      overview: 'Comprehensive training on Microsoft Copilot for Microsoft 365. Learn to leverage AI-powered assistance across Word, Excel, PowerPoint, Outlook, Teams, and more. Transform your productivity with intelligent automation and content generation.',
+      overview: 'Comprehensive training on Microsoft Copilot for Microsoft 365. Learn to use AI-powered assistance across Word, Excel, PowerPoint, Outlook, Teams, and more. Transform your productivity with intelligent automation and content generation.',
       
       learningObjectives: [
         'Master Copilot features across Microsoft 365 applications',

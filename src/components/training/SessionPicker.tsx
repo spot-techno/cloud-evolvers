@@ -13,7 +13,7 @@ function formatDateRange(start: string, end: string): string {
   const s = new Date(start + 'T00:00:00');
   const e = new Date(end + 'T00:00:00');
   const opts: Intl.DateTimeFormatOptions = { month: 'short', day: 'numeric' };
-  return `${s.toLocaleDateString('en-US', opts)} , ${e.toLocaleDateString('en-US', { ...opts, year: 'numeric' })}`;
+  return `${s.toLocaleDateString('en-US', opts)}, ${e.toLocaleDateString('en-US', { ...opts, year: 'numeric' })}`;
 }
 
 export default function SessionPicker({ sessions, loading, selectedSessionId, onSelect }: SessionPickerProps) {
@@ -91,7 +91,7 @@ export default function SessionPicker({ sessions, loading, selectedSessionId, on
             </div>
             {isFull && (
               <p className="mt-2 text-xs text-amber-600 dark:text-amber-400 font-medium">
-                Session full , selecting this will add you to the waitlist
+                Session full, selecting this will add you to the waitlist
               </p>
             )}
           </button>

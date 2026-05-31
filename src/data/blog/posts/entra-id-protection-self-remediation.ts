@@ -25,8 +25,8 @@ export const entraIdProtectionSelfRemediationPost: BlogPost = {
   readTime: 8,
   content: {
     introduction: {
-      en: 'Entra ID Protection now supports automatic self-remediation across all authentication methods , both passwordless and the ones that still use passwords , generally available since April 2026. The change is small in the docs and big in operations: when a user hits a risky-sign-in flag, they can now resolve it themselves through a stronger MFA challenge or passkey ceremony, without a help-desk ticket. For organizations that have been blocked on rolling out passwordless because of the support overhead, this is the unlock.',
-      nl: 'Entra ID Protection ondersteunt nu automatische self-remediation voor alle authenticatie-methoden , passwordless en de varianten die nog wachtwoorden gebruiken , algemeen beschikbaar sinds april 2026. De verandering is klein in de docs en groot in operations: als een gebruiker een risky-sign-in-flag raakt, kan hij of zij dat nu zelf oplossen via een sterkere MFA-challenge of passkey-ceremonie, zonder helpdesk-ticket. Voor organisaties die op passwordless-uitrol stilstonden door de support-overhead is dit de ontgrendeling.'
+      en: 'Entra ID Protection now supports automatic self-remediation across all authentication methods, both passwordless and the ones that still use passwords, generally available since April 2026. The change is small in the docs and big in operations: when a user hits a risky-sign-in flag, they can now resolve it themselves through a stronger MFA challenge or passkey ceremony, without a help-desk ticket. For organizations that have been blocked on rolling out passwordless because of the support overhead, this removes the last blocker.',
+      nl: 'Entra ID Protection ondersteunt nu automatische self-remediation voor alle authenticatie-methoden, passwordless en de varianten die nog wachtwoorden gebruiken, algemeen beschikbaar sinds april 2026. De verandering is klein in de docs en groot in operations: als een gebruiker een risky-sign-in-flag raakt, kan hij of zij dat nu zelf oplossen via een sterkere MFA-challenge of passkey-ceremonie, zonder helpdesk-ticket. Voor organisaties die op passwordless-uitrol stilstonden door de support-overhead is dit de ontgrendeling.'
     },
     sections: [
       {
@@ -50,7 +50,7 @@ export const entraIdProtectionSelfRemediationPost: BlogPost = {
         },
         code: {
           language: 'json',
-          code: `// Conditional Access policy snippet , risk-based with strong MFA required
+          code: `// Conditional Access policy snippet, risk-based with strong MFA required
 {
   "displayName": "CA: Risky sign-in requires strong MFA",
   "conditions": {
@@ -73,8 +73,8 @@ export const entraIdProtectionSelfRemediationPost: BlogPost = {
           nl: 'Wat de helpdesk-metrics zullen tonen'
         },
         content: {
-          en: 'Expect a measurable drop in identity-related tickets within the first month , most teams report 30 to 60 percent fewer help-desk calls for "I cannot sign in". The risky-sign-in events themselves do not decrease (the engine is unchanged), but the manual handling does. Track this through your ITSM tool with a tag on identity-related tickets so you have a baseline before and after , that data is useful for the next budget conversation.',
-          nl: 'Verwacht een meetbare daling in identity-gerelateerde tickets in de eerste maand , de meeste teams melden 30 tot 60 procent minder helpdesk-calls voor "ik kan niet inloggen". De risky-sign-in events zelf nemen niet af (de engine is ongewijzigd), maar de handmatige afhandeling wel. Volg dit in je ITSM-tool met een tag op identity-gerelateerde tickets zodat je een baseline hebt voor en na , die data is nuttig voor het volgende budgetgesprek.'
+          en: 'Expect a measurable drop in identity-related tickets within the first month, most teams report 30 to 60 percent fewer help-desk calls for "I cannot sign in". The risky-sign-in events themselves do not decrease (the engine is unchanged), but the manual handling does. Track this through your ITSM tool with a tag on identity-related tickets so you have a baseline before and after, that data is useful for the next budget conversation.',
+          nl: 'Verwacht een meetbare daling in identity-gerelateerde tickets in de eerste maand, de meeste teams melden 30 tot 60 procent minder helpdesk-calls voor "ik kan niet inloggen". De risky-sign-in events zelf nemen niet af (de engine is ongewijzigd), maar de handmatige afhandeling wel. Volg dit in je ITSM-tool met een tag op identity-gerelateerde tickets zodat je een baseline hebt voor en na, die data is nuttig voor het volgende budgetgesprek.'
         }
       },
       {
@@ -83,14 +83,14 @@ export const entraIdProtectionSelfRemediationPost: BlogPost = {
           nl: 'Wanneer je toch een mens in de loop wilt'
         },
         content: {
-          en: 'Self-remediation is not the right answer for every event. Privileged accounts, accounts in scope for SOC investigation, and accounts with confirmed compromise from a parallel signal (Defender for Identity, third-party SIEM correlation) should still hit a human. Use Conditional Access exclusions or a dedicated policy for these populations , same mechanism, opposite outcome. The new feature does not force one model on you.',
-          nl: 'Self-remediation is niet het juiste antwoord voor elk event. Privileged accounts, accounts in scope voor SOC-onderzoek en accounts met bevestigde compromittering uit een parallel signaal (Defender for Identity, third-party SIEM-correlatie) moeten nog steeds bij een mens terechtkomen. Gebruik Conditional Access-exclusies of een aparte policy voor deze populaties , zelfde mechanisme, tegenovergesteld resultaat. De nieuwe feature dwingt geen één-model-voor-iedereen af.'
+          en: 'Self-remediation is not the right answer for every event. Privileged accounts, accounts in scope for SOC investigation, and accounts with confirmed compromise from a parallel signal (Defender for Identity, third-party SIEM correlation) should still hit a human. Use Conditional Access exclusions or a dedicated policy for these populations, same mechanism, opposite outcome. The new feature does not force one model on you.',
+          nl: 'Self-remediation is niet het juiste antwoord voor elk event. Privileged accounts, accounts in scope voor SOC-onderzoek en accounts met bevestigde compromittering uit een parallel signaal (Defender for Identity, third-party SIEM-correlatie) moeten nog steeds bij een mens terechtkomen. Gebruik Conditional Access-exclusies of een aparte policy voor deze populaties, zelfde mechanisme, tegenovergesteld resultaat. De nieuwe feature dwingt geen één-model-voor-iedereen af.'
         }
       }
     ],
     conclusion: {
-      en: 'Self-remediation GA removes the last operational excuse for staying on password-based MFA. Audit your Conditional Access policies for authentication strength, exclude your privileged accounts from automatic remediation, and tag your help-desk tickets so you can prove the impact in the first quarter. Most identity teams will save real budget here , and the security posture goes up at the same time, which is a rare combination.',
-      nl: 'Self-remediation GA neemt het laatste operationele excuus weg om op password-based MFA te blijven. Audit je Conditional Access-policies op authentication strength, sluit je privileged accounts uit van automatische remediation, en tag je helpdesk-tickets zodat je de impact in het eerste kwartaal kunt aantonen. De meeste identity-teams besparen hier echt budget , en de security-posture gaat tegelijk omhoog, wat een zeldzame combinatie is.'
+      en: 'Self-remediation GA removes the last operational excuse for staying on password-based MFA. Audit your Conditional Access policies for authentication strength, exclude your privileged accounts from automatic remediation, and tag your help-desk tickets so you can prove the impact in the first quarter. Most identity teams will save real budget here, and the security posture goes up at the same time, which is a rare combination.',
+      nl: 'Self-remediation GA neemt het laatste operationele excuus weg om op password-based MFA te blijven. Audit je Conditional Access-policies op authentication strength, sluit je privileged accounts uit van automatische remediation, en tag je helpdesk-tickets zodat je de impact in het eerste kwartaal kunt aantonen. De meeste identity-teams besparen hier echt budget, en de security-posture gaat tegelijk omhoog, wat een zeldzame combinatie is.'
     }
   }
 };

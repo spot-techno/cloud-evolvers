@@ -61,7 +61,7 @@ export const BESPOKE_COURSES: Record<string, BespokeCourse> = {
     practitionerAngle:
       "AZ-204 is the exam that proves you can ship on Azure, not just configure it. App Service, Functions, Cosmos DB, storage SDKs, messaging, Key Vault, monitoring. We code through every domain against a live tenant, not slides.",
     whoPasses: [
-      'Developers with 1 to 3 years of .NET, Python, or Node experience.',
+      'Developers with 1 to 3 years of.NET, Python, or Node experience.',
       'Backend engineers moving from a different cloud or from on prem.',
       'AZ-104 holders ready to add code to their toolkit.',
     ],
@@ -158,7 +158,7 @@ export const BESPOKE_COURSES: Record<string, BespokeCourse> = {
     practitionerAngle:
       "AI-102 covers what you actually need to build production AI on Azure: Azure OpenAI, Cognitive Services, Search, content safety, and agent patterns. We build a working RAG application across the week, then map every exam domain back to its component.",
     whoPasses: [
-      'Developers with Python or .NET experience who already ship APIs.',
+      'Developers with Python or.NET experience who already ship APIs.',
       'AZ-204 holders adding AI to their backend toolkit.',
       'Data engineers who want to package models behind a usable API.',
     ],

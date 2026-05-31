@@ -1021,7 +1021,7 @@ export const az900: ExamSet = {
       id: 'az900-68',
       topic: 'Monitoring',
       question:
-        'A team wants automatic detection of slow web requests, dependency failures, and unhandled exceptions in a .NET app. Which service do they use?',
+        'A team wants automatic detection of slow web requests, dependency failures, and unhandled exceptions in a.NET app. Which service do they use?',
       options: [
         { id: 'a', text: 'Azure Advisor.' },
         { id: 'b', text: 'Service Health.' },
@@ -1465,7 +1465,7 @@ export const az900: ExamSet = {
       ],
       correctId: 'a',
       explanation:
-        'With a PaaS service such as Azure SQL Database, Microsoft handles engine patching, automated backups, and high availability , the headline reason to choose PaaS over IaaS. Wanting kernel-level control or custom OS agents points to IaaS (SQL Server on a VM) instead.',
+        'With a PaaS service such as Azure SQL Database, Microsoft handles engine patching, automated backups, and high availability, the headline reason to choose PaaS over IaaS. Wanting kernel-level control or custom OS agents points to IaaS (SQL Server on a VM) instead.',
     },
     {
       id: 'az900-98',

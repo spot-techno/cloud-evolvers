@@ -25,8 +25,8 @@ export const mandatoryMfaEnforcementPost: BlogPost = {
   readTime: 10,
   content: {
     introduction: {
-      en: 'Microsoft made MFA mandatory for Azure portal, Microsoft 365 admin center, and Entra admin center. Not optional, not recommended , mandatory. The rollout started in late 2024 and by mid-2025 it hit all tenants. If you have not set up MFA yet, your users are getting blocked right now. This is a good move , password-only access to admin portals was a liability , but it caught a lot of organizations off guard, especially those with service accounts and automation scripts that sign in interactively.',
-      nl: 'Microsoft heeft MFA verplicht gemaakt voor Azure portal, Microsoft 365 admin center en Entra admin center. Niet optioneel, niet aanbevolen , verplicht. De uitrol begon eind 2024 en halverwege 2025 waren alle tenants aan de beurt. Heb je nog geen MFA ingesteld? Dan worden je gebruikers nu geblokkeerd. Dit is een goede zet , wachtwoord-only toegang tot admin portals was een risico , maar het overviel veel organisaties, vooral die met serviceaccounts en automatiseringsscripts die interactief inloggen.'
+      en: 'Microsoft made MFA mandatory for Azure portal, Microsoft 365 admin center, and Entra admin center. Not optional, not recommended, mandatory. The rollout started in late 2024 and by mid-2025 it hit all tenants. If you have not set up MFA yet, your users are getting blocked right now. This is a good move, password-only access to admin portals was a liability, but it caught a lot of organizations off guard, especially those with service accounts and automation scripts that sign in interactively.',
+      nl: 'Microsoft heeft MFA verplicht gemaakt voor Azure portal, Microsoft 365 admin center en Entra admin center. Niet optioneel, niet aanbevolen, verplicht. De uitrol begon eind 2024 en halverwege 2025 waren alle tenants aan de beurt. Heb je nog geen MFA ingesteld? Dan worden je gebruikers nu geblokkeerd. Dit is een goede zet, wachtwoord-only toegang tot admin portals was een risico, maar het overviel veel organisaties, vooral die met serviceaccounts en automatiseringsscripts die interactief inloggen.'
     },
     sections: [
       {
@@ -122,8 +122,8 @@ az login --identity`
       }
     ],
     conclusion: {
-      en: 'If your org already had MFA policies in place, nothing changes for you. If not, act now , your admins and users will get locked out otherwise. While you are at it, do not stop at basic MFA. SMS codes are better than nothing, but they are still vulnerable to SIM-swapping and phishing. Set up FIDO2 keys or passkeys for your admins at minimum. And go audit your automation scripts , any script that does `az login` interactively will break. Switch those to service principals or managed identities.',
-      nl: 'Had je organisatie al MFA-policies? Dan verandert er niets. Zo niet, handel nu , je admins en gebruikers worden anders buitengesloten. En als je toch bezig bent, stop niet bij basis-MFA. SMS-codes zijn beter dan niets, maar ze zijn nog steeds kwetsbaar voor SIM-swapping en phishing. Stel minstens FIDO2-keys of passkeys in voor je admins. En ga je automatiseringsscripts auditen , elk script dat interactief `az login` doet gaat stuk. Zet die om naar service principals of managed identities.'
+      en: 'If your org already had MFA policies in place, nothing changes for you. If not, act now, your admins and users will get locked out otherwise. While you are at it, do not stop at basic MFA. SMS codes are better than nothing, but they are still vulnerable to SIM-swapping and phishing. Set up FIDO2 keys or passkeys for your admins at minimum. And go audit your automation scripts, any script that does `az login` interactively will break. Switch those to service principals or managed identities.',
+      nl: 'Had je organisatie al MFA-policies? Dan verandert er niets. Zo niet, handel nu, je admins en gebruikers worden anders buitengesloten. En als je toch bezig bent, stop niet bij basis-MFA. SMS-codes zijn beter dan niets, maar ze zijn nog steeds kwetsbaar voor SIM-swapping en phishing. Stel minstens FIDO2-keys of passkeys in voor je admins. En ga je automatiseringsscripts auditen, elk script dat interactief `az login` doet gaat stuk. Zet die om naar service principals of managed identities.'
     }
   }
 };

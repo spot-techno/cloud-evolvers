@@ -740,7 +740,7 @@ export const azureSpecializedCourses: TrainingTranslations = {
       level: 'Advanced',
       duration: { days: 4, format: 'days' },
       
-      overview: 'Comprehensive training for AI engineers building, managing, and deploying AI solutions on Azure. Learn to leverage Azure AI services, implement computer vision, natural language processing, generative AI, and create intelligent agents.',
+      overview: 'Comprehensive training for AI engineers building, managing, and deploying AI solutions on Azure. Learn to use Azure AI services, implement computer vision, natural language processing, generative AI, and create intelligent agents.',
       
       learningObjectives: [
         'Plan and manage Azure AI solutions',
@@ -1230,7 +1230,7 @@ export const azureSpecializedCourses: TrainingTranslations = {
       level: 'Intermediate',
       duration: { days: 2, format: 'days' },
       
-      overview: 'Learn to leverage AI-powered productivity tools in daily work without coding. Master prompt engineering, agent creation, and effective use of Microsoft 365 Copilot across apps to enhance business processes and decision-making.',
+      overview: 'Learn to use AI-powered productivity tools in daily work without coding. Master prompt engineering, agent creation, and effective use of Microsoft 365 Copilot across apps to enhance business processes and decision-making.',
       
       learningObjectives: [
         'Understand generative AI fundamentals and capabilities',

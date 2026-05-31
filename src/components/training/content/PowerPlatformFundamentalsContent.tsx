@@ -48,7 +48,7 @@ export default function PowerPlatformFundamentalsContent() {
         </div>
         <p className="text-foreground leading-relaxed mb-4">
           This Power Platform Fundamentals training introduces the low-code/no-code approach to building business solutions. 
-          Learn how to leverage Power Apps, Power BI, Power Automate, and Power Virtual Agents to create powerful business 
+          Learn how to use Power Apps, Power BI, Power Automate, and Power Virtual Agents to create powerful business 
           applications without traditional programming.
         </p>
       </section>

@@ -295,7 +295,7 @@ export default {
   },
   motivation: {
     whyChooseUs: "Waarom kiezen voor ons?",
-    subtitle: "Bij Cloud Evolvers geloven we dat elke professional het potentieel heeft om uit te blinken in de cloud. Onze trainingen zijn meer dan alleen certificeringen – ze zijn uw springplank naar een succesvolle techcarrière.",
+    subtitle: "Bij Cloud Evolvers geloven we dat elke professional het potentieel heeft om uit te blinken in de cloud. Onze trainingen zijn meer dan alleen certificeringen. Ze zijn uw springplank naar een succesvolle techcarrière.",
     points: {
       provenSuccess: {
         title: "Bewezen succes",

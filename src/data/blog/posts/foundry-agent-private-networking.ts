@@ -7,8 +7,8 @@ export const foundryAgentPrivateNetworkingPost: BlogPost = {
     nl: 'Foundry Agent Service Standard Setup: private networking, BYO VNet, geen public egress'
   },
   description: {
-    en: 'Foundry Agent Service now supports a Standard Setup with full private networking , bring your own VNet, container and subnet injection, no agent traffic on the public internet.',
-    nl: 'Foundry Agent Service ondersteunt nu een Standard Setup met volledige private networking , bring your own VNet, container en subnet injection, geen agent-verkeer op het publieke internet.'
+    en: 'Foundry Agent Service now supports a Standard Setup with full private networking, bring your own VNet, container and subnet injection, no agent traffic on the public internet.',
+    nl: 'Foundry Agent Service ondersteunt nu een Standard Setup met volledige private networking, bring your own VNet, container en subnet injection, geen agent-verkeer op het publieke internet.'
   },
   date: '2026-04-07',
   author: 'Yair Knijn',
@@ -25,8 +25,8 @@ export const foundryAgentPrivateNetworkingPost: BlogPost = {
   readTime: 9,
   content: {
     introduction: {
-      en: 'Foundry Agent Service now supports a Standard Setup deployment mode with full private networking. You bring your own virtual network, agents run in your subscription with container and subnet injection, and there is no public egress from the agent runtime to the internet. For organizations that wanted to deploy AI agents inside an existing Azure landing zone , banks, healthcare, government , this is the configuration that makes the security review actually pass.',
-      nl: 'Foundry Agent Service ondersteunt nu een Standard Setup deployment mode met volledige private networking. Je brengt je eigen virtual network mee, agents draaien in jouw subscription met container- en subnet-injection, en er is geen public egress van de agent-runtime naar het internet. Voor organisaties die AI-agents in een bestaand Azure landing zone wilden deployen , banken, zorg, overheid , is dit de configuratie waarmee de security review echt door komt.'
+      en: 'Foundry Agent Service now supports a Standard Setup deployment mode with full private networking. You bring your own virtual network, agents run in your subscription with container and subnet injection, and there is no public egress from the agent runtime to the internet. For organizations that wanted to deploy AI agents inside an existing Azure landing zone, banks, healthcare, government, this is the configuration that makes the security review actually pass.',
+      nl: 'Foundry Agent Service ondersteunt nu een Standard Setup deployment mode met volledige private networking. Je brengt je eigen virtual network mee, agents draaien in jouw subscription met container- en subnet-injection, en er is geen public egress van de agent-runtime naar het internet. Voor organisaties die AI-agents in een bestaand Azure landing zone wilden deployen, banken, zorg, overheid, is dit de configuratie waarmee de security review echt door komt.'
     },
     sections: [
       {
@@ -35,8 +35,8 @@ export const foundryAgentPrivateNetworkingPost: BlogPost = {
           nl: 'Wat "Standard Setup" daadwerkelijk configureert'
         },
         content: {
-          en: 'Standard Setup deploys the Agent Service runtime into a subnet you control, inside a VNet you own. Outbound calls to Foundry models, tools, and storage all go through private endpoints. The agent runtime container is injected into your subnet, which means your existing NSGs, route tables, and Azure Firewall rules apply. There is no shared multi-tenant ingress to your agents , every request comes from your VNet through a private endpoint. The audit trail records the source subnet, which means you can prove during an audit that nothing left your boundary.',
-          nl: 'Standard Setup deployt de Agent Service-runtime in een subnet dat jij beheert, binnen een VNet dat jij bezit. Uitgaande calls naar Foundry-modellen, tools en storage gaan allemaal via private endpoints. De agent runtime-container wordt in jouw subnet geïnjecteerd, wat betekent dat je bestaande NSGs, route tables en Azure Firewall-regels gelden. Er is geen gedeelde multi-tenant ingress naar je agents , elke request komt vanuit jouw VNet via een private endpoint. De audit trail registreert het bron-subnet, wat betekent dat je tijdens een audit kunt aantonen dat niets je boundary heeft verlaten.'
+          en: 'Standard Setup deploys the Agent Service runtime into a subnet you control, inside a VNet you own. Outbound calls to Foundry models, tools, and storage all go through private endpoints. The agent runtime container is injected into your subnet, which means your existing NSGs, route tables, and Azure Firewall rules apply. There is no shared multi-tenant ingress to your agents, every request comes from your VNet through a private endpoint. The audit trail records the source subnet, which means you can prove during an audit that nothing left your boundary.',
+          nl: 'Standard Setup deployt de Agent Service-runtime in een subnet dat jij beheert, binnen een VNet dat jij bezit. Uitgaande calls naar Foundry-modellen, tools en storage gaan allemaal via private endpoints. De agent runtime-container wordt in jouw subnet geïnjecteerd, wat betekent dat je bestaande NSGs, route tables en Azure Firewall-regels gelden. Er is geen gedeelde multi-tenant ingress naar je agents, elke request komt vanuit jouw VNet via een private endpoint. De audit trail registreert het bron-subnet, wat betekent dat je tijdens een audit kunt aantonen dat niets je boundary heeft verlaten.'
         }
       },
       {
@@ -45,8 +45,8 @@ export const foundryAgentPrivateNetworkingPost: BlogPost = {
           nl: 'Hoe het in een CAF landing zone past'
         },
         content: {
-          en: 'If you have a Cloud Adoption Framework landing zone with hub-and-spoke, the Agent Service subnet sits in a workload spoke just like any other application subnet. Outbound through the hub firewall, inbound only from approved sources, monitored by your existing log pipeline. The Agent Service-specific pieces , the model deployments, the AI Search index, the storage account for tool state , get private endpoints in the same spoke. Nothing about the network topology has to change to accommodate Foundry agents; you just add the agent workload as a new spoke pattern.',
-          nl: 'Heb je een Cloud Adoption Framework landing zone met hub-and-spoke, dan zit het Agent Service-subnet in een workload spoke zoals elk ander applicatiesubnet. Uitgaand via de hub firewall, inkomend alleen vanuit goedgekeurde bronnen, gemonitord door je bestaande log pipeline. De Agent Service-specifieke onderdelen , de model deployments, de AI Search-index, het storage-account voor tool state , krijgen private endpoints in dezelfde spoke. Niets aan de netwerktopologie hoeft te veranderen om Foundry agents in te passen; je voegt de agent workload toe als een nieuw spoke-patroon.'
+          en: 'If you have a Cloud Adoption Framework landing zone with hub-and-spoke, the Agent Service subnet sits in a workload spoke just like any other application subnet. Outbound through the hub firewall, inbound only from approved sources, monitored by your existing log pipeline. The Agent Service-specific pieces, the model deployments, the AI Search index, the storage account for tool state, get private endpoints in the same spoke. Nothing about the network topology has to change to accommodate Foundry agents; you just add the agent workload as a new spoke pattern.',
+          nl: 'Heb je een Cloud Adoption Framework landing zone met hub-and-spoke, dan zit het Agent Service-subnet in een workload spoke zoals elk ander applicatiesubnet. Uitgaand via de hub firewall, inkomend alleen vanuit goedgekeurde bronnen, gemonitord door je bestaande log pipeline. De Agent Service-specifieke onderdelen, de model deployments, de AI Search-index, het storage-account voor tool state, krijgen private endpoints in dezelfde spoke. Niets aan de netwerktopologie hoeft te veranderen om Foundry agents in te passen; je voegt de agent workload toe als een nieuw spoke-patroon.'
         },
         code: {
           language: 'bicep',
@@ -95,8 +95,8 @@ resource privateEndpoint 'Microsoft.Network/privateEndpoints@2024-05-01' = {
           nl: 'Kosten- en operationele tradeoffs'
         },
         content: {
-          en: 'Standard Setup is more expensive than the basic shared deployment because you pay for the dedicated runtime in your subnet, the private endpoints, and the data transfer through your hub firewall. For a single agent serving a single team, this might double the cost compared to the shared model. For multiple production agents at scale, the cost difference shrinks because the runtime is shared across your agents. The right framing is not "Standard Setup costs more" but "Standard Setup is what production looks like" , the basic deployment was always the prototype path.',
-          nl: 'Standard Setup is duurder dan de basis shared deployment omdat je betaalt voor de dedicated runtime in je subnet, de private endpoints en het dataverkeer door je hub firewall. Voor één agent die één team bedient kan dit de kosten verdubbelen vergeleken met het shared model. Voor meerdere productieagents op schaal slinkt het kostenverschil omdat de runtime over je agents wordt gedeeld. De juiste framing is niet "Standard Setup kost meer" maar "Standard Setup is hoe productie eruitziet" , de basis deployment was altijd het prototype-pad.'
+          en: 'Standard Setup is more expensive than the basic shared deployment because you pay for the dedicated runtime in your subnet, the private endpoints, and the data transfer through your hub firewall. For a single agent serving a single team, this might double the cost compared to the shared model. For multiple production agents at scale, the cost difference shrinks because the runtime is shared across your agents. The right framing is not "Standard Setup costs more" but "Standard Setup is what production looks like", the basic deployment was always the prototype path.',
+          nl: 'Standard Setup is duurder dan de basis shared deployment omdat je betaalt voor de dedicated runtime in je subnet, de private endpoints en het dataverkeer door je hub firewall. Voor één agent die één team bedient kan dit de kosten verdubbelen vergeleken met het shared model. Voor meerdere productieagents op schaal slinkt het kostenverschil omdat de runtime over je agents wordt gedeeld. De juiste framing is niet "Standard Setup kost meer" maar "Standard Setup is hoe productie eruitziet", de basis deployment was altijd het prototype-pad.'
         }
       },
       {

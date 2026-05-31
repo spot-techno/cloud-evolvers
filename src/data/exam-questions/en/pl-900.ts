@@ -1081,7 +1081,7 @@ export const pl900: ExamSet = {
       ],
       correctId: 'b',
       explanation:
-        'When a .pbix file is published from Power BI Desktop, it creates a semantic model (not a "dataset" in current terminology) in the workspace. Colleagues can connect to this shared semantic model and build their own reports without duplicating data. Dashboards and apps are separate constructs for consumption.',
+        'When a.pbix file is published from Power BI Desktop, it creates a semantic model (not a "dataset" in current terminology) in the workspace. Colleagues can connect to this shared semantic model and build their own reports without duplicating data. Dashboards and apps are separate constructs for consumption.',
     },
     {
       id: 'pl900-72',
@@ -1104,14 +1104,14 @@ export const pl900: ExamSet = {
       question:
         'A Power BI report was built in Power BI Desktop. The data analyst wants colleagues in the Power BI service to interact with slicers and filters without being in Power BI Desktop. What should the analyst do?',
       options: [
-        { id: 'a', text: 'Email the .pbix file to colleagues.' },
+        { id: 'a', text: 'Email the.pbix file to colleagues.' },
         { id: 'b', text: 'Publish the report to the Power BI service so colleagues can interact with it in a browser.' },
         { id: 'c', text: 'Export the report to a PDF so filters are preserved.' },
         { id: 'd', text: 'Pin all visuals to a dashboard so slicers are available there.' },
       ],
       correctId: 'b',
       explanation:
-        'Publishing to the Power BI service makes the report available for interactive use in a browser. Slicers and filters remain interactive. Emailing a .pbix requires colleagues to have Power BI Desktop installed. PDFs are static. Pinned dashboard tiles lose slicer interactivity.',
+        'Publishing to the Power BI service makes the report available for interactive use in a browser. Slicers and filters remain interactive. Emailing a.pbix requires colleagues to have Power BI Desktop installed. PDFs are static. Pinned dashboard tiles lose slicer interactivity.',
     },
     {
       id: 'pl900-74',
@@ -1164,7 +1164,7 @@ export const pl900: ExamSet = {
       question:
         'A team collaborates on reports and semantic models in the Power BI service. Where are these shared artifacts stored and managed?',
       options: [
-        { id: 'a', text: 'In Power BI Desktop, saved locally as .pbix files.' },
+        { id: 'a', text: 'In Power BI Desktop, saved locally as.pbix files.' },
         { id: 'b', text: 'In a Power BI workspace in the Power BI service, which is the collaboration container for reports, semantic models, and dashboards.' },
         { id: 'c', text: 'In a Microsoft Dataverse environment, as Power BI entities.' },
         { id: 'd', text: 'In a SharePoint document library, where Power BI files are versioned.' },

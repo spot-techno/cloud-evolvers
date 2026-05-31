@@ -97,8 +97,8 @@ export const tokenConfigurationPost: BlogPost = {
       }
     ],
     conclusion: {
-      en: 'Keep your tokens lean. Add only the claims your app actually reads , every extra claim increases token size and exposes data that might not need to be there. Use jwt.ms to inspect what you are actually getting. And if something looks wrong, check the sign-in logs before you start changing manifest properties at random.',
-      nl: 'Houd je tokens lean. Voeg alleen claims toe die je app daadwerkelijk uitleest , elke extra claim vergroot de tokengrootte en onthult data die er misschien niet in hoeft te zitten. Gebruik jwt.ms om te inspecteren wat je daadwerkelijk ontvangt. En als er iets niet klopt, check de sign-in logs voordat je lukraak manifest-properties gaat wijzigen.'
+      en: 'Keep your tokens lean. Add only the claims your app actually reads, every extra claim increases token size and exposes data that might not need to be there. Use jwt.ms to inspect what you are actually getting. And if something looks wrong, check the sign-in logs before you start changing manifest properties at random.',
+      nl: 'Houd je tokens lean. Voeg alleen claims toe die je app daadwerkelijk uitleest, elke extra claim vergroot de tokengrootte en onthult data die er misschien niet in hoeft te zitten. Gebruik jwt.ms om te inspecteren wat je daadwerkelijk ontvangt. En als er iets niet klopt, check de sign-in logs voordat je lukraak manifest-properties gaat wijzigen.'
     }
   }
 };

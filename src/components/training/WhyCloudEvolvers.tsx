@@ -4,7 +4,7 @@ const differentiators = [
   {
     icon: Flask,
     title: 'Hands-on Labs',
-    description: 'Real labs on real Azure environments , not slides.',
+    description: 'Real labs on real Azure environments, not slides.',
   },
   {
     icon: ForkKnife,
@@ -32,7 +32,7 @@ export default function WhyCloudEvolvers() {
         <div key={item.title} className="flex items-center gap-2">
           <item.icon className="h-4 w-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0" weight="fill" />
           <span className="text-sm text-muted-foreground">
-            <span className="font-medium text-foreground">{item.title}</span> , {item.description}
+            <span className="font-medium text-foreground">{item.title}</span>, {item.description}
           </span>
         </div>
       ))}

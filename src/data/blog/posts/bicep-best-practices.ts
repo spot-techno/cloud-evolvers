@@ -71,8 +71,8 @@ export const bicepBestPracticesPost: BlogPost = {
       }
     ],
     conclusion: {
-      en: 'None of this is complicated on its own. Small modules, clear names, secure parameters, what-if before apply. The hard part is discipline , doing it consistently on every deployment, not just the ones you have time for. Pick one practice you\'re not doing yet, apply it to your next PR, and build from there. Also look at Azure Verified Modules before writing your own , there\'s a good chance someone already built what you need.',
-      nl: 'Niets hiervan is op zichzelf ingewikkeld. Kleine modules, duidelijke namen, secure parameters, what-if voor apply. Het moeilijke is discipline , het consequent doen bij elke deployment, niet alleen bij degene waarvoor je tijd hebt. Pak één praktijk die je nog niet toepast, gebruik het bij je volgende PR, en bouw van daaruit. Kijk ook naar Azure Verified Modules voordat je je eigen modules schrijft , de kans is groot dat iemand al heeft gebouwd wat je nodig hebt.'
+      en: 'None of this is complicated on its own. Small modules, clear names, secure parameters, what-if before apply. The hard part is discipline, doing it consistently on every deployment, not just the ones you have time for. Pick one practice you\'re not doing yet, apply it to your next PR, and build from there. Also look at Azure Verified Modules before writing your own, there\'s a good chance someone already built what you need.',
+      nl: 'Niets hiervan is op zichzelf ingewikkeld. Kleine modules, duidelijke namen, secure parameters, what-if voor apply. Het moeilijke is discipline, het consequent doen bij elke deployment, niet alleen bij degene waarvoor je tijd hebt. Pak één praktijk die je nog niet toepast, gebruik het bij je volgende PR, en bouw van daaruit. Kijk ook naar Azure Verified Modules voordat je je eigen modules schrijft, de kans is groot dat iemand al heeft gebouwd wat je nodig hebt.'
     }
   }
 };

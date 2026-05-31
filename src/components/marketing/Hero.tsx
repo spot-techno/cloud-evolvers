@@ -18,7 +18,7 @@ export function Hero() {
                     {/* Copy */}
                     <div className="flex flex-col items-start">
                         <div className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-2 text-xs font-medium tracking-wide text-brand-600">
-                            {marketing?.eyebrow || "Microsoft Certified Trainer , 15+ years Azure delivery"}
+                            {marketing?.eyebrow || "Microsoft Certified Trainer, 15+ years Azure delivery"}
                         </div>
 
                         <h1 className="font-display mt-8 max-w-xl text-4xl font-semibold tracking-tight text-brand-900 sm:text-5xl lg:text-[3.5rem] lg:leading-[1.08]">
@@ -26,7 +26,7 @@ export function Hero() {
                         </h1>
 
                         <p className="mt-8 max-w-lg text-lg leading-relaxed text-brand-600">
-                            {marketing?.description || "Practitioner-led training for IT teams in the Netherlands. Real labs, architecture decisions, and operational know-how , delivered in Dutch or English, remote or at your office."}
+                            {marketing?.description || "Practitioner-led training for IT teams in the Netherlands. Real labs, architecture decisions, and operational know-how, delivered in Dutch or English, remote or at your office."}
                         </p>
 
                         <div className="mt-10 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">

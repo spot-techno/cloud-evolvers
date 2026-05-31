@@ -3252,7 +3252,7 @@ az network nic show-effective-route-table \\
       },
       {
         q: "Is AZ-700 worth it for a DevOps engineer?",
-        a: "Generally no. DevOps roles focus on CI/CD, Kubernetes, and observability. Networking specialty is rarely a hiring criterion for pure DevOps roles. AZ-400 (DevOps Engineer Expert) or CKA is a higher-leverage next cert for that career direction.",
+        a: "Generally no. DevOps roles focus on CI/CD, Kubernetes, and observability. Networking specialty is rarely a hiring criterion for pure DevOps roles. AZ-400 (DevOps Engineer Expert) or CKA is a higher-value next cert for that career direction.",
       },
       {
         q: "What is the difference between AZ-700 and AZ-305 for networking topics?",

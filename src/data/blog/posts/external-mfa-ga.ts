@@ -3,8 +3,8 @@ import type { BlogPost } from '../types';
 export const externalMfaGaPost: BlogPost = {
   id: 'external-mfa-ga',
   title: {
-    en: 'External MFA Hits GA in Entra ID , Keep Your Existing MFA Provider',
-    nl: 'External MFA is GA in Entra ID , behoud je bestaande MFA-provider'
+    en: 'External MFA Hits GA in Entra ID, Keep Your Existing MFA Provider',
+    nl: 'External MFA is GA in Entra ID, behoud je bestaande MFA-provider'
   },
   description: {
     en: 'External Authentication Methods is now generally available under the new name External MFA. Organizations with an existing MFA investment can now satisfy Entra ID MFA requirements without ripping it out.',
@@ -15,8 +15,8 @@ export const externalMfaGaPost: BlogPost = {
   tags: ['Microsoft Entra', 'MFA', 'Conditional Access', 'Identity', 'Security'],
   image: '/images/pexels/pexels-cyber-security-concept.jpg',
   excerpt: {
-    en: 'For years, organizations standardized on Duo, Okta Verify, RSA, or another MFA provider , and rip-and-replace to Microsoft Authenticator was the only way to satisfy Entra MFA enforcement. External MFA GA changes that for real.',
-    nl: 'Jarenlang stonden organisaties standaard op Duo, Okta Verify, RSA of een andere MFA-provider , en rip-and-replace naar Microsoft Authenticator was de enige manier om aan Entra MFA-handhaving te voldoen. External MFA GA verandert dat echt.'
+    en: 'For years, organizations standardized on Duo, Okta Verify, RSA, or another MFA provider, and rip-and-replace to Microsoft Authenticator was the only way to satisfy Entra MFA enforcement. External MFA GA changes that for real.',
+    nl: 'Jarenlang stonden organisaties standaard op Duo, Okta Verify, RSA of een andere MFA-provider, en rip-and-replace naar Microsoft Authenticator was de enige manier om aan Entra MFA-handhaving te voldoen. External MFA GA verandert dat echt.'
   },
   category: {
     en: 'Identity & Security',
@@ -25,8 +25,8 @@ export const externalMfaGaPost: BlogPost = {
   readTime: 7,
   content: {
     introduction: {
-      en: 'External authentication methods in Microsoft Entra ID is now generally available under the new name External MFA. The capability lets your existing MFA provider , Duo, Okta Verify, RSA SecurID, Cisco Secure Access, and others through certified integrations , satisfy Entra ID multi-factor authentication requirements. For organizations that standardized on a non-Microsoft MFA stack years ago, this removes a long-running tension between Entra Conditional Access enforcement and operational reality.',
-      nl: 'External authentication methods in Microsoft Entra ID is nu algemeen beschikbaar onder de nieuwe naam External MFA. De capability laat je bestaande MFA-provider , Duo, Okta Verify, RSA SecurID, Cisco Secure Access en anderen via gecertificeerde integraties , voldoen aan Entra ID multi-factor authentication-vereisten. Voor organisaties die jaren geleden op een niet-Microsoft MFA-stack standaardiseerden, neemt dit een lang lopende spanning weg tussen Entra Conditional Access-handhaving en operationele werkelijkheid.'
+      en: 'External authentication methods in Microsoft Entra ID is now generally available under the new name External MFA. The capability lets your existing MFA provider, Duo, Okta Verify, RSA SecurID, Cisco Secure Access, and others through certified integrations, satisfy Entra ID multi-factor authentication requirements. For organizations that standardized on a non-Microsoft MFA stack years ago, this removes a long-running tension between Entra Conditional Access enforcement and operational reality.',
+      nl: 'External authentication methods in Microsoft Entra ID is nu algemeen beschikbaar onder de nieuwe naam External MFA. De capability laat je bestaande MFA-provider, Duo, Okta Verify, RSA SecurID, Cisco Secure Access en anderen via gecertificeerde integraties, voldoen aan Entra ID multi-factor authentication-vereisten. Voor organisaties die jaren geleden op een niet-Microsoft MFA-stack standaardiseerden, neemt dit een lang lopende spanning weg tussen Entra Conditional Access-handhaving en operationele werkelijkheid.'
     },
     sections: [
       {
@@ -45,8 +45,8 @@ export const externalMfaGaPost: BlogPost = {
           nl: 'Hoe External MFA werkt tijdens runtime'
         },
         content: {
-          en: 'When a user hits a Conditional Access policy that requires MFA, Entra ID redirects to your configured external provider through a standardized flow. The provider performs the MFA challenge , push notification, hardware token, biometric, whatever you have configured , and returns a signed assertion. Entra ID accepts the assertion as satisfying the MFA requirement and continues the original sign-in. To the user, it looks like a single sign-in flow with their existing MFA app. To the audit log, the External MFA event is recorded with the provider name.',
-          nl: 'Wanneer een gebruiker tegen een Conditional Access-policy aanloopt die MFA vereist, redirect Entra ID naar je geconfigureerde externe provider via een gestandaardiseerd flow. De provider voert de MFA-challenge uit , push notification, hardware token, biometric, wat dan ook , en stuurt een getekende assertion terug. Entra ID accepteert de assertion als voldoening aan de MFA-vereiste en zet de oorspronkelijke sign-in voort. Voor de gebruiker ziet het eruit als één sign-in flow met de bestaande MFA-app. In de audit log wordt het External MFA-event geregistreerd met de provider-naam.'
+          en: 'When a user hits a Conditional Access policy that requires MFA, Entra ID redirects to your configured external provider through a standardized flow. The provider performs the MFA challenge, push notification, hardware token, biometric, whatever you have configured, and returns a signed assertion. Entra ID accepts the assertion as satisfying the MFA requirement and continues the original sign-in. To the user, it looks like a single sign-in flow with their existing MFA app. To the audit log, the External MFA event is recorded with the provider name.',
+          nl: 'Wanneer een gebruiker tegen een Conditional Access-policy aanloopt die MFA vereist, redirect Entra ID naar je geconfigureerde externe provider via een gestandaardiseerd flow. De provider voert de MFA-challenge uit, push notification, hardware token, biometric, wat dan ook, en stuurt een getekende assertion terug. Entra ID accepteert de assertion als voldoening aan de MFA-vereiste en zet de oorspronkelijke sign-in voort. Voor de gebruiker ziet het eruit als één sign-in flow met de bestaande MFA-app. In de audit log wordt het External MFA-event geregistreerd met de provider-naam.'
         }
       },
       {
@@ -55,8 +55,8 @@ export const externalMfaGaPost: BlogPost = {
           nl: 'De sterke-authenticatie-caveat'
         },
         content: {
-          en: 'External MFA satisfies the standard MFA requirement, but Entra ID has a separate concept called authentication strength used by some Conditional Access scenarios , phishing-resistant, hardware-backed, certificate-based. Not every external provider implements every strength. Before assuming External MFA solves your scenario, check whether the Conditional Access policies you depend on require a strength your external provider supports. The list of certified providers and their strength claims is published in Entra docs and updated regularly.',
-          nl: 'External MFA voldoet aan de standaard MFA-vereiste, maar Entra ID heeft een apart concept genaamd authentication strength dat door sommige Conditional Access-scenarios wordt gebruikt , phishing-resistant, hardware-backed, certificate-based. Niet elke externe provider implementeert elke strength. Controleer voordat je aanneemt dat External MFA jouw scenario oplost of de Conditional Access-policies waar je op leunt een strength vereisen die je externe provider ondersteunt. De lijst met gecertificeerde providers en hun strength-claims staat in Entra-docs en wordt regelmatig bijgewerkt.'
+          en: 'External MFA satisfies the standard MFA requirement, but Entra ID has a separate concept called authentication strength used by some Conditional Access scenarios, phishing-resistant, hardware-backed, certificate-based. Not every external provider implements every strength. Before assuming External MFA solves your scenario, check whether the Conditional Access policies you depend on require a strength your external provider supports. The list of certified providers and their strength claims is published in Entra docs and updated regularly.',
+          nl: 'External MFA voldoet aan de standaard MFA-vereiste, maar Entra ID heeft een apart concept genaamd authentication strength dat door sommige Conditional Access-scenarios wordt gebruikt, phishing-resistant, hardware-backed, certificate-based. Niet elke externe provider implementeert elke strength. Controleer voordat je aanneemt dat External MFA jouw scenario oplost of de Conditional Access-policies waar je op leunt een strength vereisen die je externe provider ondersteunt. De lijst met gecertificeerde providers en hun strength-claims staat in Entra-docs en wordt regelmatig bijgewerkt.'
         }
       },
       {

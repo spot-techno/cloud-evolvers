@@ -67,10 +67,10 @@ export function useTheme() {
     if (typeof window !== 'undefined') {
       if (newTheme === 'dark') {
         document.documentElement.classList.add('dark');
-        console.log('✅ Added .dark class to <html>');
+        console.log('✅ Added.dark class to <html>');
       } else {
         document.documentElement.classList.remove('dark');
-        console.log('✅ Removed .dark class from <html>');
+        console.log('✅ Removed.dark class from <html>');
       }
     }
   };

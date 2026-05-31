@@ -25,8 +25,8 @@ export const azureIamGuidePost: BlogPost = {
   readTime: 15,
   content: {
     introduction: {
-      en: 'Get IAM wrong in Azure and nothing else matters. Your network security, your encryption, your monitoring , all of it falls apart if the wrong person has the wrong access. Azure gives you RBAC, Entra ID, Conditional Access, and PIM. Each solves a different piece of the puzzle. The trick is knowing how they fit together and where teams typically get tripped up.',
-      nl: 'Als je IAM verkeerd inricht in Azure, maakt de rest niet meer uit. Je netwerkbeveiliging, je encryptie, je monitoring , het valt allemaal om als de verkeerde persoon de verkeerde toegang heeft. Azure geeft je RBAC, Entra ID, Conditional Access en PIM. Elk lost een ander stuk van de puzzel op. De kunst is weten hoe ze samenwerken en waar teams doorgaans struikelen.'
+      en: 'Get IAM wrong in Azure and nothing else matters. Your network security, your encryption, your monitoring, all of it falls apart if the wrong person has the wrong access. Azure gives you RBAC, Entra ID, Conditional Access, and PIM. Each solves a different piece of the puzzle. The trick is knowing how they fit together and where teams typically get tripped up.',
+      nl: 'Als je IAM verkeerd inricht in Azure, maakt de rest niet meer uit. Je netwerkbeveiliging, je encryptie, je monitoring, het valt allemaal om als de verkeerde persoon de verkeerde toegang heeft. Azure geeft je RBAC, Entra ID, Conditional Access en PIM. Elk lost een ander stuk van de puzzel op. De kunst is weten hoe ze samenwerken en waar teams doorgaans struikelen.'
     },
     sections: [
       {
@@ -45,7 +45,7 @@ export const azureIamGuidePost: BlogPost = {
           nl: 'Microsoft Entra ID Integratie'
         },
         content: {
-          en: 'Microsoft Entra ID (formerly Azure AD) is the cloud identity provider. It handles authentication, provides SSO capabilities, and integrates with on-premises Active Directory through Entra Connect. Understanding the sync process is crucial for hybrid environments.',
+          en: 'Microsoft Entra ID (formerly Azure AD) is the cloud identity provider. It handles authentication, provides SSO capabilities, and integrates with on-premises Active Directory through Entra Connect. Understanding the sync process is essential for hybrid environments.',
           nl: 'Microsoft Entra ID (voorheen Azure AD) is de cloud identity provider. Het handelt authenticatie af, biedt SSO-mogelijkheden en integreert met on-premises Active Directory via Entra Connect. Het begrijpen van het sync-proces is cruciaal voor hybride omgevingen.'
         }
       },
