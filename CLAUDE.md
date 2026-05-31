@@ -3,11 +3,13 @@
 ## Project Overview
 Cloud Evolvers Training is a professional training platform built with React, TypeScript, and Vite, deployed on Cloudflare Pages.
 
-## Brand assets (2026-05-30)
+## Brand assets (2026-05-31)
 
-The active Cloud Evolvers wordmark set lives in `public/brand/2026-05-30/`. The header and footer use `cloud-evolvers-wordmark-1024.png` so the company name stays readable. `public/logo.svg` wraps the square profile logo for compact placements.
+Cloud Evolvers uses the original slate, mint, and green palette: deep slate `#293141`, cloud mint `#74d6b4`, and action green `#0f8a69`.
 
-Use `public/brand/2026-05-30/cloud-evolvers-linkedin-logo-512.png` for profile uploads, `public/brand/2026-05-30/cloud-evolvers-brand-banner-1920x640.png` for wide banners, and `public/cloudevolvers-social-card.png` for Open Graph previews.
+The site header uses `CloudEvolversMark` plus live text for readability. The footer uses `public/cloudevolvers-logo-with-slogan.png`. Use `public/favicon.svg`, `public/logo-192.png`, and `public/apple-touch-icon.png` for browser and app icons.
+
+Use `public/cloudevolvers-social-card.png` for Open Graph previews and `public/brand/2026-05-31/cloud-evolvers-poster-1080x1350.png` for the current Cloud Evolvers poster. Do not reuse the dark 2026-05-30 LinkedIn wordmark assets on this site.
 
 ## ☁️ Cloudflare MCP Tools Available
 
