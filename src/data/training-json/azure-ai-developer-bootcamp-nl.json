@@ -200,6 +200,36 @@
   ],
   "personalStory": {
     "instructor": "Yaïr Knijn",
-    "story": "Als ontwikkelaar die tientallen cloud-native applicaties op Azure heeft gebouwd, heb ik elke fout gemaakt die mogelijk is—en ervan geleerd. Van serverless architecturen tot gecontaineriseerde workloads, ik laat je de ontwikkelpatronen zien die leiden tot onderhoudbare, schaalbare applicaties. Dit is geen theorie; dit is wat werkt in productie."
-  }
+    "story": "Als ontwikkelaar die tientallen cloud-native applicaties op Azure heeft gebouwd, heb ik elke fout gemaakt die mogelijk is, en ervan geleerd. Van serverless architecturen tot gecontaineriseerde workloads, ik laat je de ontwikkelpatronen zien die leiden tot onderhoudbare, schaalbare applicaties. Dit is geen theorie; dit is wat werkt in productie."
+  },
+  "handsOnLabs": [
+    {
+      "id": "vision-lab",
+      "title": "Computer Vision implementeren",
+      "description": "Bouw een beeldanalyse-applicatie met Azure Computer Vision",
+      "duration": "3 uur",
+      "icon": "Eye"
+    },
+    {
+      "id": "nlp-lab",
+      "title": "Natural Language Processing",
+      "description": "Bouw een tekstanalyse-oplossing met Azure Text Analytics",
+      "duration": "3 uur",
+      "icon": "MessageSquare"
+    },
+    {
+      "id": "bot-lab",
+      "title": "Chatbots ontwikkelen",
+      "description": "Bouw en deploy een chatbot met Azure Bot Service",
+      "duration": "3 uur",
+      "icon": "Bot"
+    },
+    {
+      "id": "custom-vision-lab",
+      "title": "Custom Vision model",
+      "description": "Train en deploy een eigen computer vision-model",
+      "duration": "3 uur",
+      "icon": "Brain"
+    }
+  ]
 }

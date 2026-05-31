@@ -4,7 +4,7 @@
   "title": "AI Business Professional (AB-730)",
   "subtitle": "Use Generative AI and Copilot to Streamline Business Workflows",
   "description": "Validate your ability to use generative AI and Microsoft 365 Copilot to improve business outcomes without writing code",
-  "overview": "This course prepares you for the AB-730 certification exam. You will learn how to apply Copilot across Microsoft 365 apps, use generative AI to streamline workflows, create effective prompts, and measure the business impact of AI adoption. No coding experience required — this is designed for business professionals who want to work smarter with AI tools.",
+  "overview": "This course prepares you for the AB-730 certification exam. You will learn how to apply Copilot across Microsoft 365 apps, use generative AI to streamline workflows, create effective prompts, and measure the business impact of AI adoption. No coding experience required. This is designed for business professionals who want to work smarter with AI tools.",
   "category": "Microsoft 365",
   "subcategory": "AI for Business",
   "difficulty": "Beginner",
@@ -163,6 +163,6 @@
   "updatedAt": "2026-03-31T00:00:00Z",
   "personalStory": {
     "instructor": "Yair Knijn",
-    "story": "The biggest unlock I see with Copilot is not the technology — it is when a business user realises they can do in five minutes what used to take an hour. This course is built from real rollout experiences where we helped teams find those moments and turn them into daily habits."
+    "story": "The biggest shift I see with Copilot is not the technology. It is when a business user realises they can do in five minutes what used to take an hour. This course is built from real rollout experiences where we helped teams find those moments and turn them into daily habits."
   }
 }
