@@ -2,8 +2,8 @@
   "id": "power-platform-automation",
   "slug": "power-platform-automation",
   "title": "Power Platform Automation Bootcamp",
-  "description": "Unlock the power of low-code automation with Microsoft Power Platform",
-  "content": "Unlock the power of low-code automation with Microsoft Power Platform. Master Power Apps, Power Automate, and Power BI to build sophisticated business solutions without traditional programming.",
+  "description": "Build low-code automation with Microsoft Power Platform",
+  "content": "Build low-code automation with Microsoft Power Platform. Master Power Apps, Power Automate, and Power BI to build sophisticated business solutions without traditional programming.",
   "category": "Power Platform",
   "subcategory": "Power Platform",
   "difficulty": "Intermediate",
@@ -92,7 +92,7 @@
   },
   "maxParticipants": 10,
   "icon": "Lightning",
-  "overview": "Unlock the power of low-code automation with Microsoft Power Platform. Master Power Apps, Power Automate, and Power BI to build sophisticated business solutions without traditional programming.",
+  "overview": "Build low-code automation with Microsoft Power Platform. Master Power Apps, Power Automate, and Power BI to build sophisticated business solutions without traditional programming.",
   "whatYouWillLearn": [
     {
       "title": "Power Apps Development",

@@ -52,8 +52,7 @@ export default function TrainingDetailContent({ training }: { training: Training
       {hasOverview && (
         <motion.section
           initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
           <Eyebrow>
@@ -68,8 +67,7 @@ export default function TrainingDetailContent({ training }: { training: Training
       {training.personalStory && (
         <motion.section
           initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
           className="border-l-2 border-[color:var(--ed-accent)] pl-6 sm:pl-8 py-2 max-w-2xl"
         >
@@ -91,8 +89,7 @@ export default function TrainingDetailContent({ training }: { training: Training
       {objectives.length > 0 && (
         <motion.section
           initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
           <div className="flex items-center gap-3 pb-5 border-b border-[color:var(--ed-rule)]">
@@ -134,8 +131,7 @@ export default function TrainingDetailContent({ training }: { training: Training
       {modules.length > 0 && (
         <motion.section
           initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
           <div className="flex items-center justify-between pb-5 border-b border-[color:var(--ed-rule)]">
@@ -200,8 +196,7 @@ export default function TrainingDetailContent({ training }: { training: Training
       {labs.length > 0 && (
         <motion.section
           initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
           <div className="flex items-center gap-3 pb-5 border-b border-[color:var(--ed-rule)]">

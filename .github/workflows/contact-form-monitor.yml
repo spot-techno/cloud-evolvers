@@ -12,7 +12,8 @@ env:
 
 jobs:
   health-check:
-    runs-on: ubuntu-latest
+    # mbrother aggressive rollout (local gh CLI): migrated to logan-laptop + Podman
+    runs-on: [self-hosted, linux, x64, podman, logan-laptop, beefy]
     name: Check Contact Form API Health
     
     steps:
