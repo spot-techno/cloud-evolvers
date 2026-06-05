@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Pages
+name: Deploy to Cloudflare Workers
 
 on:
   push:
@@ -8,8 +8,10 @@ on:
   # No pull_request trigger on purpose: this job runs on a persistent
   # self-hosted runner that holds deploy credentials, so it must only execute
   # code from branches pushed by trusted collaborators (push needs write
-  # access). Fork PRs must never run here. Branch pushes still build and
-  # deploy the test preview.
+  # access). Fork PRs must never run here. Non-master branches build only
+  # (a CI check); the Worker is deployed from master exclusively, because a
+  # Worker route claims the live domain (there is no per-branch preview alias
+  # like Pages provided — test.cloudevolvers.com is retired by this migration).
   workflow_dispatch:
 
 concurrency:
@@ -18,7 +20,6 @@ concurrency:
 
 permissions:
   contents: read
-  deployments: write
 
 jobs:
   deploy:
@@ -74,12 +75,26 @@ jobs:
           VITE_BUILD_DATE: ${{ steps.build-date.outputs.date }}
           VITE_FORM_API_KEY: ${{ secrets.FORM_API_KEY }}
 
-      # Project-level Pages secrets are global, not per-deployment, so they
-      # only need to be set from master. Gating these keeps FORM_API_KEY,
-      # EMAIL_CLIENT_SECRET and ADMIN_PASSWORD out of every feature-branch job.
+      # ---- Deploy the Worker (master only) ----
+      # A Worker route claims the live domain, so feature branches must not
+      # deploy. The deploy creates/updates the `cloud-evolvers-train` Worker and
+      # binds the static assets (dist/) + D1 (PRICING_DB) + routes from
+      # wrangler.toml. Worker routes take precedence over the old Pages custom
+      # domains, so this cuts cloudevolvers.com over automatically.
+      - name: Deploy Worker
+        id: deploy
+        if: github.ref_name == 'master'
+        run: bunx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # ---- Worker secrets (master only, after the Worker exists) ----
+      # Applied live without a redeploy. Same GitHub Actions secrets the old
+      # Pages deploy used; now set as Worker secrets instead of Pages secrets.
       - name: Set FORM_API_KEY secret
         if: github.ref_name == 'master'
-        run: echo "$FORM_API_KEY" | bunx wrangler pages secret put FORM_API_KEY --project-name cloud-evolvers-train
+        run: echo "$FORM_API_KEY" | bunx wrangler secret put FORM_API_KEY
         env:
           FORM_API_KEY: ${{ secrets.FORM_API_KEY }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -87,7 +102,7 @@ jobs:
 
       - name: Set EMAIL_CLIENT_SECRET secret
         if: github.ref_name == 'master'
-        run: echo "$EMAIL_CLIENT_SECRET" | bunx wrangler pages secret put EMAIL_CLIENT_SECRET --project-name cloud-evolvers-train
+        run: echo "$EMAIL_CLIENT_SECRET" | bunx wrangler secret put EMAIL_CLIENT_SECRET
         env:
           EMAIL_CLIENT_SECRET: ${{ secrets.EMAIL_CLIENT_SECRET }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -95,39 +110,11 @@ jobs:
 
       - name: Set ADMIN_PASSWORD secret
         if: github.ref_name == 'master'
-        run: echo "$ADMIN_PASSWORD" | bunx wrangler pages secret put ADMIN_PASSWORD --project-name cloud-evolvers-train
+        run: echo "$ADMIN_PASSWORD" | bunx wrangler secret put ADMIN_PASSWORD
         env:
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-
-      - name: Deploy to Cloudflare Pages
-        id: deploy
-        run: |
-          set -e
-          # master -> production branch on Pages (serves cloudevolvers.com).
-          # any other branch -> collapse to the stable "test" branch alias,
-          # so https://test.cloud-evolvers-train.pages.dev (and the
-          # test.cloudevolvers.com custom domain bound to it) always serves
-          # the latest non-master commit pushed to GitHub.
-          if [[ "$GITHUB_REF_NAME" == "master" ]]; then
-            TARGET_BRANCH="master"
-          else
-            TARGET_BRANCH="test"
-          fi
-          echo "Deploying $GITHUB_REF_NAME -> Pages branch '$TARGET_BRANCH'..."
-
-          OUTPUT=$(bunx wrangler pages deploy dist --project-name=cloud-evolvers-train --branch="$TARGET_BRANCH" 2>&1)
-          echo "$OUTPUT"
-
-          DEPLOYMENT_URL=$(echo "$OUTPUT" | grep -oP 'https://[^\s]+\.pages\.dev' | head -1 || echo "")
-          echo "deployment_url=$DEPLOYMENT_URL" >> "$GITHUB_OUTPUT"
-          echo "target_branch=$TARGET_BRANCH" >> "$GITHUB_OUTPUT"
-          echo "Deployment successful: $DEPLOYMENT_URL"
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          GITHUB_REF_NAME: ${{ github.ref_name }}
 
       - name: Verify deployment
         if: github.ref_name == 'master'
@@ -155,22 +142,14 @@ jobs:
           echo "Deployment verified successfully"
 
       - name: Deployment Summary
-        if: success()
+        if: success() && github.ref_name == 'master'
         env:
-          REF_NAME: ${{ github.ref_name }}
           COMMIT_SHA: ${{ github.sha }}
-          DEPLOY_URL: ${{ steps.deploy.outputs.deployment_url }}
         run: |
           echo "## Deployment Result" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "| Field | Value |" >> "$GITHUB_STEP_SUMMARY"
           echo "|-------|-------|" >> "$GITHUB_STEP_SUMMARY"
-          echo "| Project | cloud-evolvers-train |" >> "$GITHUB_STEP_SUMMARY"
-          echo "| Branch | $REF_NAME |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Worker | cloud-evolvers-train |" >> "$GITHUB_STEP_SUMMARY"
           echo "| Commit | $COMMIT_SHA |" >> "$GITHUB_STEP_SUMMARY"
-          if [[ "$REF_NAME" == "master" ]]; then
-            echo "| URL | https://cloudevolvers.com |" >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "| URL | https://test.cloudevolvers.com |" >> "$GITHUB_STEP_SUMMARY"
-            echo "| Preview | $DEPLOY_URL |" >> "$GITHUB_STEP_SUMMARY"
-          fi
+          echo "| URL | https://cloudevolvers.com |" >> "$GITHUB_STEP_SUMMARY"
