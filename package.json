@@ -95,6 +95,7 @@
         "embla-carousel-react": "^8.5.2",
         "framer-motion": "^12.6.2",
         "gray-matter": "^4.0.3",
+        "hono": "^4.12.23",
         "input-otp": "^1.4.2",
         "lottie-react": "^2.4.1",
         "lucide-react": "^0.484.0",
