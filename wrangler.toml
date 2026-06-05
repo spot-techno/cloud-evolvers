@@ -28,7 +28,11 @@ VITE_SHOW_CONSTRUCTION_BANNER = "false"
 VITE_ENVIRONMENT = "production"
 VITE_SITE_URL = "https://cloudevolvers.com"
 EMAIL_TENANT_ID = "34dd9821-1508-4858-974c-e5fd1493a58f"
-EMAIL_CLIENT_ID = "61cfceb9-9bf4-456c-8170-2a4a521abf8d"
+# Maintained "Cloud Evolvers Mail Sender" SPN (sends as hello@/yair@cloudevolvers.com).
+# Secret = Key Vault spotcloud-global-kv/cloudevolvers-mail-spn-secret (mirrored to the
+# GitHub Actions secret EMAIL_CLIENT_SECRET). Replaced the orphaned xv-ce-prod-email-spn
+# (61cfceb9), whose stored secret had gone stale -> Graph 401 on the lead form.
+EMAIL_CLIENT_ID = "15f26f15-81a0-42bd-8827-348cd7736504"
 EMAIL_SENDER_ADDRESS = "hello@cloudevolvers.com"
 
 # D1 Database binding (single top-level environment).
