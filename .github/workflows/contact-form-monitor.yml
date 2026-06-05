@@ -6,109 +6,132 @@ on:
     - cron: '0 */6 * * *'
   workflow_dispatch: # Allow manual trigger
 
+permissions:
+  issues: write
+  contents: read
+
 env:
   PRODUCTION_URL: https://www.cloudevolvers.com
-  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}  # Optional
 
 jobs:
   health-check:
-    # mbrother aggressive rollout (local gh CLI): migrated to logan-laptop + Podman
     runs-on: [self-hosted, linux, x64, spot-tech-ci]
     name: Check Contact Form API Health
-    
+
     steps:
       - name: Check Health Endpoint
         id: health
         run: |
-          echo "🏥 Checking health endpoint..."
+          echo "Checking health endpoint..."
           HEALTH_RESPONSE=$(curl -s -w "\n%{http_code}" "${{ env.PRODUCTION_URL }}/api/health" || echo "FAILED")
           HTTP_CODE=$(echo "$HEALTH_RESPONSE" | tail -n1)
           BODY=$(echo "$HEALTH_RESPONSE" | head -n -1)
-          
+
           echo "health_status=$HTTP_CODE" >> $GITHUB_OUTPUT
           echo "Health Status: $HTTP_CODE"
           echo "Response: $BODY"
-          
+
           if [ "$HTTP_CODE" != "200" ]; then
-            echo "❌ Health check failed with status $HTTP_CODE"
+            echo "Health check failed with status $HTTP_CODE"
             echo "health_ok=false" >> $GITHUB_OUTPUT
           else
-            echo "✅ Health check passed"
+            echo "Health check passed"
             echo "health_ok=true" >> $GITHUB_OUTPUT
           fi
 
-      - name: Test Submit Consultation Endpoint (OPTIONS)
+      # Real end-to-end check of the email path: /api/monitor performs an Azure AD
+      # client-credentials token request against the Microsoft Graph app and returns
+      # 503 if it fails (e.g. a stale/expired EMAIL_CLIENT_SECRET). This is what the
+      # contact form depends on to send mail. It does NOT send any email, so it is
+      # safe to run every 6 hours. (The old check only hit OPTIONS, which stays 200
+      # even when Graph auth is broken — so a dead form went unnoticed.)
+      - name: Verify email auth (Microsoft Graph)
         id: consultation
+        env:
+          FORM_API_KEY: ${{ secrets.FORM_API_KEY }}
         run: |
-          echo "📬 Checking submit-consultation endpoint..."
-          RESPONSE=$(curl -s -w "\n%{http_code}" -X OPTIONS "${{ env.PRODUCTION_URL }}/api/submit-consultation" \
-            -H "Content-Type: application/json" \
-            -H "Origin: https://www.cloudevolvers.com" || echo "FAILED")
+          echo "Verifying contact-form email auth via /api/monitor..."
+          RESPONSE=$(curl -s -w "\n%{http_code}" "${{ env.PRODUCTION_URL }}/api/monitor" \
+            -H "x-api-key: $FORM_API_KEY" || echo "FAILED")
           HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
-          
+          BODY=$(echo "$RESPONSE" | head -n -1)
+
           echo "consultation_status=$HTTP_CODE" >> $GITHUB_OUTPUT
-          echo "Consultation Endpoint Status: $HTTP_CODE"
-          
-          # OPTIONS should return 200 or 204
-          if [ "$HTTP_CODE" == "200" ] || [ "$HTTP_CODE" == "204" ]; then
-            echo "✅ Submit consultation endpoint is accessible"
+          echo "Monitor endpoint status: $HTTP_CODE"
+          echo "Response: $BODY"
+
+          REASON=$(echo "$BODY" | jq -r '.message // "Email auth check failed"' 2>/dev/null || echo "Email auth check failed")
+          echo "consultation_reason=$REASON" >> $GITHUB_OUTPUT
+
+          if [ "$HTTP_CODE" == "200" ]; then
+            echo "Contact-form email auth is healthy"
             echo "consultation_ok=true" >> $GITHUB_OUTPUT
           else
-            echo "❌ Submit consultation endpoint check failed with status $HTTP_CODE"
+            echo "Contact-form email auth FAILED: $REASON"
             echo "consultation_ok=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Create Issue on Failure
         if: steps.health.outputs.health_ok == 'false' || steps.consultation.outputs.consultation_ok == 'false'
         uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        env:
+          HEALTH_STATUS: ${{ steps.health.outputs.health_status }}
+          CONSULTATION_STATUS: ${{ steps.consultation.outputs.consultation_status }}
+          HEALTH_OK: ${{ steps.health.outputs.health_ok }}
+          CONSULTATION_OK: ${{ steps.consultation.outputs.consultation_ok }}
+          CONSULTATION_REASON: ${{ steps.consultation.outputs.consultation_reason }}
         with:
           script: |
-            const healthStatus = '${{ steps.health.outputs.health_status }}';
-            const consultationStatus = '${{ steps.consultation.outputs.consultation_status }}';
-            const healthOk = '${{ steps.health.outputs.health_ok }}' === 'true';
-            const consultationOk = '${{ steps.consultation.outputs.consultation_ok }}' === 'true';
-            
-            // Check for existing open issues with this title
+            const healthStatus = process.env.HEALTH_STATUS;
+            const consultationStatus = process.env.CONSULTATION_STATUS;
+            const healthOk = process.env.HEALTH_OK === 'true';
+            const consultationOk = process.env.CONSULTATION_OK === 'true';
+            const consultationReason = process.env.CONSULTATION_REASON || 'Unknown';
+
+            // Avoid spamming: one open alert at a time.
             const existingIssues = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: 'open',
               labels: 'monitoring,critical'
             });
-            
-            const alertTitle = '🚨 Contact Form API Health Alert';
-            const hasExistingAlert = existingIssues.data.some(issue => 
-              issue.title.includes('Contact Form API Health Alert')
+            const hasExistingAlert = existingIssues.data.some(issue =>
+              issue.title.includes('Cloud Evolvers contact form')
             );
-            
             if (hasExistingAlert) {
               console.log('An alert issue already exists, skipping creation to avoid spam');
               return;
             }
-            
-            const body = `## 🚨 Contact Form API Health Check Failed
-            
+
+            const alertTitle = '🚨 ACTION REQUIRED: Cloud Evolvers contact form is DOWN';
+            const body = `## 🚨 ACTION REQUIRED — the Cloud Evolvers contact form is broken
+
             **Detected at:** ${new Date().toISOString()}
-            
+
             ### Status Summary
-            | Endpoint | Status | Result |
-            |----------|--------|--------|
-            | /api/health | ${healthStatus} | ${healthOk ? '✅ OK' : '❌ FAILED'} |
-            | /api/submit-consultation | ${consultationStatus} | ${consultationOk ? '✅ OK' : '❌ FAILED'} |
-            
-            ### Action Required
-            Please investigate the Cloudflare Pages deployment and ensure:
-            1. The Cloudflare Pages deployment is live
-            2. Environment variables are set (check /api/health endpoint)
-            3. Secrets are configured via GitHub Actions deploy workflow
-            
+            | Check | Status | Result |
+            |-------|--------|--------|
+            | /api/health (site up) | ${healthStatus} | ${healthOk ? '✅ OK' : '❌ FAILED'} |
+            | /api/monitor (email auth) | ${consultationStatus} | ${consultationOk ? '✅ OK' : '❌ FAILED — ' + consultationReason} |
+
+            ${consultationOk ? '' : `### Most likely cause: stale \`EMAIL_CLIENT_SECRET\`
+            The contact form sends mail via the **Cloud Evolvers Mail Sender** SPN
+            (\`15f26f15-81a0-42bd-8827-348cd7736504\`). Its secret value lives in
+            **Azure Key Vault** \`spotcloud-global-kv/cloudevolvers-mail-spn-secret\`.
+
+            **To fix:**
+            1. Pull the current secret: \`az keyvault secret show --vault-name spotcloud-global-kv --name cloudevolvers-mail-spn-secret --query value -o tsv\`
+            2. Update the GitHub Actions secret \`EMAIL_CLIENT_SECRET\` in this repo with that value.
+            3. Re-run the deploy workflow (or set the Worker secret directly with \`wrangler secret put EMAIL_CLIENT_SECRET\`).
+            4. Confirm: \`curl https://www.cloudevolvers.com/api/monitor -H "x-api-key: <FORM_API_KEY>"\` returns 200.`}
+
             ### How to Close
-            Close this issue once the problem is resolved. The next health check will create a new issue if problems persist.
-            
+            Close this issue once \`/api/monitor\` returns 200 again. The next check will re-open if it is still broken.
+
             ---
-            *This issue was automatically created by the Contact Form Health Monitor workflow.*
+            *Auto-created by the Contact Form Health Monitor (runs every 6h).*
             `;
-            
+
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -116,16 +139,15 @@ jobs:
               body: body,
               labels: ['monitoring', 'critical', 'automated']
             });
-            
-            console.log('Created alert issue');
+            console.log('Created ACTION REQUIRED alert issue');
 
       - name: Summary
         run: |
           echo "## Contact Form Health Check Results" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Endpoint | Status |" >> $GITHUB_STEP_SUMMARY
-          echo "|----------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Check | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
           echo "| /api/health | ${{ steps.health.outputs.health_ok == 'true' && '✅ OK' || '❌ FAILED' }} (${{ steps.health.outputs.health_status }}) |" >> $GITHUB_STEP_SUMMARY
-          echo "| /api/submit-consultation | ${{ steps.consultation.outputs.consultation_ok == 'true' && '✅ OK' || '❌ FAILED' }} (${{ steps.consultation.outputs.consultation_status }}) |" >> $GITHUB_STEP_SUMMARY
+          echo "| /api/monitor (email auth) | ${{ steps.consultation.outputs.consultation_ok == 'true' && '✅ OK' || '❌ FAILED' }} (${{ steps.consultation.outputs.consultation_status }}) |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Run completed at: $(date -u)" >> $GITHUB_STEP_SUMMARY
