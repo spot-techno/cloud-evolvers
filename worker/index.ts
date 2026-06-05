@@ -1,6 +1,7 @@
 import { Hono, type Context, type ExecutionContext } from 'hono';
 
 import * as adminContacts from '../functions/api/admin/contacts';
+import * as adminLeads from '../functions/api/admin/leads';
 import * as adminEnrollmentById from '../functions/api/admin/enrollments/[id]';
 import * as adminEnrollments from '../functions/api/admin/enrollments';
 import * as adminTrainingSessionById from '../functions/api/admin/training-sessions/[id]';
@@ -83,6 +84,9 @@ app.post('/api/submit-consultation', callPagesHandler(submitConsultation.onReque
 
 app.options('/api/admin/contacts', callPagesHandler(adminContacts.onRequestOptions));
 app.get('/api/admin/contacts', callPagesHandler(adminContacts.onRequestGet));
+
+app.options('/api/admin/leads', callPagesHandler(adminLeads.onRequestOptions));
+app.get('/api/admin/leads', callPagesHandler(adminLeads.onRequestGet));
 
 app.options('/api/admin/enrollments', callPagesHandler(adminEnrollments.onRequestOptions));
 app.get('/api/admin/enrollments', callPagesHandler(adminEnrollments.onRequestGet));

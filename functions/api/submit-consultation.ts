@@ -6,6 +6,7 @@
  */
 
 interface Env {
+  PRICING_DB: D1Database;
   FORM_API_KEY: string;
   EMAIL_TENANT_ID: string;
   EMAIL_CLIENT_ID: string;
@@ -45,6 +46,7 @@ const PORTFOLIO_EVENT_NAMES = new Set<PortfolioEventName>([
 ]);
 
 import { corsHeaders, optionsResponse } from './_lib/cors';
+import { insertLead, markLeadDelivery } from './_lib/leads';
 
 export const onRequestOptions: PagesFunction = async (context) => {
   return optionsResponse(context.request);
@@ -109,6 +111,32 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       );
     }
 
+    // Persist the lead BEFORE attempting email, so an email/auth outage can
+    // never silently lose a submission. A DB write failure must not block the
+    // email path, so this is best-effort (logged, not fatal).
+    let leadId: string | null = null;
+    try {
+      leadId = await insertLead(env.PRICING_DB, {
+        name: body.name,
+        email: body.email,
+        phone: body.phone ?? null,
+        training: body.training,
+        message: body.message ?? null,
+        preferredDates: body.preferredDates ?? null,
+        language: body.language ?? 'en',
+        leadType,
+        sourceForm: typeof body.portfolioMetadata?.source_form === 'string'
+          ? body.portfolioMetadata.source_form
+          : null,
+        sourcePath: body.sourcePath ?? null,
+        sourceUrl: body.sourceUrl ?? null,
+        visitorId: body.visitorId ?? null,
+        sessionId: body.sessionId ?? null,
+      });
+    } catch (e) {
+      console.error('Failed to persist lead before email:', e);
+    }
+
     // Get Microsoft Graph access token using dedicated email service principal
     const emailClientId = env.EMAIL_CLIENT_ID;
     const emailSender = env.EMAIL_SENDER_ADDRESS;
@@ -130,6 +158,11 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     if (!tokenResponse.ok) {
       const errorText = await tokenResponse.text();
       console.error('Failed to get access token:', errorText);
+      // Lead is already saved; record that the notification email failed.
+      await safeMarkLead(env.PRICING_DB, leadId, {
+        notifyStatus: 'notify_failed',
+        notifyError: `graph_token_http_${tokenResponse.status}`,
+      });
       return new Response(
         JSON.stringify({
           error: 'Authentication Error',
@@ -310,6 +343,11 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     if (!sendEmailResponse.ok) {
       const errorText = await sendEmailResponse.text();
       console.error('Failed to send email:', errorText);
+      // Lead is already saved; record that the notification email failed.
+      await safeMarkLead(env.PRICING_DB, leadId, {
+        notifyStatus: 'notify_failed',
+        notifyError: `graph_send_http_${sendEmailResponse.status}`,
+      });
       return new Response(
         JSON.stringify({
           error: 'Email Send Error',
@@ -378,6 +416,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       });
     }
 
+    // Notification email sent — mark the saved lead delivered.
+    await safeMarkLead(env.PRICING_DB, leadId, {
+      notifyStatus: 'notified',
+      autoresponderStatus: autoReplyResponse.ok ? 'sent' : 'failed',
+    });
+
     // Success response
     return new Response(
       JSON.stringify({
@@ -401,6 +445,20 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     );
   }
 };
+
+/** Update lead delivery status without ever throwing into the response path. */
+async function safeMarkLead(
+  db: D1Database,
+  leadId: string | null,
+  fields: Parameters<typeof markLeadDelivery>[2],
+): Promise<void> {
+  if (!leadId) return;
+  try {
+    await markLeadDelivery(db, leadId, fields);
+  } catch (e) {
+    console.error('Failed to update lead delivery status:', e);
+  }
+}
 
 function isAuthorizedSubmission(request: Request, apiKey: string | null, expectedApiKey: string): boolean {
   if (apiKey && expectedApiKey && apiKey === expectedApiKey) return true;
