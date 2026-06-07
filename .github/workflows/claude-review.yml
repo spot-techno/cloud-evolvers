@@ -1,0 +1,19 @@
+# Managed by spot-techno/.github sync-pr-review-workflows (profile: generic)
+name: Claude Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+  id-token: write
+
+jobs:
+  review:
+    if: vars.CLAUDE_REVIEW_ENABLED == 'true' && vars.CLAUDE_REVIEW_CONFIGURED == 'true'
+    uses: spot-techno/.github/.github/workflows/reusable-claude-review.yml@master
+    secrets: inherit
+    with:
+      prompt_profile: generic
