@@ -48,7 +48,7 @@ export default function TrainingDetailContent({ training }: { training: Training
   const labs = training.handsOnLabs ?? [];
 
   return (
-    <div className="space-y-16 sm:space-y-20">
+    <div className="space-y-12 sm:space-y-16">
       {hasOverview && (
         <motion.section
           initial={{ opacity: 0, y: 16 }}
