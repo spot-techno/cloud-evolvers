@@ -133,7 +133,7 @@ export default function TrainingDetailPage() {
           )}
 
           <div className="relative grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-start">
-            <div>
+            <div className="max-w-2xl">
               <div className="flex items-center gap-3 flex-wrap">
                 <span
                   className={`inline-flex items-center justify-center rounded-md ${badgeIsStackit ? 'h-12 px-3 bg-[#0c2c2e]' : 'h-12 w-12'}`}
@@ -165,9 +165,9 @@ export default function TrainingDetailPage() {
                 {training.title}
               </Display>
               {training.description && (
-                <Lede className="mt-7">{training.description}</Lede>
+                <Lede className="mt-5">{training.description}</Lede>
               )}
-              <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-[color:var(--ed-rule)] pt-8 max-w-xl">
+              <dl className="mt-8 grid grid-cols-3 gap-6 border-t border-[color:var(--ed-rule)] pt-6">
                 <div>
                   <dt className="ed-eyebrow text-[color:var(--ed-ink-3)]">
                     {isDutch ? 'Duur' : 'Duration'}
@@ -303,7 +303,7 @@ export default function TrainingDetailPage() {
 
       <section className="pb-16 sm:pb-24 pt-4">
         <Wrap>
-          <div className="max-w-3xl">
+          <div className="max-w-2xl">
             <TrainingDetailContent training={training} />
           </div>
         </Wrap>
