@@ -24,7 +24,7 @@ permissions:
 jobs:
   deploy:
     name: Build and Deploy
-    runs-on: [self-hosted, linux, x64, spot-tech-ci]
+    runs-on: arc
 
     steps:
       - name: Checkout code

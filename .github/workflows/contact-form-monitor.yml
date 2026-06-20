@@ -15,7 +15,7 @@ env:
 
 jobs:
   health-check:
-    runs-on: [self-hosted, linux, x64, spot-tech-ci]
+    runs-on: arc
     name: Check Contact Form API Health
 
     steps:
