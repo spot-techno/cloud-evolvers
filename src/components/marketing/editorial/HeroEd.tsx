@@ -1,7 +1,6 @@
 import { ArrowRight } from '@phosphor-icons/react';
 import { Wrap, Eyebrow, Display, Lede, EdButton } from '@/components/editorial';
 import { useTranslations } from '@/hooks/use-translations';
-import { BackgroundIcons } from '@/components/BackgroundIcons';
 
 export function HeroEd() {
   const { isDutch } = useTranslations();
@@ -21,7 +20,6 @@ export function HeroEd() {
   return (
     <section className="relative bg-[color:var(--ed-bg)] pt-16 sm:pt-24 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <BackgroundIcons variant="hero" />
       </div>
       <Wrap>
         <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_0.65fr] gap-12 lg:gap-16 items-start">

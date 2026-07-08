@@ -11,7 +11,6 @@ import { useLanguageContext } from '@/contexts/LanguageContext';
 import { useTranslations } from '@/hooks/use-translations';
 import type { TrainingJSON } from '@/content/types';
 import { Wrap, Eyebrow, Display, Lede, EdButton } from '@/components/editorial';
-import { BackgroundIcons } from '@/components/BackgroundIcons';
 import { examColor, badgeSrc, isStackit, categoryCode } from '@/lib/cert-badge';
 
 function formatPrice(cents: number | null | undefined, language: 'en' | 'nl' = 'en'): string | null {
@@ -95,7 +94,6 @@ export default function TrainingDetailPage() {
     <div className="bg-[color:var(--ed-bg)] min-h-screen text-[color:var(--ed-ink)]">
       <section className="relative pt-12 sm:pt-16 pb-8 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <BackgroundIcons variant="training" />
         </div>
         <Wrap>
           <Link

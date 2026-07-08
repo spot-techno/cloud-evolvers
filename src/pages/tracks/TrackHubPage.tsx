@@ -3,7 +3,6 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Briefcase, Target } from '@phosphor-icons/react';
 import { SEO } from '@/components/SEO';
 import { Wrap, Eyebrow, Display, Lede, EdButton } from '@/components/editorial';
-import { BackgroundIcons } from '@/components/BackgroundIcons';
 import { getTrackBySlug, type CertTrack, type CertTrackStep } from '@/data/cert-tracks';
 import { getAllTrainings } from '@/data/training-json';
 import type { TrainingJSON } from '@/data/training-json/types';
@@ -57,7 +56,6 @@ const TrackHubPage: React.FC = () => {
 
       <section className="relative pt-20 sm:pt-28 pb-12 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <BackgroundIcons variant="training" />
         </div>
         <Wrap>
           <div className="relative max-w-3xl">

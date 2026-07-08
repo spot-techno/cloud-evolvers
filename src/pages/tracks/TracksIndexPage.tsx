@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from '@phosphor-icons/react';
 import { SEO } from '@/components/SEO';
 import { Wrap, Eyebrow, Display, Lede, EdButton } from '@/components/editorial';
-import { BackgroundIcons } from '@/components/BackgroundIcons';
 import { CERT_TRACKS } from '@/data/cert-tracks';
 import { getAllTrainings } from '@/data/training-json';
 
@@ -20,7 +19,6 @@ const TracksIndexPage: React.FC = () => {
 
       <section className="relative pt-20 sm:pt-28 pb-12 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <BackgroundIcons variant="training" />
         </div>
         <Wrap>
           <div className="relative max-w-3xl">
