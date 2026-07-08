@@ -8,7 +8,6 @@ import { useLanguageContext } from '@/contexts/LanguageContext';
 import { useAllTrainingSessions, formatLowestPrice } from '@/hooks/use-all-training-sessions';
 import { SEO, PAGE_SEO } from '@/components/SEO';
 import { Wrap, Eyebrow, Display, Lede, EdButton } from '@/components/editorial';
-import { BackgroundIcons } from '@/components/BackgroundIcons';
 import { examColor, badgeSrc, categoryCode, isStackit, isWorkshopBadge } from '@/lib/cert-badge';
 
 interface TrainingItem {
@@ -120,7 +119,6 @@ const TrainingOverviewPage: React.FC = () => {
 
       <section className="relative pt-12 sm:pt-16 pb-8 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <BackgroundIcons variant="training" />
         </div>
         <Wrap>
           <div className="relative">

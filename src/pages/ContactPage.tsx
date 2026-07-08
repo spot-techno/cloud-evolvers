@@ -5,7 +5,6 @@ import { useLanguage } from '@/hooks/use-language';
 import TrainingConsultationForm from '@/components/TrainingConsultationForm';
 import { SEO, PAGE_SEO } from '@/components/SEO';
 import { Wrap, Eyebrow, Display, Lede } from '@/components/editorial';
-import { BackgroundIcons } from '@/components/BackgroundIcons';
 import { useTranslations } from '@/hooks/use-translations';
 
 export default function ContactPage() {
@@ -29,7 +28,6 @@ export default function ContactPage() {
 
       <section className="relative pt-20 sm:pt-28 pb-10 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <BackgroundIcons variant="default" />
         </div>
         <Wrap>
           <div className="relative">

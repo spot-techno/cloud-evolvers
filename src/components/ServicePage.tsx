@@ -4,7 +4,6 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { allServices } from '@/data/services';
 import type { Service, ServiceSection as ServiceSectionType } from '@/types/services';
 import { Wrap, Eyebrow, Display, Lede, EdButton } from '@/components/editorial';
-import { BackgroundIcons } from '@/components/BackgroundIcons';
 
 interface ServicePageProps {
   serviceId?: string;
@@ -70,7 +69,6 @@ export function ServicePage({ serviceId: propServiceId }: ServicePageProps) {
     <div className="bg-[color:var(--ed-bg)] min-h-screen text-[color:var(--ed-ink)]">
       <section className="relative pt-20 sm:pt-28 pb-10 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <BackgroundIcons variant="services" />
         </div>
         <Wrap>
           <div className="relative">

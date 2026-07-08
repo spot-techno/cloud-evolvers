@@ -1,7 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslations } from "@/hooks/use-translations";
-import { BackgroundIcons } from "@/components/BackgroundIcons";
 
 const deliveryPointsI18n = {
     en: [
@@ -38,7 +37,6 @@ export function HomeProofSection() {
 
     return (
         <section className="relative overflow-hidden border-t border-brand-100 bg-brand-50 py-24 sm:py-28">
-            <BackgroundIcons variant="services" />
             <div className="container relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
                     <div className="rounded-2xl border border-brand-200 bg-white p-8 shadow-sm sm:p-10">

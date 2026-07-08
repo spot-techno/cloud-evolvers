@@ -2,7 +2,6 @@ import { useTranslations } from '@/hooks/use-translations';
 import { SEO, PAGE_SEO } from '@/components/SEO';
 import { Wrap, Eyebrow, Display, Lede, EdButton } from '@/components/editorial';
 import { ArrowRight } from '@phosphor-icons/react';
-import { BackgroundIcons } from '@/components/BackgroundIcons';
 
 export function AboutPage() {
   const { isDutch } = useTranslations();
@@ -59,7 +58,6 @@ export function AboutPage() {
 
       <section className="relative pt-20 sm:pt-28 pb-12 sm:pb-16 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <BackgroundIcons variant="services" />
         </div>
         <Wrap>
           <div className="relative">
