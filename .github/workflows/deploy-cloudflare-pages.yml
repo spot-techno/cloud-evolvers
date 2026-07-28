@@ -2,9 +2,10 @@ name: Deploy to Cloudflare Workers
 
 on:
   push:
-    branches:
+    # master excluded: deploys are MANUAL (workflow_dispatch / local wrangler) —
+    # Yair 2026-07-28. Branch pushes still build as the CI check.
+    branches-ignore:
       - "master"
-      - "**"
   # No pull_request trigger on purpose: this job runs on a persistent
   # self-hosted runner that holds deploy credentials, so it must only execute
   # code from branches pushed by trusted collaborators (push needs write
