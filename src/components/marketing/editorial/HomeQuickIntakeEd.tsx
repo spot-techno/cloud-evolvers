@@ -15,11 +15,6 @@ const TOPICS: Array<{
   training: string;
 }> = [
   {
-    id: 'compliance',
-    label: { en: 'DORA/NIST/CIS route', nl: 'DORA/NIST/CIS route' },
-    training: 'Microsoft cloud compliance readiness intake',
-  },
-  {
     id: 'training',
     label: { en: 'Team training', nl: 'Teamtraining' },
     training: 'Azure and Microsoft 365 team training intake',
@@ -29,11 +24,16 @@ const TOPICS: Array<{
     label: { en: 'M365 security', nl: 'M365 security' },
     training: 'Microsoft 365 security and Entra readiness intake',
   },
+  {
+    id: 'compliance',
+    label: { en: 'DORA/NIST/CIS route', nl: 'DORA/NIST/CIS route' },
+    training: 'Microsoft cloud compliance readiness intake',
+  },
 ];
 
 export function HomeQuickIntakeEd() {
   const { isDutch, language } = useTranslations();
-  const [topic, setTopic] = useState<IntakeTopic>('compliance');
+  const [topic, setTopic] = useState<IntakeTopic>('training');
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
   const [status, setStatus] = useState<SubmitStatus>('idle');
@@ -133,20 +133,20 @@ export function HomeQuickIntakeEd() {
   }
 
   return (
-    <section className="border-y border-[color:var(--ed-rule)] bg-[color:var(--ed-bg-2)] py-8 sm:py-10">
+    <section id="intake" className="border-y border-[color:var(--ed-rule)] bg-[color:var(--ed-bg-2)] py-8 sm:py-10">
       <Wrap>
         <div className="grid gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.72fr)] lg:items-center">
           <div>
-            <Eyebrow accent>{isDutch ? 'Snelle route' : 'Quick route'}</Eyebrow>
+            <Eyebrow accent>{isDutch ? 'Eerste stap' : 'First step'}</Eyebrow>
             <h2 className="mt-3 ed-display text-[30px] leading-tight text-[color:var(--ed-ink)] sm:text-[36px]">
               {isDutch
-                ? 'Stuur een werkmail. Ik koppel jullie vraag aan de eerste Azure of M365 stap.'
-                : 'Send a work email. I will map your Azure or M365 question to the first useful step.'}
+                ? 'Stuur een werkmail. Ik plan de eerste training voor jullie team.'
+                : 'Send a work email. I will plan the first training for your team.'}
             </h2>
             <p className="mt-4 max-w-2xl text-[15px] leading-7 text-[color:var(--ed-ink-2)]">
               {isDutch
-                ? 'Voor teams die training, Secure Score, Entra, Purview, DORA, NIST of CIS willen omzetten naar een concrete backlog.'
-                : 'For teams that need to turn training, Secure Score, Entra, Purview, DORA, NIST, or CIS into a concrete backlog.'}
+                ? 'Antwoord binnen 24 uur. Geen nieuwsbrief, alleen een concreet voorstel.'
+                : 'A reply within 24 hours. No newsletter, just a concrete next step.'}
             </p>
           </div>
 

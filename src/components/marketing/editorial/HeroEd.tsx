@@ -14,8 +14,8 @@ export function HeroEd() {
     : 'Azure training, by an active Azure architect.';
 
   const lede = isDutch
-    ? 'Praktijkgerichte Microsoft-training voor IT-teams. Echte labs, architectuurkeuzes en operationele kennis, in het Nederlands of Engels, remote of bij jullie op kantoor. Staat soevereiniteit op de agenda, dan draaien we nu ook een aparte STACKIT-track voor Europese cloud.'
-    : 'Practitioner-led Microsoft training for IT teams. Real labs, architecture decisions, and operational know-how, in Dutch or English, remote or at your office. Sovereignty on the agenda? We now also run a dedicated STACKIT track for European cloud.';
+    ? 'Microsoft-training van een actieve Azure-architect. Nederlands of Engels, remote of bij jullie op kantoor.'
+    : 'Microsoft training from an active Azure architect. Dutch or English, remote or at your office.';
 
   return (
     <section className="relative bg-[color:var(--ed-bg)] pt-16 sm:pt-24 pb-12 sm:pb-16 overflow-hidden">
@@ -36,12 +36,12 @@ export function HeroEd() {
             <Lede className="mt-7">{lede}</Lede>
 
             <div className="mt-10 flex flex-wrap gap-3">
-              <EdButton to="/training" variant="primary" size="lg">
-                {isDutch ? 'Bekijk trainingen' : 'View courses'}
+              <EdButton href="#intake" variant="primary" size="lg">
+                {isDutch ? 'Plan een intake' : 'Plan an intake'}
                 <ArrowRight className="w-4 h-4" />
               </EdButton>
-              <EdButton to="/contact" variant="ghost" size="lg">
-                {isDutch ? 'Plan een teamsessie' : 'Plan a team session'}
+              <EdButton to="/training" variant="ghost" size="lg">
+                {isDutch ? 'Bekijk trainingen' : 'View courses'}
               </EdButton>
             </div>
 
