@@ -7,7 +7,7 @@ import { getPortfolioAttribution, trackPortfolioEvent } from '@/lib/portfolio-an
 type IntakeTopic = 'compliance' | 'training' | 'security';
 type SubmitStatus = 'idle' | 'sending' | 'sent' | 'error';
 
-const EXPERIMENT_ID = 'exp_cloudevolvers_home_quick_intake_20260510';
+const EXPERIMENT_ID = 'exp_cloudevolvers_home_quick_intake_20260812';
 
 const TOPICS: Array<{
   id: IntakeTopic;
@@ -133,7 +133,7 @@ export function HomeQuickIntakeEd() {
   }
 
   return (
-    <section id="intake" className="border-y border-[color:var(--ed-rule)] bg-[color:var(--ed-bg-2)] py-8 sm:py-10">
+    <section id="intake" className="border-y border-[color:var(--ed-rule)] bg-[color:var(--ed-bg-2)] py-8 sm:py-10 scroll-mt-20">
       <Wrap>
         <div className="grid gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.72fr)] lg:items-center">
           <div>
