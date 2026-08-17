@@ -9,13 +9,16 @@ import {
 } from '@/data/exam-questions'
 import ExamPractice from '@/components/practice/ExamPractice'
 import { PracticeLanguageSwitcher } from '@/components/practice/PracticeLanguageSwitcher'
+import { useLanguageContext } from '@/contexts/LanguageContext'
 import { CaretLeft } from '@phosphor-icons/react'
 
 export default function PracticeExamPage() {
   const { lang, exam } = useParams()
+  const { language } = useLanguageContext()
+  const fallbackLang = language === 'nl' ? 'nl' : 'en'
 
   if (!isExamLanguage(lang)) {
-    return <Navigate to="/practice/en" replace />
+    return <Navigate to={`/practice/${fallbackLang}`} replace />
   }
   if (!isExamSlug(exam)) {
     return <Navigate to={`/practice/${lang}`} replace />

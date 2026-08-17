@@ -59,7 +59,7 @@ export function ProgramsPreviewEd() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[color:var(--ed-rule)] border border-[color:var(--ed-rule)] rounded-[6px] overflow-hidden">
-          {loading && featured.length === 0
+          {loading
             ? Array.from({ length: 6 }).map((_, i) => (
                 <div
                   key={i}

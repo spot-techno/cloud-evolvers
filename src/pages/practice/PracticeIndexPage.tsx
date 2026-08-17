@@ -7,13 +7,16 @@ import {
   isExamLanguage,
 } from '@/data/exam-questions'
 import { PracticeLanguageSwitcher } from '@/components/practice/PracticeLanguageSwitcher'
+import { useLanguageContext } from '@/contexts/LanguageContext'
 import { ArrowRight } from '@phosphor-icons/react'
 
 export default function PracticeIndexPage() {
   const { lang } = useParams()
+  const { language } = useLanguageContext()
+  const fallbackLang = language === 'nl' ? 'nl' : 'en'
 
   if (!isExamLanguage(lang)) {
-    return <Navigate to="/practice/en" replace />
+    return <Navigate to={`/practice/${fallbackLang}`} replace />
   }
 
   const pack = getLanguagePack(lang)
