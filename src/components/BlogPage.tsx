@@ -87,7 +87,7 @@ export function BlogPage() {
           transition={{ duration: 0.4 }}
           className="mb-12"
         >
-          <h1 className="text-3xl font-bold text-foreground tracking-tight">
+          <h1 className="ed-display text-3xl sm:text-4xl text-foreground tracking-tight">
             Blog
           </h1>
           <p className="mt-2 text-muted-foreground max-w-lg">

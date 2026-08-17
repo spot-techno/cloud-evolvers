@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, useRef, ReactNode } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export type Language = 'en' | 'nl';
 
@@ -16,64 +17,116 @@ interface LanguageProviderProps {
   children: ReactNode;
 }
 
-// Beautiful loading screen component
-function LoadingScreen() {
-  return (
-    <div className="min-h-screen bg-gray-50 dark:bg-slate-900 flex items-center justify-center">
-      <div className="flex flex-col items-center gap-6">
-        {/* Animated spinner with brand colors */}
-        <div className="relative">
-          <div className="w-16 h-16 border-4 border-primary/20 rounded-full"></div>
-          <div className="w-16 h-16 border-4 border-transparent border-t-primary rounded-full animate-spin absolute top-0 left-0"></div>
-        </div>
-        
-        {/* Pulsing dots */}
-        <div className="flex gap-1.5">
-          <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-          <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-          <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-        </div>
-      </div>
-    </div>
-  );
+const STORAGE_KEY = 'app-language';
+
+function isLanguage(value: string | null | undefined): value is Language {
+  return value === 'en' || value === 'nl';
+}
+
+function languageFromLocation(pathname: string, search: string): Language | null {
+  const params = new URLSearchParams(search);
+  const queryLang = params.get('lang');
+  if (isLanguage(queryLang)) return queryLang;
+
+  const practice = pathname.match(/^\/practice\/(en|nl)(?:\/|$)/);
+  if (practice && isLanguage(practice[1])) return practice[1];
+
+  return null;
+}
+
+function readInitialLanguage(): Language {
+  if (typeof window === 'undefined') return 'en';
+  const fromUrl = languageFromLocation(window.location.pathname, window.location.search);
+  if (fromUrl) return fromUrl;
+  const saved = localStorage.getItem(STORAGE_KEY);
+  return isLanguage(saved) ? saved : 'en';
 }
 
 export function LanguageProvider({ children }: LanguageProviderProps) {
-  const [language, setLanguageState] = useState<Language>('en');
-  const [isLoading, setIsLoading] = useState(true);
+  const [language, setLanguageState] = useState<Language>(readInitialLanguage);
 
-  // Initialize language from localStorage on mount
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('app-language') as Language;
-    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'nl')) {
-      setLanguageState(savedLanguage);
-    }
-    setIsLoading(false);
+  const setLanguage = useCallback((newLanguage: Language) => {
+    setLanguageState(newLanguage);
+    localStorage.setItem(STORAGE_KEY, newLanguage);
+    localStorage.setItem('language', newLanguage);
   }, []);
 
-  const setLanguage = (newLanguage: Language) => {
-    setLanguageState(newLanguage);
-    localStorage.setItem('app-language', newLanguage);
-    // No page refresh - React will handle the re-render automatically
-  };
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   const value = {
     language,
     setLanguage,
-    isLoading,
+    isLoading: false,
     isEnglish: language === 'en',
-    isDutch: language === 'nl'
+    isDutch: language === 'nl',
   };
-
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
 
   return (
     <LanguageContext.Provider value={value}>
+      <LanguageUrlSync />
       {children}
     </LanguageContext.Provider>
   );
+}
+
+/**
+ * Keeps ?lang=nl shareable, persists the choice across client navigations,
+ * and moves /practice/en <-> /practice/nl with the site language.
+ */
+function desiredLocation(pathname: string, search: string, language: Language) {
+  const nextParams = new URLSearchParams(search);
+  if (language === 'nl') {
+    nextParams.set('lang', 'nl');
+  } else if (nextParams.get('lang') === 'nl' || nextParams.get('lang') === 'en') {
+    nextParams.delete('lang');
+  }
+
+  let nextPath = pathname;
+  const practice = pathname.match(/^\/practice\/(en|nl)(\/.*)?$/);
+  if (practice && practice[1] !== language) {
+    nextPath = `/practice/${language}${practice[2] || ''}`;
+  }
+
+  const nextSearch = nextParams.toString();
+  return {
+    pathname: nextPath,
+    search: nextSearch ? `?${nextSearch}` : '',
+  };
+}
+
+function LanguageUrlSync() {
+  const { language, setLanguage } = useLanguageContext();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const prevLanguage = useRef(language);
+
+  useEffect(() => {
+    const languageChanged = prevLanguage.current !== language;
+    prevLanguage.current = language;
+
+    if (languageChanged) {
+      const next = desiredLocation(location.pathname, location.search, language);
+      if (next.pathname !== location.pathname || next.search !== (location.search || '')) {
+        navigate({ pathname: next.pathname, search: next.search, hash: location.hash }, { replace: true });
+      }
+      return;
+    }
+
+    const fromUrl = languageFromLocation(location.pathname, location.search);
+    if (fromUrl && fromUrl !== language) {
+      setLanguage(fromUrl);
+      return;
+    }
+
+    const next = desiredLocation(location.pathname, location.search, language);
+    if (next.pathname !== location.pathname || next.search !== (location.search || '')) {
+      navigate({ pathname: next.pathname, search: next.search, hash: location.hash }, { replace: true });
+    }
+  }, [language, location.hash, location.pathname, location.search, navigate, setLanguage]);
+
+  return null;
 }
 
 export function useLanguageContext() {

@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { List, X } from '@phosphor-icons/react';
 // @ts-ignore
@@ -7,35 +7,13 @@ import { useTranslations } from '@/hooks/use-translations';
 import { useLanguageContext } from '@/contexts/LanguageContext';
 import { EdButton, Wrap, CloudEvolversMark } from '@/components/editorial';
 import { cn } from '@/lib/utils';
-import { ThemeToggle } from './ThemeToggle';
 
 export function Header() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    if (typeof window === 'undefined') return 'light';
-    const stored = localStorage.getItem('theme');
-    return stored === 'dark' ? 'dark' : 'light';
-  });
 
   const { t } = useTranslations();
   const { language, setLanguage } = useLanguageContext();
   const location = useLocation();
-  const onBlog = location.pathname.startsWith('/blog');
-
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.remove('light', 'dark');
-    if (onBlog) {
-      root.classList.add(theme);
-      localStorage.setItem('theme', theme);
-    } else {
-      root.classList.add('light');
-    }
-  }, [theme, onBlog]);
-
-  const toggleTheme = useCallback(() => {
-    setTheme((p) => (p === 'dark' ? 'light' : 'dark'));
-  }, []);
 
   useEffect(() => {
     const close = () => setIsMobileOpen(false);
@@ -88,12 +66,6 @@ export function Header() {
             </nav>
 
             <div className="ml-auto flex items-center gap-3">
-              {onBlog && (
-                <div className="hidden sm:block">
-                  <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-                </div>
-              )}
-
               <div className="hidden sm:flex items-center gap-0.5 rounded-full border border-[color:var(--ed-rule)] bg-[color:var(--ed-card)] p-0.5">
                 <LangButton
                   active={language === 'en'}
@@ -154,6 +126,20 @@ export function Header() {
                   {item.label}
                 </Link>
               ))}
+              <div className="pt-4 flex items-center gap-0.5 rounded-full border border-[color:var(--ed-rule)] bg-[color:var(--ed-card)] p-0.5 w-fit">
+                <LangButton
+                  active={language === 'en'}
+                  onClick={() => setLanguage('en')}
+                  code="GB"
+                  label="EN"
+                />
+                <LangButton
+                  active={language === 'nl'}
+                  onClick={() => setLanguage('nl')}
+                  code="NL"
+                  label="NL"
+                />
+              </div>
               <div className="pt-4 flex gap-2">
                 <EdButton
                   variant="ghost"

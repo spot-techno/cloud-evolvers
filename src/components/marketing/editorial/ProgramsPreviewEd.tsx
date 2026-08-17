@@ -3,6 +3,7 @@ import { ArrowRight } from '@phosphor-icons/react';
 import { Wrap, Eyebrow, Display, Lede, EdButton } from '@/components/editorial';
 import { useTranslations } from '@/hooks/use-translations';
 import { useCatalog, formatPrice, type CatalogItem } from '@/hooks/use-catalog';
+import { CATALOG_TRACK_COUNT, getTrainingBySlug } from '@/data/training-json';
 import { examColor, badgeSrc, isStackit } from '@/lib/cert-badge';
 
 const HOMEPAGE_SLUGS = [
@@ -16,11 +17,27 @@ const HOMEPAGE_SLUGS = [
 
 export function ProgramsPreviewEd() {
   const { isDutch, language } = useTranslations();
-  const { items, loading } = useCatalog();
+  const { items, loading } = useCatalog(language === 'nl' ? 'nl' : 'en');
 
-  const featured = HOMEPAGE_SLUGS.map((slug) => items.find((c) => c.slug === slug)).filter(
-    Boolean,
-  ) as CatalogItem[];
+  const lang = language === 'nl' ? 'nl' : 'en';
+  const featured = HOMEPAGE_SLUGS.map((slug) => {
+    const api = items.find((c) => c.slug === slug);
+    const local = getTrainingBySlug(slug, lang);
+    if (!api && !local) return null;
+    return {
+      slug,
+      title: local?.title || api?.title || slug,
+      subtitle: local?.subtitle || api?.subtitle,
+      category: local?.category || api?.category || '',
+      difficulty: local?.difficulty || api?.difficulty || '',
+      duration_days: local?.duration?.days ?? api?.duration_days ?? 0,
+      certification: local?.certification?.examCode || api?.certification || null,
+      certificationName: local?.certification?.name || api?.certificationName || null,
+      featured: local?.featured ?? api?.featured ?? false,
+      price_cents: api?.price_cents ?? null,
+      url: api?.url || `/training/${slug}`,
+    } as CatalogItem;
+  }).filter(Boolean) as CatalogItem[];
 
   return (
     <section className="bg-[color:var(--ed-bg)] py-20 sm:py-28">
@@ -57,8 +74,8 @@ export function ProgramsPreviewEd() {
         <div className="mt-12 flex items-center justify-between flex-wrap gap-4">
           <p className="text-[14px] text-[color:var(--ed-ink-2)]">
             {isDutch
-              ? `${items.length} trainingen beschikbaar in de catalogus.`
-              : `${items.length} training tracks available in the catalog.`}
+              ? `${CATALOG_TRACK_COUNT} trainingen in de catalogus.`
+              : `${CATALOG_TRACK_COUNT} training tracks in the catalog.`}
           </p>
           <EdButton to="/training" variant="primary" size="md">
             {isDutch ? 'Bekijk alle trainingen' : 'View all training'}

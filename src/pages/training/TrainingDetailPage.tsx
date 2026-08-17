@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { ArrowLeft, Warning, CheckCircle, Users } from '@phosphor-icons/react';
-import { loadTrainingBySlug } from '@/content/loader';
+import { getTrainingBySlug } from '@/data/training-json';
 import TrainingDetailContent from '@/components/training/TrainingDetailContent';
 import BespokeCourseSection from '@/components/training/BespokeCourseSection';
 import { getBespokeCourse } from '@/data/bespoke-courses';
@@ -9,7 +9,7 @@ import TrainingBookingForm from '@/components/training/TrainingBookingForm';
 import { useTrainingSessions } from '@/hooks/use-training-sessions';
 import { useLanguageContext } from '@/contexts/LanguageContext';
 import { useTranslations } from '@/hooks/use-translations';
-import type { TrainingJSON } from '@/content/types';
+import type { TrainingJSON } from '@/data/training-json/types';
 import { Wrap, Eyebrow, Display, Lede, EdButton } from '@/components/editorial';
 import { examColor, badgeSrc, isStackit, categoryCode } from '@/lib/cert-badge';
 
@@ -33,18 +33,9 @@ export default function TrainingDetailPage() {
 
   useEffect(() => {
     if (!slug) return;
-    const load = async () => {
-      try {
-        setLoading(true);
-        const data = await loadTrainingBySlug(slug, language);
-        setTraining(data);
-      } catch {
-        setTraining(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-    load();
+    setLoading(true);
+    setTraining(getTrainingBySlug(slug, language === 'nl' ? 'nl' : 'en'));
+    setLoading(false);
   }, [slug, language]);
 
   if (!slug) return <Navigate to="/training" replace />;

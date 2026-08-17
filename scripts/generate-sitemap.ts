@@ -45,6 +45,8 @@ const marketing: UrlEntry[] = [
   { loc: `${SITE}/in-company`, lastmod: today, changefreq: "monthly", priority: 0.8 },
   { loc: `${SITE}/teams`, lastmod: today, changefreq: "monthly", priority: 0.8 },
   { loc: `${SITE}/blog`, lastmod: today, changefreq: "weekly", priority: 0.9 },
+  { loc: `${SITE}/practice/en`, lastmod: today, changefreq: "weekly", priority: 0.8 },
+  { loc: `${SITE}/practice/nl`, lastmod: today, changefreq: "weekly", priority: 0.8 },
   { loc: `${SITE}/tools`, lastmod: today, changefreq: "weekly", priority: 0.9 },
   { loc: `${SITE}/tools/az-104-readiness-quiz`, lastmod: today, changefreq: "monthly", priority: 0.8 },
   { loc: `${SITE}/tools/microsoft-exam-cost-calculator`, lastmod: today, changefreq: "monthly", priority: 0.8 },

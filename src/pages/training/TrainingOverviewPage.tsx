@@ -75,11 +75,11 @@ const TrainingOverviewPage: React.FC = () => {
 
   useEffect(() => {
     try {
-      setAll(getAllJSONTrainings().map(toItem));
+      setAll(getAllJSONTrainings(language === 'nl' ? 'nl' : 'en').map(toItem));
     } catch {
       setAll([]);
     }
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

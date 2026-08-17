@@ -67,7 +67,7 @@ export function HeroEd() {
                   {isDutch ? 'Sinds' : 'Since'}
                 </dt>
                 <dd className="mt-1.5 ed-display text-[20px] text-[color:var(--ed-ink)]">
-                  2019
+                  2023
                 </dd>
               </div>
             </dl>

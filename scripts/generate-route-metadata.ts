@@ -340,7 +340,7 @@ function addBlogRoutes() {
     routeMeta.set(`/blog/${post.id}`, {
       title: `${localized(post.title)} | Cloud Evolvers`,
       description: trimDescription(localized(post.description) || localized(post.excerpt)),
-      image: post.image?.startsWith("http") ? post.image : `${SITE}${post.image || "/cloudevolvers-social-card.png"}`,
+      image: DEFAULT_IMAGE,
     });
   }
 }
@@ -370,7 +370,46 @@ addBlogRoutes();
 
 const template = readFileSync(TEMPLATE_PATH, "utf8");
 const sitemapPaths = readSitemapPaths();
-const extraPaths = ["/admin", "/admin/pricing", "/admin/images", "/admin/bookings"];
+function addPracticeRoutes() {
+  const langs = ["en", "nl", "de", "fr", "es"];
+  const slugs = [
+    "az-900",
+    "az-104",
+    "az-305",
+    "ai-900",
+    "ai-102",
+    "az-204",
+    "az-500",
+    "sc-900",
+    "ms-900",
+    "pl-300",
+    "dp-900",
+    "pl-900",
+  ];
+  for (const lang of langs) {
+    routeMeta.set(`/practice/${lang}`, {
+      title: `Practice exams (${lang.toUpperCase()}) | Cloud Evolvers`,
+      description:
+        "Free Microsoft certification practice questions from Cloud Evolvers, in the language you selected.",
+    });
+    for (const slug of slugs) {
+      routeMeta.set(`/practice/${lang}/${slug}`, {
+        title: `${slug.toUpperCase()} practice exam | Cloud Evolvers`,
+        description: `Practice questions for ${slug.toUpperCase()} from Cloud Evolvers.`,
+      });
+    }
+  }
+}
+
+addPracticeRoutes();
+
+const extraPaths = [
+  "/admin",
+  "/admin/pricing",
+  "/admin/images",
+  "/admin/bookings",
+  ...Array.from(routeMeta.keys()).filter((path) => path.startsWith("/practice/")),
+];
 let generated = 0;
 let skipped = 0;
 

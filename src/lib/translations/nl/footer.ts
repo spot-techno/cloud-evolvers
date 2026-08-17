@@ -30,5 +30,8 @@ export default {
   sending: "Verzenden...",
   sendMessage: "Bericht Versturen",
   tagline: "Microsoft Certified Azure- en M365-trainingen, live gegeven door MCT-trainers.",
-  explore: "Verkennen"
+  explore: "Verkennen",
+  certificationTracks: "Certificeringstrajecten",
+  inCompany: "In-company",
+  teamPlans: "Teamplannen"
 }

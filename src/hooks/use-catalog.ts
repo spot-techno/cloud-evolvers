@@ -25,7 +25,7 @@ interface CatalogResponse {
   catalog: CatalogItem[];
 }
 
-export function useCatalog() {
+export function useCatalog(lang: 'en' | 'nl' = 'en') {
   const [items, setItems] = useState<CatalogItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -35,7 +35,7 @@ export function useCatalog() {
     (async () => {
       try {
         setLoading(true);
-        const res = await fetch('/api/catalog');
+        const res = await fetch(lang === 'nl' ? '/api/catalog?lang=nl' : '/api/catalog');
         if (!res.ok) throw new Error('catalog fetch failed');
         const data = (await res.json()) as CatalogResponse;
         if (!cancelled) setItems(data.catalog.filter((c) => !c.retired));
@@ -48,7 +48,7 @@ export function useCatalog() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [lang]);
 
   return { items, loading, error };
 }

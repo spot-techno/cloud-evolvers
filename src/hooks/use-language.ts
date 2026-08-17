@@ -1,24 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useLanguageContext, type Language } from '@/contexts/LanguageContext';
 
-export type Language = 'en' | 'nl';
+export type { Language };
 export type Theme = 'light' | 'dark';
 
 export function useLanguage() {
-  const [language, setLanguageState] = useState<Language>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('language');
-      return (saved as Language) || 'en';
-    }
-    return 'en';
-  });
-
-  const setLanguage = (newLanguage: Language) => {
-    setLanguageState(newLanguage);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('language', newLanguage);
-    }
-  };
-
+  const { language, setLanguage } = useLanguageContext();
   return [language, setLanguage] as const;
 }
 
