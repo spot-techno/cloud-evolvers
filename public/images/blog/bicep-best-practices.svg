@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="bicep-best-practices">
+  <rect width="1600" height="1000" fill="#f7f6f2"/>
+  <rect x="1080" y="0" width="160" height="1000" fill="#0f8a69" fill-opacity="0.22"/><rect x="1280" y="0" width="80" height="1000" fill="#22c55e" fill-opacity="0.18"/>
+  <text x="1180" y="620" font-family="'Instrument Serif', Georgia, serif" font-size="280" fill="#293141" fill-opacity="0.08">P</text>
+  <text x="80" y="140" font-family="'Space Grotesk', system-ui, sans-serif" font-size="92" font-weight="800">
+    <tspan fill="#22c55e">c</tspan><tspan fill="#293141">e</tspan><tspan fill="#22c55e">.</tspan>
+  </text>
+  <text x="80" y="860" font-family="'Space Grotesk', system-ui, sans-serif" font-size="28" font-weight="600" fill="#293141" fill-opacity="0.72" letter-spacing="0.08em">CLOUD EVOLVERS</text>
+  <text x="80" y="920" font-family="'Instrument Serif', Georgia, serif" font-size="36" fill="#293141">bicep best practices</text>
+</svg>

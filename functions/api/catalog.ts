@@ -19,7 +19,8 @@ export const onRequestOptions: PagesFunction = async ({ request }) => optionsRes
  */
 export const onRequestGet: PagesFunction<BookingEnv> = async ({ env, request }) => {
   try {
-    const trainings = getAllTrainings();
+    const lang = new URL(request.url).searchParams.get('lang') === 'nl' ? 'nl' : 'en';
+    const trainings = getAllTrainings(lang);
 
     const priceRows = await env.PRICING_DB.prepare(`
       SELECT course_slug, MIN(price) AS min_price

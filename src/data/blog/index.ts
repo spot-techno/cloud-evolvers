@@ -266,7 +266,7 @@ export function getLocalizedBlogPost(post: BlogPost, locale: 'en' | 'nl' = 'en')
     date: post.date,
     author: post.author,
     tags: post.tags,
-    image: post.image,
+    image: `/images/blog/${post.id}.svg`,
     excerpt: getLocalizedText(post.excerpt, locale),
     category: getLocalizedText(post.category, locale),
     readTime: post.readTime,

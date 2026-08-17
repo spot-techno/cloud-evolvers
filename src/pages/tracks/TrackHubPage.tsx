@@ -35,9 +35,9 @@ function buildSteps(track: CertTrack, trainings: TrainingJSON[]): Step[] {
 const TrackHubPage: React.FC = () => {
   const { slug = '' } = useParams<{ slug: string }>();
   const track = getTrackBySlug(slug);
-  const trainings = useMemo(() => getAllTrainings(), []);
-  const { byCourse: pricesByCourse } = useAllTrainingSessions();
   const { language } = useLanguageContext();
+  const trainings = useMemo(() => getAllTrainings(language === 'nl' ? 'nl' : 'en'), [language]);
+  const { byCourse: pricesByCourse } = useAllTrainingSessions();
 
   if (!track) {
     return <Navigate to="/training" replace />;

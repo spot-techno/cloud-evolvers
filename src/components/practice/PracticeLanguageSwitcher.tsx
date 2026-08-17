@@ -8,6 +8,7 @@ import {
   type ExamLanguage,
 } from '@/data/exam-questions'
 import { cn } from '@/lib/utils'
+import { useLanguageContext } from '@/contexts/LanguageContext'
 
 interface Props {
   current: ExamLanguage
@@ -18,6 +19,7 @@ interface Props {
 
 export function PracticeLanguageSwitcher({ current, examSlug, label, className }: Props) {
   const location = useLocation()
+  const { setLanguage } = useLanguageContext()
   const languages =
     examSlug && isExamSlug(examSlug) ? getLanguagesWithSlug(examSlug) : EXAM_LANGUAGES
 
@@ -36,6 +38,9 @@ export function PracticeLanguageSwitcher({ current, examSlug, label, className }
               key={lang}
               to={target}
               state={{ from: location.pathname }}
+              onClick={() => {
+                if (lang === 'en' || lang === 'nl') setLanguage(lang)
+              }}
               className={cn(
                 'flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[12px] font-medium transition-colors',
                 isActive

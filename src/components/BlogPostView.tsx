@@ -175,7 +175,7 @@ export function BlogPostView({ post, onBack }: BlogPostViewProps) {
                 {getText(post.category)}
               </p>
 
-              <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold text-foreground leading-[1.18] tracking-[-0.02em]">
+              <h1 className="ed-display text-[clamp(1.75rem,3.5vw,2.5rem)] text-foreground leading-[1.18] tracking-[-0.02em]">
                 {getText(post.title)}
               </h1>
 

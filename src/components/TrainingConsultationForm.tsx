@@ -8,7 +8,6 @@ import {
   PaperPlaneTilt,
   Plus,
   X,
-  Clock,
   GraduationCap,
   WarningCircle,
   CheckCircle,
@@ -18,7 +17,6 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
-import { Card, CardContent, CardHeader } from './ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { DatePicker } from './ui/date-picker';
 import { getAllTrainings } from '@/data/training-json';
@@ -62,7 +60,7 @@ export default function TrainingConsultationForm({
   // Build training options from JSON registry
   const trainingOptions = [
     { value: 'general', label: language === 'nl' ? 'Algemene Vraag' : 'General Inquiry' },
-    ...getAllTrainings().map(course => ({
+    ...getAllTrainings(language).map(course => ({
       value: course.slug,
       label: course.title
     }))
@@ -172,7 +170,7 @@ export default function TrainingConsultationForm({
       let responseData;
       try {
         responseData = await response.json();
-      } catch (parseError) {
+      } catch {
         responseData = { error: 'Invalid server response' };
       }
 

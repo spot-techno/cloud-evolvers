@@ -39,6 +39,44 @@ import cloudAiSecurityEngineerData from './cloud-ai-security-engineer.json';
 import windowsServerHybridAdminConsolidatedData from './windows-server-hybrid-administrator-consolidated.json';
 import microsoft365AdministratorData from './microsoft-365-administrator.json';
 
+import azureAdministratorNl from './azure-administrator-nl.json';
+import azureAIDeveloperBootcampNl from './azure-ai-developer-bootcamp-nl.json';
+import azureAIFundamentalsNl from './azure-ai-fundamentals-nl.json';
+import azureDeveloperNl from './azure-developer-nl.json';
+import azureDevOpsEngineerNl from './azure-devops-engineer-nl.json';
+import azureFundamentalsNl from './azure-fundamentals-nl.json';
+import azureIoTDeveloperNl from './azure-iot-developer-nl.json';
+import azureNetworkEngineerNl from './azure-network-engineer-nl.json';
+import azureSecurityEngineerNl from './azure-security-engineer-nl.json';
+import azureSolutionsArchitectNl from './azure-solutions-architect-nl.json';
+import azureStackHubNl from './azure-stack-hub-nl.json';
+import azureSupportEngineerNl from './azure-support-engineer-nl.json';
+import azureVirtualDesktopNl from './azure-virtual-desktop-nl.json';
+import azureAIEngineerNl from './azure-ai-engineer-nl.json';
+import copilotAgentAdminFundamentalsNl from './copilot-agent-administration-fundamentals-nl.json';
+import cybersecurityArchitectNl from './cybersecurity-architect-nl.json';
+import microsoft365AdministratorNl from './microsoft-365-administrator-nl.json';
+import microsoft365CopilotMasteryNl from './microsoft-365-copilot-mastery-nl.json';
+import microsoft365IdentityAccessAdministratorNl from './microsoft-365-identity-access-administrator-nl.json';
+import microsoft365SecurityAdministratorNl from './microsoft-365-security-administrator-nl.json';
+import powerPlatformAutomationNl from './power-platform-automation-nl.json';
+import securityComplianceIdentityFundamentalsNl from './security-compliance-identity-fundamentals-nl.json';
+import securityOperationsAnalystNl from './security-operations-analyst-nl.json';
+import teamsAdvancedAdministrationNl from './teams-advanced-administration-nl.json';
+import windowsServerHybridAdministratorNl from './windows-server-hybrid-administrator-nl.json';
+import windowsServerHybridInfrastructureNl from './windows-server-hybrid-infrastructure-nl.json';
+
+export type CatalogLanguage = 'en' | 'nl';
+
+export const CANONICAL_INSTRUCTOR = {
+  id: 'yair-knijn',
+  name: 'Yaïr Knijn',
+  title: 'MCT, Azure architect, Spot Cloud B.V.',
+  titleNl: 'MCT, Azure-architect, Spot Cloud B.V.',
+  bio: 'Microsoft Certified Trainer, Azure architect, and active consultant at Spot Cloud B.V.',
+  bioNl: 'Microsoft Certified Trainer, Azure-architect en actief consultant bij Spot Cloud B.V.',
+} as const;
+
 // Training data registry
 const trainingRegistry: Record<string, TrainingJSON> = {
   'azure-administrator': azureAdministratorData as TrainingJSON,
@@ -80,13 +118,58 @@ const trainingRegistry: Record<string, TrainingJSON> = {
   'microsoft-365-administrator': microsoft365AdministratorData as TrainingJSON,
 };
 
-// Function to get training by slug
-export function getTrainingBySlug(slug: string): TrainingJSON | null {
-  return trainingRegistry[slug] || null;
+const trainingRegistryNl: Record<string, TrainingJSON> = {
+  'azure-administrator': azureAdministratorNl as TrainingJSON,
+  'azure-ai-developer-bootcamp': azureAIDeveloperBootcampNl as TrainingJSON,
+  'azure-ai-fundamentals': azureAIFundamentalsNl as TrainingJSON,
+  'azure-developer': azureDeveloperNl as TrainingJSON,
+  'azure-devops-engineer': azureDevOpsEngineerNl as TrainingJSON,
+  'azure-fundamentals': azureFundamentalsNl as TrainingJSON,
+  'azure-iot-developer': azureIoTDeveloperNl as TrainingJSON,
+  'azure-network-engineer': azureNetworkEngineerNl as TrainingJSON,
+  'azure-security-engineer': azureSecurityEngineerNl as TrainingJSON,
+  'azure-solutions-architect': azureSolutionsArchitectNl as TrainingJSON,
+  'azure-stack-hub': azureStackHubNl as TrainingJSON,
+  'azure-support-engineer': azureSupportEngineerNl as TrainingJSON,
+  'azure-virtual-desktop': azureVirtualDesktopNl as TrainingJSON,
+  'azure-ai-engineer': azureAIEngineerNl as TrainingJSON,
+  'copilot-agent-administration-fundamentals': copilotAgentAdminFundamentalsNl as TrainingJSON,
+  'cybersecurity-architect': cybersecurityArchitectNl as TrainingJSON,
+  'microsoft-365-administrator': microsoft365AdministratorNl as TrainingJSON,
+  'microsoft-365-copilot-mastery': microsoft365CopilotMasteryNl as TrainingJSON,
+  'microsoft-365-identity-access-administrator': microsoft365IdentityAccessAdministratorNl as TrainingJSON,
+  'microsoft-365-security-administrator': microsoft365SecurityAdministratorNl as TrainingJSON,
+  'power-platform-automation': powerPlatformAutomationNl as TrainingJSON,
+  'security-compliance-identity-fundamentals': securityComplianceIdentityFundamentalsNl as TrainingJSON,
+  'security-operations-analyst': securityOperationsAnalystNl as TrainingJSON,
+  'teams-advanced-administration': teamsAdvancedAdministrationNl as TrainingJSON,
+  'windows-server-hybrid-administrator': windowsServerHybridAdministratorNl as TrainingJSON,
+  'windows-server-hybrid-infrastructure': windowsServerHybridInfrastructureNl as TrainingJSON,
+};
+
+export const CATALOG_TRACK_COUNT = Object.keys(trainingRegistry).length;
+
+function withCanonicalInstructor(training: TrainingJSON, lang: CatalogLanguage): TrainingJSON {
+  return {
+    ...training,
+    instructor: {
+      ...training.instructor,
+      id: CANONICAL_INSTRUCTOR.id,
+      name: CANONICAL_INSTRUCTOR.name,
+      title: lang === 'nl' ? CANONICAL_INSTRUCTOR.titleNl : CANONICAL_INSTRUCTOR.title,
+      bio: lang === 'nl' ? CANONICAL_INSTRUCTOR.bioNl : CANONICAL_INSTRUCTOR.bio,
+    },
+  };
 }
 
-// Function to get all trainings
-export function getAllTrainings(): TrainingJSON[] {
-  return Object.values(trainingRegistry);
+export function getTrainingBySlug(slug: string, lang: CatalogLanguage = 'en'): TrainingJSON | null {
+  const english = trainingRegistry[slug];
+  if (!english) return null;
+  const localized = lang === 'nl' ? trainingRegistryNl[slug] || english : english;
+  return withCanonicalInstructor(localized, lang);
+}
+
+export function getAllTrainings(lang: CatalogLanguage = 'en'): TrainingJSON[] {
+  return Object.keys(trainingRegistry).map((slug) => getTrainingBySlug(slug, lang)!);
 }
 

@@ -274,20 +274,14 @@
     
     <link rel="preload" as="image" href="/1625557501943.jpg">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
     <script>
-      // Force light mode before paint to prevent dark flash
+      // Light mode only. Theme follows the rest of the site on every route.
       document.documentElement.classList.remove('dark');
       document.documentElement.classList.add('light');
-      if (!location.pathname.startsWith('/blog')) {
-        localStorage.setItem('theme', 'light');
-      }
+      localStorage.setItem('theme', 'light');
     </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>

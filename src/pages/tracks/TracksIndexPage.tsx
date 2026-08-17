@@ -5,9 +5,11 @@ import { SEO } from '@/components/SEO';
 import { Wrap, Eyebrow, Display, Lede, EdButton } from '@/components/editorial';
 import { CERT_TRACKS } from '@/data/cert-tracks';
 import { getAllTrainings } from '@/data/training-json';
+import { useLanguageContext } from '@/contexts/LanguageContext';
 
 const TracksIndexPage: React.FC = () => {
-  const trainings = useMemo(() => getAllTrainings(), []);
+  const { language } = useLanguageContext();
+  const trainings = useMemo(() => getAllTrainings(language === 'nl' ? 'nl' : 'en'), [language]);
 
   return (
     <div className="bg-[color:var(--ed-bg)] min-h-screen text-[color:var(--ed-ink)]">
